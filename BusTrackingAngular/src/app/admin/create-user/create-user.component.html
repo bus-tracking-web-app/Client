@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>Add Course</h2>
+<mat-dialog-content class="mat-typography">
+
+   <form class="example-form" [formGroup]="createform" >
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>full name</mat-label>
+      <input type="text" matInput formControlName="fullname">
+      <mat-error *ngIf="createform.controls['fullname'].hasError('required')">
+        fullname is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>email</mat-label>
+        <input type="text" matInput formControlName="email">
+        <mat-error *ngIf="createform.controls['email'].hasError('required')">
+            email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>username</mat-label>
+        <input type="text" matInput formControlName="username">
+        <mat-error *ngIf="createform.controls['username'].hasError('required')">
+            username <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>password</mat-label>
+        <input type="text" matInput formControlName="password">
+        <mat-error *ngIf="createform.controls['password'].hasError('required')">
+            password <strong>required</strong>
+        </mat-error>
+      </mat-form-field>      
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>phone</mat-label>
+        <input type="text" matInput formControlName="phone">
+        <mat-error *ngIf="createform.controls['phone'].hasError('required')">
+            phone is<strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+    <input type="file" #file formControlName="imagepath" (change)="uploadFile(file.files)">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>role</mat-label>
+        <input type="number" matInput formControlName="roleid">
+        <mat-error *ngIf="createform.controls['roleid'].hasError('required')">
+            role is<strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-danger" >Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()" class="btn btn-success" >Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="content-wrapper">
+        <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>BusId</th>
+                  <th>BusNumber</th>
+                  <th>BusDriver</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let obj of home.bus">
+                  <td>{{obj.id}}</td>
+                  <td>{{obj.busnumber}}</td>
+                  <td>{{obj.busdriver}}</td>
+                  <td><label class="badge badge-danger">Pending</label></td>
+                </tr>
+             
+           
+              </tbody>
+            </table>
+          </div>
+         
+         
+        
+        </div>
+    </div>

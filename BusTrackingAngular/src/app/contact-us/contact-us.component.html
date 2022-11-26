@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+<section class="contact_section ">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center d-md-block">
+            <h2>
+              Contact Us
+            </h2>
+          </div>
+
+          <form action="" [formGroup]="contactForm">
+            <div class="contact_form-container">
+              <div>
+                <table class="example-full-width" cellspacing="0"><tr>
+                    <td><mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Full Name</mat-label>
+                      <input type="text" matInput 
+                      formControlName="fullName"
+                      >
+                      <mat-error *ngIf="contactForm.controls['fullName'].hasError('required')">
+                        Full Name Is <strong>required</strong>
+                      </mat-error>
+                  
+                    </mat-form-field></td>
+
+                </table>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                  <mat-error *ngIf="contactForm.controls['email'].hasError('email')">
+                    Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="contactForm.controls['email'].hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Phone Number</mat-label>
+                  <input type="tel" matInput formControlName="phoneNumber" placeholder="Ex +962-------">
+                  <mat-error *ngIf="contactForm.controls['phoneNumber'].hasError('minLength')">
+                    Phone Number minimum Length is <strong>10</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Leave a Message</mat-label>
+                  <textarea matInput formControlName="message" placeholder="Ex. It makes me feel..."></textarea>
+                  <mat-error *ngIf="contactForm.controls['message'].hasError('required')">
+                    Message Required
+                  </mat-error>
+                </mat-form-field>
+
+                <div class="mt-5">
+                  <button [disabled]="!contactForm.valid" (click)="send()"   type="submit">
+                    send
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="contact_img-box">
+            <img src="./assets/images/students.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+ <app-footer></app-footer>
