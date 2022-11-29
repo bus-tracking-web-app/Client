@@ -7,6 +7,9 @@ import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
 import { ManageSchoolComponent } from './manage-school/manage-school.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { MangeAboutUsComponent } from './mange-about-us/mange-about-us.component';
+import { MangeHomeComponent } from './mange-home/mange-home.component';
+import { MangeStudentComponent } from './mange-student/mange-student.component';
 
 const routes: Routes = [
   {
@@ -22,11 +25,22 @@ const routes: Routes = [
     component:ManageUsersComponent
   },
   {
+    path:'student',
+    component:MangeStudentComponent
+  },
+  {
+    path:'home_mange',
+    component:MangeHomeComponent
+  },
+  {
+    path:'aboutus_mange',
+    component:MangeAboutUsComponent}
+    ,{
     path:'footer',
     component:ManageFooterComponent
-    
+    },
 
-  },
+ 
   {
     path:'routes',
     component:ManageRoutesComponent

@@ -10,6 +10,11 @@ export class HomeService {
 
   constructor(private toastr:ToastrService,private http:HttpClient,private spinner:NgxSpinnerService) { }
   bus:any[]=[];
+  Home:any[]=[];
+  about:any[]=[];
+  
+  
+
   display_photo: any;
   getAllbuses(){
     this.spinner.show();
@@ -21,6 +26,32 @@ export class HomeService {
       this.spinner.hide();
       this.toastr.error(err.message, err.status);
     })
+  }
+  
+  GetHome()
+  {
+    this.spinner.show();
+      this.http.get('https://localhost:44364/api/Home/Get').subscribe((res:any)=>{
+      this.Home=res;
+      this.spinner.hide();
+      this.toastr.success("Page retrieved successfully");
+    },err=>{
+      this.spinner.hide();
+      this.toastr.error("there is no data")
+    });
+  }
+  
+  GetAboutUs()
+  {
+    this.spinner.show();
+      this.http.get('https://localhost:44364/api/Aboutus/Get').subscribe((res:any)=>{
+      this.about=res;
+      this.spinner.hide();
+      this.toastr.success("Page retrieved successfully");
+    },err=>{
+      this.spinner.hide();
+      this.toastr.error("there is no data")
+    });
   }
   createTestimonial(body :any)
 {  

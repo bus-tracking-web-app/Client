@@ -1,18 +1,14 @@
 <app-navbar></app-navbar>
 
 <div class="top_container">
-<section class="hero_section ">
-    <div class="hero-container container">
+<section class="hero_section " *ngFor="let obj of home.Home ">
+    <div class="hero-container container"  >
       <div class="hero_detail-box">
-        <h1>
-          Best way
-          to fund
-          your study
-          abroad
+        <h1 [ngStyle]="">
+          {{obj.titel}}
         </h1>
         <p>
-          ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam
+          {{obj.txt}}
         </p>
         <div class="hero_btn-continer">
           <a href="" class="call_to-btn btn_white-border">
@@ -20,9 +16,10 @@
           </a>
         </div>
       </div>
-      <div class="hero_img-container">
+      <div class="hero_img-container"  >
         <div>
-          <img src="./assets/images/hero.png" alt="" class="img-fluid">
+          <!-- <img src="./assets/images/hero.png" alt="" class="img-fluid"> -->
+          <img src="../../../assets/images/{{obj.imagepath}}" alt="Home Picture" >
         </div>
       </div>
     </div>
@@ -33,23 +30,21 @@
 <div class="common_style">
 
     <!-- about section -->
-    <section class="about_section">
+    <section class="about_section" *ngFor="let obj of home.about " >
       <div class="container">
         <div class="row">
           <div class="col-md-6">
             <div class="about_img-container">
-              <img src="./assets/images/about.png" alt="">
+              <img src="../../../assets/images/{{obj.imagepath}}" alt="AboutUs Picture" >
             </div>
           </div>
           <div class="col-md-6">
             <div class="about_detail-box">
               <h3>
-                About our School
+                {{obj.title}}
               </h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                {{obj.information}}
               </p>
               <div class="">
                 <a href="" class="call_to-btn btn_white-border">
