@@ -2,22 +2,39 @@
 <div class="container-fluid page-body-wrapper">
     <app-sidebar></app-sidebar>
     <div class="content-wrapper">
+      <button type="button" class="btn btn-primary btn-sm" (click)="openDialog()">Create New Bus </button>
+      <form class="form-inline" style="margin-top: 3%;">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputText" >Bus Number : </label>
+          <input type="text" class="form-control1" id="inputText" placeholder="Bus Number"
+          [(ngModel)]="busNum" (change)="searchInput($event)">
+
+        </div>
+
+      </form>
         <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
-                  <th>BusId</th>
-                  <th>BusNumber</th>
-                  <th>BusDriver</th>
-                  <th>Status</th>
+                  <th>Bus Number</th>
+                  <th>Driver Name</th>
+                  <th>Round Status</th>
+                  <th>Teacher Name</th>
+                  <!-- <th>Status</th> -->
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let obj of home.bus">
-                  <td>{{obj.id}}</td>
+                <tr *ngFor="let obj of home.bus" >           
                   <td>{{obj.busnumber}}</td>
-                  <td>{{obj.busdriver}}</td>
-                  <td><label class="badge badge-danger">Pending</label></td>
+                  <td>{{obj.driver}}</td>
+                  <td>{{obj.roundstatus}}</td>
+                  <td>{{obj.teacherName}}</td>
+                  <!-- <td><label class="badge badge-danger">Pending</label></td> -->
+                  <td>
+                    <button type="button" class="btn btn-inverse-success btn-fw" (click)="openUpdateDialog(obj)">Update </button>
+                    
+                    <button type="button" class="btn btn-inverse-danger btn-fw" (click)="openDeleteDialog(obj.id)">Delete</button>
+                  </td>
                 </tr>
              
            
@@ -29,3 +46,64 @@
         
         </div>
     </div>
+
+    <ng-template #callUpdate>
+      <h2 mat-dialog-title> Create New Bus</h2>
+      <mat-dialog-content class="mat-typography">
+          <form class="example-form"[formGroup]="updateform">
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Bus Number</mat-label>
+                  <input type="number" matInput formControlName="busnumber" [(ngModel)]="p_data.busN">
+                  <mat-error *ngIf="updateform.controls['busnumber'].hasError('required')">
+                      Bus Number is required!
+                  </mat-error>
+              </mat-form-field>
+              <br>
+              <!-- <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Bus Driver</mat-label>
+                  <input type="text" matInput formControlName="busdriver" [(ngModel)]="p_data.busD">
+                  <mat-error *ngIf="updateform.controls['busdriver'].hasError('required')">
+                      Bus Driver is required!
+                  </mat-error>
+              </mat-form-field> -->
+              <label for="" class="my-1" >Driver</label>
+              <select class="form-control" (change)="DetectChanges($event)" > 
+               <option disabled selected hidden>{{home.selectedDriver.fullname}}</option> 
+               <option value="{{item.id}}" *ngFor="let item of home.driver" >{{item.fullname}}</option>
+             </select>
+              <br>
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>round</mat-label>
+                  <input type="number" matInput formControlName="round" [(ngModel)]="p_data.round">
+                  <mat-error *ngIf="updateform.controls['round'].hasError('required')">
+                      round is required!
+                  </mat-error>
+              </mat-form-field>
+              <br>
+              <!-- <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>teacher</mat-label>
+                  <input type="text" matInput formControlName="teacher" [(ngModel)]="p_data.tech">
+                  <mat-error *ngIf="updateform.controls['teacher'].hasError('required')">
+                      teacher is required!
+                  </mat-error>
+              </mat-form-field> -->
+              <label for="" class="my-1" >Teacher</label>
+              <select class="form-control" (change)="DetectChanges1($event)" > 
+               <option disabled selected hidden>{{home.selectedTeacher.fullname}}</option> 
+               <option value="{{item.id}}" *ngFor="let item of home.teacher" >{{item.fullname}}</option>
+             </select>
+          </form>
+          <mat-dialog-actions align="end">
+              <button mat-button class="btn btn-inverse-danger btn-fw" mat-dialog-close>Cancel</button>
+              <button mat-button class="btn btn-inverse-success btn-fw" (click)="updateBus()"[mat-dialog-close]="true" >Save</button>
+          </mat-dialog-actions>
+      </mat-dialog-content>
+      
+    </ng-template>
+
+    <ng-template #DeleteDialog>
+      <h2>Are you sure ?</h2>
+      <button mat-button class="btn btn-inverse-success btn-fw" mat-dialog-close="yes">Yes</button>
+      <button mat-button class="btn btn-inverse-danger btn-fw" mat-dialog-close="no">No</button>
+
+    </ng-template>

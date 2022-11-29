@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+<div class="container-fluid page-body-wrapper">
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+    <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Text</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+             
+              <!-- <th>Status</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of home.footer">
+              <td>{{obj.abouttxt}}</td>
+              <td>{{obj.address}}</td>
+              <td>{{obj.phonenumber}}</td>
+              <td>{{obj.email}}</td>
+             
+              <!-- <td><label class="badge badge-danger">Pending</label></td> -->
+              <td>
+                <button type="button" class="btn btn-inverse-success btn-fw" (click)="openUpdateDialog(obj)">Update </button>
+                
+                <!-- <button type="button" class="btn btn-primary btn-sm" (click)="openDeleteDialog(obj.id)">Delete</button> -->
+              </td>
+            </tr>
+         
+       
+          </tbody>
+        </table>
+      </div>
+     
+</div>
+</div>
+
+<ng-template #callUpdateFooter>
+    <h2 mat-dialog-title> update Footer</h2>
+    <mat-dialog-content class="mat-typography">
+        <form class="example-form"[formGroup]="updateform">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Text</mat-label>
+                <input type="text" matInput formControlName="abouttxt" [(ngModel)]="p_data.Text">
+                <mat-error *ngIf="updateform.controls['abouttxt'].hasError('required')">
+                    Text is required!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>address</mat-label>
+                <input type="text" matInput formControlName="address" [(ngModel)]="p_data.address">
+                <mat-error *ngIf="updateform.controls['address'].hasError('required')">
+                    address is required!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>phonenumber</mat-label>
+                <input type="text" matInput formControlName="phonenumber" [(ngModel)]="p_data.phonenumber">
+                <mat-error *ngIf="updateform.controls['address'].hasError('required')">
+                    phonenumber is required!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>email</mat-label>
+                <input type="text" matInput formControlName="email" [(ngModel)]="p_data.email">
+                <mat-error *ngIf="updateform.controls['email'].hasError('required')">
+                    email is required!
+                </mat-error>
+            </mat-form-field>
+        </form>
+        <mat-dialog-actions align="end">
+            <button mat-button class="btn btn-inverse-danger btn-fw" mat-dialog-close>Cancel</button>
+            <button mat-button class="btn btn-inverse-success btn-fw" (click)="updateFooter()"[mat-dialog-close]="true" >Save</button>
+        </mat-dialog-actions>
+    </mat-dialog-content>
+    
+  </ng-template>

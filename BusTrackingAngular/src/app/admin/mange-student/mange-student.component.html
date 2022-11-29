@@ -1,0 +1,238 @@
+
+
+<!-- partial:partials/_navbar.html -->
+  
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        <div class="theme-setting-wrapper">
+          <div id="settings-trigger"><i class="ti-settings"></i></div>
+          <div id="theme-settings" class="settings-panel">
+            <i class="settings-close ti-close"></i>
+         
+          </div>
+        </div>
+        <div id="right-sidebar" class="settings-panel">
+        
+         
+          <div class="tab-content" id="setting-content">
+            <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+            </div>   
+          </div>
+        </div>
+  
+  
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+  
+  <div class="content-wrapper">
+ 
+  
+  <button class="btn btn-primary mr-2" (click)="opendialog()" >Add new Steudent</button> <br><br>
+  <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            
+            
+            <th>Student Picture</th>
+            <th>Student Name</th>
+            <th>Status</th>
+            <th>X-Location</th>
+            <th>Y-Location</th>
+            <th>Round</th>
+            <th>Bus Number</th>
+            <th>Parent</th>
+            <th>Oparations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let obj of home.students " >
+           
+         
+             <td> <img src="../../../assets/images/{{obj.imgpath}}" alt="Home Picture" ></td>
+            <td>{{obj.fullname}}</td>
+            <td>{{obj.inbusstatus}}</td>
+            <td>{{obj.xhome}}</td>
+            <td>{{obj.yhome}}</td>
+            <td>{{obj.roundstatus}}</td>
+            <td>{{obj.busnumber}}</td>
+            <td>{{obj.parent}}</td>
+         
+            
+            <td>
+              <button  (click)="openUpdateDailog(obj)" class="btn btn-primary mr-2" >Update</button>
+              <button (click)="openDeleteDailog(obj.id)" class="btn btn-primary mr-2" >Delete</button>
+            </td>
+          </tr>
+         
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+
+  <ng-template #callUdateStudentDailog>
+    <mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="updateForm">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>full name</mat-label>
+        <input type="text" 
+        matInput
+         formControlName="fullname" 
+        [(ngModel)]="p_data.fullname"
+        >
+        <mat-error *ngIf="updateForm.controls['fullname'].hasError('required')">
+          fullname is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Status</mat-label>
+        <input type="text" matInput formControlName="inbusstatus"
+        [(ngModel)]="p_data.inbusstatus"
+        >
+        <mat-error *ngIf="updateForm.controls['inbusstatus'].hasError('required')">
+          Status is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    <br>
+     
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>X-Location</mat-label>
+      <input type="text" matInput formControlName="xhome"
+      [(ngModel)]="p_data.xhome"
+      >
+      <mat-error *ngIf="updateForm.controls['xhome'].hasError('required')">
+        xhome is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+
+       
+    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Y-Location</mat-label>
+    <input type="text" matInput formControlName="yhome"
+    [(ngModel)]="p_data.yhome"
+    >
+    <mat-error *ngIf="updateForm.controls['yhome'].hasError('required')">
+      yhome is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <br>
+
+ <mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Bus Number</mat-label>
+  <input type="text" matInput formControlName="busid"
+  [(ngModel)]="p_data.busid"
+  >
+  <mat-error *ngIf="updateForm.controls['busid'].hasError('required')">
+    bus number <strong>required</strong>
+  </mat-error>
+</mat-form-field>
+<br>
+
+       
+     
+<label for="" class="my-1" >Parent</label>
+     <select class="form-control" (change)="DetectChangesParent($event)" > 
+      <option disabled selected hidden>{{home.selectedUser.fullname}}</option> 
+      <option value="{{item.id}}" *ngFor="let item of home.parent" >{{item.fullname}}</option>
+    </select>
+
+
+
+<br>
+
+
+
+
+
+      <div class="form-group">
+          <label for="exampleInputEmail1">Studint Picture</label>
+          <input type="file" #file formControlName="image" (change)="uploadFile(file.files)"   [(ngModel)]="p_data.imgpath">
+    </div>    
+
+
+  </form>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateStudent()" class="btn btn-success"  >Save</button>
+  </mat-dialog-actions>
+
+
+
+
+
+
+  <ng-template #callDeleteStudentDailog>
+<h2> Are you sure you want Remove Student</h2>
+<button  class="btn btn-primary mr-2" mat-dialog-close="yes">Yes</button>
+<button class="btn btn-light" mat-dialog-close="no">No</button>
+  </ng-template>
+
+
+ <!-- <div class="form-group">
+       <label for="exampleInputUsername1">Full Name</label>
+       <input type="text" class="form-control" matInput formControlName="fullname" [(ngModel)]="p_data.fullname">
+      </div> -->
+
+       
+      <!-- <div class="form-group">
+        <label for="exampleInputUsername1">Status</label>
+        <input type="text" class="form-control" matInput formControlName="inbusstatus" [(ngModel)]="p_data.inbusstatus">
+       </div>
+        -->
+
+        <!-- <div class="form-group">
+          <label for="exampleInputUsername1">X-Location</label>
+          <input type="text" class="form-control" matInput formControlName="xhome" [(ngModel)]="p_data.xhome">
+         </div>
+          -->
+
+          
+       <!-- <div class="form-group">
+        <label for="exampleInputUsername1">Y-Location</label>
+        <input type="text" class="form-control" matInput formControlName="yhome" [(ngModel)]="p_data.yhome">
+       </div>
+        -->
+
+<!-- 
+        <div class="form-group">
+          <label for="exampleInputUsername1">Bus Number</label>
+          <input type="text" class="form-control" matInput formControlName="busnumber" [(ngModel)]="p_data.busnumber">
+         </div>
+         
+  
+         <div class="form-group">
+          <label for="exampleInputUsername1">Parent</label>
+          <input type="text" class="form-control" matInput formControlName="parent" [(ngModel)]="p_data.parent">
+         </div> -->
+
+
+         
+      <!-- <button (click)="updateStudent()" class="btn btn-primary mr-2">Submit</button>
+      <button class="btn btn-light">Cancel</button> -->
+
+      <!-- ----------------------------------------------------
+      ----------------------------------------------------
+       -->
+    <!-- <label for="" class="my-1" >Bus Number</label>
+    <select class="form-control" (change)="DetectChangesBus($event)" > 
+     <option disabled selected hidden>{{home.selectedUser.fullname}}</option> 
+     <option value="{{item.id}}" *ngFor="let item of home.users" >{{item.fullname}}</option>
+   </select> -->
+
+
+<!-- <mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Parent</mat-label>
+  <input type="text" matInput formControlName="parentid"
+  [(ngModel)]="p_data.parentid"
+  >
+  <mat-error *ngIf="updateForm.controls['parentid'].hasError('required')">
+    Parent name <strong>required</strong>
+  </mat-error>
+</mat-form-field> -->

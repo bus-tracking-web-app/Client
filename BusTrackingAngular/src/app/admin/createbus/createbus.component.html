@@ -1,0 +1,50 @@
+<h2 mat-dialog-title> Create New Bus</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form"[formGroup]="createform">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Bus Number</mat-label>
+            <input type="number" matInput formControlName="busnumber">
+            <mat-error *ngIf="createform.controls['busnumber'].hasError('required')">
+                Bus Number is required!
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Bus Driver</mat-label>
+            <input type="number" matInput formControlName="busdriver">
+            <mat-error *ngIf="createform.controls['busdriver'].hasError('required')">
+                Bus Driver is required!
+            </mat-error>
+        </mat-form-field> -->
+        <label for="" class="my-1">Driver</label>
+     <select class="form-control" (change)="DetectChanges($event)" >
+        <option  selected disabled hidden  >Choose a Driver</option> 
+        <option value="{{item.id}}" *ngFor="let item of home.driver" >{{item.fullname}}</option>
+    </select>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>round</mat-label>
+            <input type="number" matInput formControlName="round">
+            <mat-error *ngIf="createform.controls['round'].hasError('required')">
+                round is required!
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>teacher</mat-label>
+            <input type="number" matInput formControlName="teacher">
+            <mat-error *ngIf="createform.controls['teacher'].hasError('required')">
+                teacher is required!
+            </mat-error>
+        </mat-form-field> -->
+        <label for="" class="my-1">Driver</label>
+        <select class="form-control" (change)="DetectChanges1($event)" >
+           <option  selected disabled hidden  >Choose a Teacher</option> 
+           <option value="{{item.id}}" *ngFor="let item of home.teacher" >{{item.fullname}}</option>
+       </select>
+    </form>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+        <button mat-button class="btn btn-inverse-success btn-fw" (click)="saveBus()"[mat-dialog-close]="true" >Save</button>
+    </mat-dialog-actions>
+</mat-dialog-content>
