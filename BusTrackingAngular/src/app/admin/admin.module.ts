@@ -7,6 +7,8 @@ import { SharedAdminModule } from '../shared-admin/shared-admin.module';
 import { ManageBusComponent } from './manage-bus/manage-bus.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { CreatebusComponent } from './createbus/createbus.component';
+import { ManageFooterComponent } from './manage-footer/manage-footer.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { CreateUserComponent } from './create-user/create-user.component';
     DashboardComponent,
     ManageBusComponent,
     ManageUsersComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    CreatebusComponent,
+    ManageFooterComponent
   ],
   imports: [
     CommonModule,
