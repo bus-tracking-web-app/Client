@@ -6,6 +6,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { SelectComponent } from './select/select.component';
 
 
 
@@ -13,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
   declarations: [
     NavbarComponent,
     SidebarComponent,
+    SelectComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    SelectComponent
   ]
 
 })

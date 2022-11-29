@@ -7,6 +7,8 @@ import { SharedAdminModule } from '../shared-admin/shared-admin.module';
 import { ManageBusComponent } from './manage-bus/manage-bus.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ManageRoleComponent } from './manage-role/manage-role.component';
+import { ManageContactComponent } from './manage-contact/manage-contact.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { CreateUserComponent } from './create-user/create-user.component';
     DashboardComponent,
     ManageBusComponent,
     ManageUsersComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ManageRoleComponent,
+    ManageContactComponent
   ],
   imports: [
     CommonModule,
