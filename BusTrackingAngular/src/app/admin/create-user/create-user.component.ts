@@ -18,14 +18,20 @@ createform:FormGroup=new FormGroup
       password:new FormControl('',Validators.required),
       phone: new FormControl('',Validators.required),
       imagepath: new FormControl(),
-      roleid: new FormControl('',Validators.required),
+      roleid: new FormControl(null,Validators.required),
 });
-role:any=[];
 
-  constructor(private service:AdminService) { }
+  constructor(public service:AdminService) { }
 
   ngOnInit(): void {
-    this.AllRole();
+    this.service.AllRole();
+  }
+
+  DetectChanges(event:any)
+  {
+    const id=Number(event.target.value);
+    this.createform.controls['roleid'].setValue(id);
+    console.log(event.target.value);
   }
 
   saveData()
@@ -41,14 +47,13 @@ role:any=[];
     this.service.uploadAttachmentUser(formdata);
   }
 
-  AllRole()
-  {
-    this.service.getallrole().subscribe((res:any)=>{
-      this.role=res;
-      console.log(this.role);
-      
-    })
-  }
   
 
-}
+
+
+  }
+  
+  
+  
+
+

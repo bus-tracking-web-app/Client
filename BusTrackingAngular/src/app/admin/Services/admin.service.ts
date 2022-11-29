@@ -8,6 +8,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AdminService {
 users:any[]=[];
+role:any[]=[];
+selectedRole:any={};
 selectedDriver:any={};
 selectedTeacher:any={};
 routes:any[]=[];
@@ -19,6 +21,7 @@ school:any[]=[];
 selectedbusnumber:any={};
 
 display_image: any;
+contact:any[]=[];
 baseURL:string="https://localhost:44364/api/";
   constructor(private http:HttpClient,private toastr:ToastrService,private spinner:NgxSpinnerService) 
   { }
@@ -47,7 +50,7 @@ baseURL:string="https://localhost:44364/api/";
   AllUsers()
   {
     this.spinner.show();
-      this.http.get(this.baseURL+"users").subscribe((res:any)=>{
+      this.http.get(this.baseURL+"users/userwithrole").subscribe((res:any)=>{
       this.users=res;
       this.spinner.hide();
       this.toastr.success("This is All Product");
@@ -56,6 +59,7 @@ baseURL:string="https://localhost:44364/api/";
       this.toastr.error("there is no data")
     });
   }
+
   createuser(body: any) 
   {
     // const dialogRef=  this.dialog.open(this.callDelete);
@@ -100,16 +104,20 @@ baseURL:string="https://localhost:44364/api/";
 
   updateUser(body:any)
   {
-    body.imagepath = this.display_image;
+    if (this.display_image != undefined) {
+      body.imagepath = this.display_image;
+    }
+
     this.spinner.show();
-    this.http.put(this.baseURL+"users",body).subscribe((resp)=>{
+    this.http.put(this.baseURL+"users",body).subscribe((resp:any)=>{
       this.spinner.hide();
       this.toastr.success('Updated Successfully !!');
       window.location.reload();
     },err=>{
       this.spinner.hide();
       this.toastr.error(err.message, err.status);
-    })
+    });
+
   }
 deleteUser(id:number)
 {
@@ -123,14 +131,32 @@ deleteUser(id:number)
     this.toastr.error(err.message, err.status);
   })
 }
+
+AllRole()
+{
+  this.spinner.show();
+      this.http.get(this.baseURL+"role").subscribe((res:any)=>{
+      this.role=res;
+      this.spinner.hide();
+      this.toastr.success("This is All Role");
+    },err=>{
+      this.spinner.hide();
+      this.toastr.error("there is no data");
+    });
+}
 getallrole()
 {
   return this.http.get(this.baseURL+"role");
 }
 
+getroleid(id:number)
+{
+  return this.http.get(this.baseURL+"role/"+id).subscribe((res:any)=>{
+    this.selectedRole=res;
+  },err=>{
+    this.toastr.error(err.message);
+  });
 // ----------------Students Services-----------------
-// Manage Bus
-
 all:any[]=[];
 getAllbuses(){
   this.spinner.show();
@@ -656,3 +682,64 @@ GetAllStudent(){
   
 }
 
+updateRole(body:any)
+  {
+    this.spinner.show();
+    this.http.put(this.baseURL+"role",body).subscribe((resp)=>{
+      this.spinner.hide();
+      this.toastr.success('Updated Successfully !!');
+    window.location.reload();
+    },err=>{
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status);
+    });  
+};
+
+
+createRole(body: any) 
+{
+  this.spinner.show();
+  this.http.post(this.baseURL+"role", body).subscribe((resp:any) => {
+    this.spinner.hide();
+    this.toastr.success('Created !!');
+    window.location.reload();
+  }, err => {
+    this.spinner.hide();
+    this.toastr.error(err.message, err.status);
+  });
+}
+
+deleteRole(id:number)
+{
+  this.spinner.show();
+  this.http.delete(this.baseURL+"role/"+id).subscribe(resp=>{
+    this.spinner.hide();
+    this.toastr.success('Deleted Successfully !!');
+    window.location.reload();
+  },err=>{
+    this.spinner.hide();
+    this.toastr.error(err.message, err.status);
+  });
+}
+
+GetAllContact()
+{
+  this.spinner.show();
+  this.http.get(this.baseURL+"contact").subscribe((res:any)=>{
+    this.contact=res;
+    this.spinner.hide();    
+  })
+}
+deletecontact(id:number)
+{
+  this.spinner.show();
+  this.http.delete(this.baseURL+"contact").subscribe((res:any)=>{
+    this.spinner.hide();
+    this.toastr.success("deleted successfully")
+  },err=>{
+    this.spinner.hide();
+    this.toastr.error("cant delete contact");
+  })
+}
+
+}

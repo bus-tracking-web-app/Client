@@ -7,6 +7,8 @@ import { SharedAdminModule } from '../shared-admin/shared-admin.module';
 import { ManageBusComponent } from './manage-bus/manage-bus.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ManageRoleComponent } from './manage-role/manage-role.component';
+import { ManageContactComponent } from './manage-contact/manage-contact.component';
 import { MangeStudentComponent } from './mange-student/mange-student.component';
 import { CreateStudentComponent } from './create-student/create-student.component';
 import { MangeHomeComponent } from './mange-home/mange-home.component';
@@ -25,6 +27,8 @@ import { ManageSchoolComponent } from './manage-school/manage-school.component';
     ManageBusComponent,
     ManageUsersComponent,
     CreateUserComponent,
+    ManageRoleComponent,
+    ManageContactComponent,
     MangeStudentComponent,
     CreateStudentComponent,
     MangeHomeComponent,
