@@ -1,0 +1,134 @@
+<app-navbar></app-navbar>
+<div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="content-wrapper">
+        <div class="table-responsive">
+          <button class="btn btn-inverse-success btn-fw" (click)="createDialog()">Create New</button>
+          <form class="form-inline" style="    float: right;">
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="inputText" class="sr-`only" style="margin-right: 7px;">Route Id </label>
+            <input type="number" class="form-control"id="inputText" placeholder="Route Id" [(ngModel)]="searchid" (keyup)="searchRoute($event)" >
+          </div>
+          </form>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Bus Driver Name</th>
+                  <th>busnumber</th>
+                  <th>xcurrent</th>
+                  <th>ycurrent</th>
+                  <th>xstart</th>
+                  <th>ystart</th>
+                  <th>xend</th>
+                  <th>yend</th>
+                  <th>Operation</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let obj of admin.routes">
+                  <th>{{obj.fullname}}</th>
+                  <th>{{obj.busnumber}}</th>
+                  <td>{{obj.xcurrent}}</td>
+                  <td>{{obj.ycurrent}}</td>
+                  <td>{{obj.xstart}}</td>
+                  <td>{{obj.ystart}}</td>
+                  <td>{{obj.xend}}</td>
+                   <td>{{obj.yend}}</td>
+                   <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-inverse-info btn-fw" (click)="updateDialog(obj)">Update</button>
+                      <button type="button" class="btn btn-inverse-danger btn-fw" (click)="deleteDialog(obj.id)">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+             
+           
+              </tbody>
+            </table>
+          </div>
+
+          <ng-template #callUpdateDialog>
+
+            <mat-dialog-content class="mat-typography">
+              <form class="example-form" [formGroup]="updateRouteForm" >
+               <mat-form-field class="example-full-width" appearance="fill">
+                 <mat-label>x-axis current</mat-label>
+                 <input type="text" matInput formControlName="xcurrent"[(ngModel)]="previousData.xcurrent">
+                 <mat-error *ngIf="updateRouteForm.controls['xcurrent'].hasError('required')">
+                   x-axis current <strong>required</strong>
+                 </mat-error>
+               </mat-form-field>
+               <br>
+            
+                 <mat-form-field class="example-full-width" appearance="fill">
+                   <mat-label>y-axis current</mat-label>
+                   <input type="text" matInput formControlName="ycurrent"[(ngModel)]="previousData.ycurrent">
+                   <mat-error *ngIf="updateRouteForm.controls['ycurrent'].hasError('required')">
+                     y-axis current <strong>required</strong>
+                   </mat-error>
+                 </mat-form-field>
+           <br>
+                 <mat-form-field class="example-full-width" appearance="fill">
+                   <mat-label>x-axis start</mat-label>
+                   <input type="text" matInput formControlName="xstart"[(ngModel)]="previousData.xstart">
+                   <mat-error *ngIf="updateRouteForm.controls['xstart'].hasError('required')">
+                     x-axis start <strong>required</strong>
+                   </mat-error>
+                 </mat-form-field>
+                 <br>
+                 <mat-form-field class="example-full-width" appearance="fill">
+                   <mat-label>y-axis start</mat-label>
+                   <input type="text" matInput formControlName="ystart"[(ngModel)]="previousData.ystart">
+                   <mat-error *ngIf="updateRouteForm.controls['ystart'].hasError('required')">
+                     y-axis start <strong>required</strong>
+                   </mat-error>
+                 </mat-form-field>
+                 <br>
+                 <mat-form-field class="example-full-width" appearance="fill">
+                   <mat-label>x-axis end</mat-label>
+                   <input type="text" matInput formControlName="xend"[(ngModel)]="previousData.xend">
+                   <mat-error *ngIf="updateRouteForm.controls['xend'].hasError('required')">
+                       end_Date <strong>required</strong>
+                   </mat-error>
+                 </mat-form-field>  <br>
+                 <mat-form-field class="example-full-width" appearance="fill">
+                   <mat-label>y-axis end</mat-label>
+                   <input type="text" matInput formControlName="yend"[(ngModel)]="previousData.yend">
+                   <mat-error *ngIf="updateRouteForm.controls['yend'].hasError('required')">
+                     y-axis end <strong>required</strong>
+                   </mat-error>
+                 </mat-form-field>  <br>
+                 <mat-form-field class="example-full-width" appearance="fill">
+                   <mat-label>bus id</mat-label>
+                   <input type="number" matInput formControlName="busid"[(ngModel)]="previousData.busid">
+                   <mat-error *ngIf="updateRouteForm.controls['busid'].hasError('required')">
+                     bus Number <strong>required</strong>
+                   </mat-error>
+                 </mat-form-field>
+                 <br>
+               </form >
+           </mat-dialog-content>
+           <mat-dialog-actions align="end">
+            <div class="btn-group" role="group" aria-label="Basic example">
+
+             <button class="btn btn-inverse-danger btn-fw" mat-button mat-dialog-close>Cancel</button>
+             <button class="btn btn-inverse-success btn-fw" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateRoute()" >Update</button>
+           </div>
+            </mat-dialog-actions>
+          </ng-template>
+
+          <ng-template #callDeleteDialog>
+            <h2>Are You Sure You Want To delete this Route ?</h2>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button class="btn btn-inverse-success btn-fw" mat-dialog-close="Yes" >Yes</button>
+              <button class="btn btn-inverse-danger btn-fw" mat-dialog-close="No" >No</button>
+            </div>
+           
+
+          </ng-template>
+         
+    
+        
+        </div>
+    </div>

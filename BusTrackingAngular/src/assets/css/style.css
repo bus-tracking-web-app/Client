@@ -411,7 +411,6 @@ a:focus {
 .contact_section input {
   border: none;
   outline: none;
-  border-bottom: 1px solid #000;
   width: 90%;
   margin: 15px 0;
 }

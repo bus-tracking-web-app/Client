@@ -61,7 +61,7 @@ updateForm:FormGroup=new FormGroup
     let fileToUpload=<File>file[0]//the first image 
     const formdata= new FormData();
     formdata.append('file',fileToUpload,fileToUpload.name);
-    this.service.uploadAttachmentUser(formdata);
+    this.service.uploadAttachmentschool(formdata);
   }
 
   saveData(){
