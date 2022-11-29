@@ -17,24 +17,25 @@ import { RouterLink, RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
     MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
     FormsModule,
     RouterLink,
-    RouterModule
+    RouterModule,
+    RouterModule,
+    MatDialogModule
 
   ],
   exports:[
     NavbarComponent,
     SidebarComponent,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
     MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ]
 
 })

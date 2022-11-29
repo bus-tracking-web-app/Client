@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<section class="contact_section ">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center d-md-block">
+            <h2>
+              Send Us Your Kind Testimonial
+            </h2>
+          </div>
+
+          <form action="" [formGroup]="testimonialForm">
+            <div class="contact_form-container">
+              <div>
+                <table class="example-full-width" cellspacing="0"><tr>
+
+                        <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Full Name</mat-label>
+                      <input type="text" matInput 
+                      formControlName="name"
+                      >
+                      <mat-error *ngIf="testimonialForm.controls['name'].hasError('required')">
+                        Full Name Is <strong>required</strong>
+                      </mat-error>
+                  
+                    </mat-form-field>
+               
+                    <input type="file" #file formControlName="imagepath" (change)="uploadFile(file.files)">
+                
+                 <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Leave a Message</mat-label>
+                    <textarea matInput formControlName="feedback" placeholder="Ex. It makes me feel..."></textarea>
+                    <mat-error *ngIf="testimonialForm.controls['feedback'].hasError('required')">
+                      Message Required
+                    </mat-error>
+                  </mat-form-field>
+                <div class="mt-5">
+                  <button [disabled]="!testimonialForm.valid" (click)="send()"   type="submit">
+                    Send Your Testimonial
+                  </button>
+                </div>
+                </table>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="contact_img-box">
+            <img src="./assets/images/students.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+ <app-footer></app-footer>

@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageBusComponent } from './manage-bus/manage-bus.component';
+import { ManageFooterComponent } from './manage-footer/manage-footer.component';
+import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
+import { ManageSchoolComponent } from './manage-school/manage-school.component';
+import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { MangeAboutUsComponent } from './mange-about-us/mange-about-us.component';
 import { MangeHomeComponent } from './mange-home/mange-home.component';
@@ -30,7 +34,24 @@ const routes: Routes = [
   },
   {
     path:'aboutus_mange',
-    component:MangeAboutUsComponent
+    component:MangeAboutUsComponent}
+    ,{
+    path:'footer',
+    component:ManageFooterComponent
+    },
+
+ 
+  {
+    path:'routes',
+    component:ManageRoutesComponent
+  },
+  {
+    path:'Testimonial',
+    component:ManageTestimonialComponent
+  },
+  {
+    path:'school',
+    component:ManageSchoolComponent
   }
   
 ];

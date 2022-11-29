@@ -15,6 +15,7 @@ export class HomeService {
   
   
 
+  display_photo: any;
   getAllbuses(){
     this.spinner.show();
     this.http.get('https://localhost:44364/API/Bus').subscribe((resp:any)=>{
@@ -52,4 +53,29 @@ export class HomeService {
       this.toastr.error("there is no data")
     });
   }
+  createTestimonial(body :any)
+{  
+  body.imagepath=this.display_photo;
+  this.spinner.show();
+  this.http.post('https://localhost:44364/api/Testimonial/CREATEtestimonial',body).subscribe((resp)=>{
+  this.spinner.hide();
+  window.location.reload();
+
+    this.toastr.success('Testimonial Created !');
+  },err=>{
+    this.spinner.hide();
+    this.toastr.error(err.message, err.status);
+  })
+}
+
+  uploadAttachmentTestimonial(file: FormData) {
+    this.http.post("https://localhost:44364/api/Testimonial/uploadImage", file).subscribe((resp: any) => {
+      this.display_photo = resp.imagepath;
+    }, err => {
+      this.toastr.error('Can not Upload Image');
+      console.log(err);
+    })
+  }
+  
+
 }

@@ -20,6 +20,7 @@ import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toas
 import{HttpClientModule}from  '@angular/common/http';
 
 
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,8 @@ import{HttpClientModule}from  '@angular/common/http';
     FooterComponent,
 
     AboutUsComponent,
-    ContactUsComponent
-
+    ContactUsComponent,
+    TestimonialComponent,
   ],
   imports: [
     BrowserModule,
