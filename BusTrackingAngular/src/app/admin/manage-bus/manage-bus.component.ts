@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { HomeService } from 'src/app/Services/home.service';
+import { AdminService } from '../Services/admin.service';
 
 @Component({
   selector: 'app-manage-bus',
@@ -9,7 +9,7 @@ import { HomeService } from 'src/app/Services/home.service';
 })
 export class ManageBusComponent implements OnInit {
 
-constructor(private spinner: NgxSpinnerService,public home:HomeService) {
+constructor(private spinner: NgxSpinnerService,public home:AdminService) {
 this.spinner.show();
 setTimeout(() => {
 /** spinner ends after 5 seconds */
