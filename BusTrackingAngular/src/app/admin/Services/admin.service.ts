@@ -157,8 +157,6 @@ getroleid(id:number)
     this.toastr.error(err.message);
   });
 // ----------------Students Services-----------------
-// Manage Bus
-
 all:any[]=[];
 getAllbuses(){
   this.spinner.show();
