@@ -5,6 +5,7 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeComponent } from './home/home.component';
+import { TeacherModule } from './teacher/teacher.module';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 
 const routes: Routes = [
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path:'admin',
     loadChildren:()=>AdminModule
+  },
+  {
+    path:'teacher',
+    loadChildren:()=>TeacherModule
+ 
   },
   {
     path:'testimonial',

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageBusComponent } from './manage-bus/manage-bus.component';
+import { ManageFooterComponent } from './manage-footer/manage-footer.component';
 import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
 import { ManageSchoolComponent } from './manage-school/manage-school.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
@@ -21,9 +22,14 @@ const routes: Routes = [
     component:ManageUsersComponent
   },
   {
+    path:'footer',
+    component:ManageFooterComponent
+    
+
+  },
+  {
     path:'routes',
     component:ManageRoutesComponent
-
   },
   {
     path:'Testimonial',

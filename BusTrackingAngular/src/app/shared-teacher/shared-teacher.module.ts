@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { NavComponent } from './nav/nav.component';
+import { SideComponent } from './side/side.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 @NgModule({
   declarations: [
-    NavbarComponent,
-    SidebarComponent,
+    NavComponent,
+    SideComponent
   ],
   imports: [
     CommonModule,
@@ -23,11 +23,10 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     RouterModule,
     MatDialogModule
-
   ],
   exports:[
-    NavbarComponent,
-    SidebarComponent,
+    NavComponent,
+    SideComponent,
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -35,6 +34,5 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     MatDialogModule
   ]
-
 })
-export class SharedAdminModule { }
+export class SharedTeacherModule { }
