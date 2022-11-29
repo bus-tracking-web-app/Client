@@ -1,0 +1,64 @@
+<h2>Add Route</h2> 
+<mat-dialog-content class="mat-typography">
+   <form class="example-form" [formGroup]="createRouteForm" >
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>x-axis current</mat-label>
+      <input type="text" matInput formControlName="xcurrent">
+      <mat-error *ngIf="createRouteForm.controls['xcurrent'].hasError('required')">
+        x-axis current <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+ 
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>y-axis current</mat-label>
+        <input type="text" matInput formControlName="ycurrent">
+        <mat-error *ngIf="createRouteForm.controls['ycurrent'].hasError('required')">
+          y-axis current <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+<br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>x-axis start</mat-label>
+        <input type="text" matInput formControlName="xstart">
+        <mat-error *ngIf="createRouteForm.controls['xstart'].hasError('required')">
+          x-axis start <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>y-axis start</mat-label>
+        <input type="text" matInput formControlName="ystart">
+        <mat-error *ngIf="createRouteForm.controls['ystart'].hasError('required')">
+          y-axis start <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>x-axis end</mat-label>
+        <input type="text" matInput formControlName="xend">
+        <mat-error *ngIf="createRouteForm.controls['xend'].hasError('required')">
+            end_Date <strong>required</strong>
+        </mat-error>
+      </mat-form-field>  <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>y-axis end</mat-label>
+        <input type="text" matInput formControlName="yend">
+        <mat-error *ngIf="createRouteForm.controls['yend'].hasError('required')">
+          y-axis end <strong>required</strong>
+        </mat-error>
+      </mat-form-field>  <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>bus id</mat-label>
+        <input type="number" matInput formControlName="busid">
+        <mat-error *ngIf="createRouteForm.controls['busid'].hasError('required')">
+          bus Number <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+    </form >
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-inverse-danger btn-fw" mat-button mat-dialog-close>Cancel</button>
+  <button class="btn btn-inverse-success btn-fw" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="createRoute()" >Create</button>
+</mat-dialog-actions>

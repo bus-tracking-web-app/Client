@@ -9,6 +9,10 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreatebusComponent } from './createbus/createbus.component';
 import { ManageFooterComponent } from './manage-footer/manage-footer.component';
+import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
+import { CreateRouteComponent } from './create-route/create-route.component';
+import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
+import { ManageSchoolComponent } from './manage-school/manage-school.component';
 
 
 @NgModule({
@@ -18,7 +22,11 @@ import { ManageFooterComponent } from './manage-footer/manage-footer.component';
     ManageUsersComponent,
     CreateUserComponent,
     CreatebusComponent,
-    ManageFooterComponent
+    ManageFooterComponent,
+    ManageRoutesComponent,
+    CreateRouteComponent,
+    ManageTestimonialComponent,
+    ManageSchoolComponent
   ],
   imports: [
     CommonModule,

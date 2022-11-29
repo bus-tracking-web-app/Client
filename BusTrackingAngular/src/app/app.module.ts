@@ -17,7 +17,8 @@ import {MatInputModule} from '@angular/material/input';
 import { AuthModule } from './auth/auth.module';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
-import{HttpClientModule}from  '@angular/common/http'
+import{HttpClientModule}from  '@angular/common/http';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,8 @@ import{HttpClientModule}from  '@angular/common/http'
     FooterComponent,
 
     AboutUsComponent,
-    ContactUsComponent
-
+    ContactUsComponent,
+    TestimonialComponent,
   ],
   imports: [
     BrowserModule,

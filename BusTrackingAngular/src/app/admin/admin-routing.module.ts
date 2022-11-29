@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageBusComponent } from './manage-bus/manage-bus.component';
 import { ManageFooterComponent } from './manage-footer/manage-footer.component';
+import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
+import { ManageSchoolComponent } from './manage-school/manage-school.component';
+import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 
 const routes: Routes = [
@@ -21,6 +24,20 @@ const routes: Routes = [
   {
     path:'footer',
     component:ManageFooterComponent
+    
+
+  },
+  {
+    path:'routes',
+    component:ManageRoutesComponent
+  },
+  {
+    path:'Testimonial',
+    component:ManageTestimonialComponent
+  },
+  {
+    path:'school',
+    component:ManageSchoolComponent
   }
   
 ];
