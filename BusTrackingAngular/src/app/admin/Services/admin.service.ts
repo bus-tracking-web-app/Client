@@ -32,17 +32,17 @@ baseURL:string="https://localhost:44364/api/";
   selectedUser:any={};
    bus:any[]=[];
 
-  getAllbuses(){
-    this.spinner.show();
-    this.http.get('https://localhost:44364/API/Bus').subscribe((resp:any)=>{
-      this.bus=resp;
-      this.spinner.hide();
-      this.toastr.success('Data Retrieved!');
-    },err=>{
-      this.spinner.hide();
-      this.toastr.error(err.message, err.status);
-    })
-  }
+  // getAllbuses(){
+  //   this.spinner.show();
+  //   this.http.get('https://localhost:44364/API/Bus').subscribe((resp:any)=>{
+  //     this.bus=resp;
+  //     this.spinner.hide();
+  //     this.toastr.success('Data Retrieved!');
+  //   },err=>{
+  //     this.spinner.hide();
+  //     this.toastr.error(err.message, err.status);
+  //   })
+  // }
 
   AllUsers()
   {
@@ -130,7 +130,7 @@ getallrole()
 
 // ----------------Students Services-----------------
 // Manage Bus
-bus:any[]=[];
+
 all:any[]=[];
 getAllbuses(){
   this.spinner.show();
