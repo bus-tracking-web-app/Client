@@ -10,12 +10,12 @@ import { AdminService } from '../Services/admin.service';
   styleUrls: ['./manage-users.component.css']
 })
 export class ManageUsersComponent implements OnInit {
-
+  role:any[]=[];
+  selectedRole:any;
   users:any[]=[];
-  constructor(public service:AdminService,private dialog: MatDialog) { }
+  p_data : any;
   @ViewChild('callUpdatDailog') callUpdate!:TemplateRef<any>
-  @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
-  
+  @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>  
 updateForm:FormGroup=new FormGroup
 ({
         id:new FormControl(),
@@ -27,34 +27,42 @@ updateForm:FormGroup=new FormGroup
         imagepath: new FormControl(),
         roleid: new FormControl('',Validators.required),
 });
+constructor(public service:AdminService,private dialog: MatDialog) { }
 
-  
   ngOnInit(): void {
     this.service.AllUsers();
+    this.service.AllRole();
   }
 
   opendialog() {
     this.dialog.open(CreateUserComponent)
   }
-
-  
-  p_data :any={};
-
+  DetectChanges(event:any)
+  {
+    const id=Number(event.target.value);
+    this.updateForm.controls['roleid'].setValue(id);
+  }
   openUpdateDailog(obj:any)
   { 
     this.p_data={
       id:obj.id,
       fullname: obj.fullname,
       email:obj.email,
-      username:obj.email,
+      username:obj.username,
       password:obj.password,
       phone:obj.phone,
       imagepath: obj.imagepath,
-      roleid:obj.roleid
+      roleid:obj.roleid,
   };
     this.updateForm.controls['id'].setValue(this.p_data.id);
-    this.dialog.open(this.callUpdate);  
+    this.updateForm.controls['roleid'].setValue(this.p_data.roleid);
+    // this.updateForm.controls['imagepath'].setValue(this.p_data.imagepath);
+    this.service.getroleid(this.p_data.roleid);
+    this.dialog.open(this.callUpdate);
 }
+
+
+  
   uploadFile(file:any){
     if(file.length==0)
     return;
@@ -63,6 +71,8 @@ updateForm:FormGroup=new FormGroup
     formdata.append('file',fileToUpload,fileToUpload.name);
     this.service.uploadAttachmentschool(formdata);
   }
+  
+  
 
   saveData(){
     this.service.updateUser(this.updateForm.value);
@@ -71,7 +81,7 @@ updateForm:FormGroup=new FormGroup
   }
   openDeleteDailog(id:number)
   {
-    console.log("the item id is :"+id);
+    
     const dialogRef=  this.dialog.open(this.callDelete);
     dialogRef.afterClosed().subscribe((result)=>{
       if(result!=undefined)
@@ -85,6 +95,5 @@ updateForm:FormGroup=new FormGroup
       }
     });
   }
-  
 
 }

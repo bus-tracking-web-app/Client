@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+<div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="content-wrapper">
+        <br>
+        <button class="btn btn-success" (click)="openCreatedialog()">Add User</button>
+        <br>
+        <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Role ID</th>
+                  <th>Role name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of service.role">
+                    <td>{{item.id}}</td>
+                  <td>{{item.rolename}}</td>
+                  
+                   <button class="btn btn-info" (click)="openUpdateDailog(item)">Edit</button>
+                   <button class="btn btn-danger" (click)="openDeleteDailog(item.id)">Delete </button>
+                    
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+
+
+
+<ng-template #callCreateDailog>
+    <form class="example-form" [formGroup]="roleForm" >
+     <mat-form-field class="example-full-width" appearance="fill">
+       <mat-label>enter Role name</mat-label>
+       <input type="text" matInput formControlName="rolename" >
+       <mat-error *ngIf="roleForm.controls['rolename'].hasError('required')">
+         role name is <strong>required</strong>
+       </mat-error>
+     </mat-form-field>
+     <br>  
+     </form>
+     <mat-dialog-actions align="end">
+       <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+       <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()" class="btn btn-success"  >Save</button>
+     </mat-dialog-actions>
+ </ng-template>
+    
+<ng-template #callUpdatDailog>
+    <form class="example-form" [formGroup]="roleForm" >
+     <mat-form-field class="example-full-width" appearance="fill">
+       <mat-label>Enter new role name</mat-label>
+       <input type="text" 
+       matInput
+        formControlName="rolename" 
+       [(ngModel)]="p_data.rolename"
+       >
+       <mat-error *ngIf="roleForm.controls['rolename'].hasError('required')">
+         role name is <strong>required</strong>
+       </mat-error>
+     </mat-form-field>
+     <br>  
+     </form>
+     <mat-dialog-actions align="end">
+       <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+       <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateData()" class="btn btn-success"  >Save</button>
+     </mat-dialog-actions>
+ </ng-template>
+
+
+  <ng-template #callDeleteDailog>
+ <h2>Are you sure you want to delete this item ? </h2>
+ <button mat-dialog-close="yes" class="btn btn-success" >Yes</button>
+ <button mat-dialog-close="no" class="btn btn-danger" >No</button>
+  </ng-template>         

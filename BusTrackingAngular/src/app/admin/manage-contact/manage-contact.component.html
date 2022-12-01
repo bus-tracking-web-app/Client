@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="content-wrapper">
+        
+        <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>full name</th>
+                  <th>email</th>
+                  <th>phone number</th>
+                  <th>message</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of service.contact">
+                    <td>{{item.fullname}}</td>
+                  <td>{{item.email}}</td>
+                  <td>{{item.phonenumber}}</td>
+                  <td><textarea name="" id="" disabled cols="50" rows="15">{{item.massage}}</textarea> </td>
+
+                  
+                    
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+
+
+      

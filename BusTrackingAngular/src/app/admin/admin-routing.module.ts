@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageBusComponent } from './manage-bus/manage-bus.component';
+import { ManageContactComponent } from './manage-contact/manage-contact.component';
+import { ManageRoleComponent } from './manage-role/manage-role.component';
 import { ManageFooterComponent } from './manage-footer/manage-footer.component';
 import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
 import { ManageSchoolComponent } from './manage-school/manage-school.component';
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path:'users',
     component:ManageUsersComponent
+  },
+  {
+    path:'role',
+    component:ManageRoleComponent
+  },
+  {
+    path:'contact',
+    component:ManageContactComponent
   },
   {
     path:'student',
@@ -53,6 +63,7 @@ const routes: Routes = [
     path:'school',
     component:ManageSchoolComponent
   }
+  
   
 ];
 

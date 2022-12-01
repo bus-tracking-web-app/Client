@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add Course</h2>
+<h2 mat-dialog-title>Add User</h2>
 <mat-dialog-content class="mat-typography">
 
    <form class="example-form" [formGroup]="createform" >
@@ -44,16 +44,30 @@
       <br>
     <input type="file" #file formControlName="imagepath" (change)="uploadFile(file.files)">
 
+    <br><br><br>
+    <label for="" class="my-1">Role</label>
+     <select class="form-control" (change)="DetectChanges($event)" >
+        <option  selected disabled hidden  >Choose a Role</option> 
+        <option value="{{item.id}}" *ngFor="let item of service.role" >{{item.rolename}}</option>
+    </select>
+
+     
+    
+  
+
+    
+    <!-- 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>role</mat-label>
         <input type="number" matInput formControlName="roleid">
         <mat-error *ngIf="createform.controls['roleid'].hasError('required')">
             role is<strong>required</strong>
         </mat-error>
-      </mat-form-field>
-    </form>
+    </mat-form-field>
+    -->
+</form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close class="btn btn-danger" >Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()" class="btn btn-success" >Save</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial  [disabled]="!(createform.valid)" (click)="saveData()" class="btn btn-success" >Save</button>
 </mat-dialog-actions>
