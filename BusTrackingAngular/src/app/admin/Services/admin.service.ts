@@ -673,6 +673,21 @@ GetAllStudent(){
     });
   }
 
+
+
+  updateRole(body: any) {
+    this.spinner.show();
+    this.http.put(this.baseURL + "role", body).subscribe((resp) => {
+      this.spinner.hide();
+      this.toastr.success('Updated Successfully !!');
+      window.location.reload();
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status);
+    });
+  };
+
+
   GetAllContact() {
     this.spinner.show();
     this.http.get(this.baseURL + "contact").subscribe((res: any) => {
