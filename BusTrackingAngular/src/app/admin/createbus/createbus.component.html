@@ -22,13 +22,18 @@
         <option value="{{item.id}}" *ngFor="let item of home.driver" >{{item.fullname}}</option>
     </select>
         <br>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>round</mat-label>
             <input type="number" matInput formControlName="round">
             <mat-error *ngIf="createform.controls['round'].hasError('required')">
                 round is required!
             </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
+        <label for="" class="my-1">Round</label>
+        <select class="form-control" (change)="DetectChanges2($event)" >
+           <option  selected disabled hidden  >Choose a Round</option> 
+           <option value="{{item.id}}" *ngFor="let item of home.round" >{{item.roundstatus1}}</option>
+       </select>
         <br>
         <!-- <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>teacher</mat-label>
@@ -37,7 +42,7 @@
                 teacher is required!
             </mat-error>
         </mat-form-field> -->
-        <label for="" class="my-1">Driver</label>
+        <label for="" class="my-1">Teacher</label>
         <select class="form-control" (change)="DetectChanges1($event)" >
            <option  selected disabled hidden  >Choose a Teacher</option> 
            <option value="{{item.id}}" *ngFor="let item of home.teacher" >{{item.fullname}}</option>

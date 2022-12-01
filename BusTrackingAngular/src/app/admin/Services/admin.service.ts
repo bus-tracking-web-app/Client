@@ -159,6 +159,7 @@ getAllFooter(){
     this.footer=resp;
     this.spinner.hide();
     this.toastr.success('Data Retrieved!');
+    console.log(this.footer);
   },err=>{
     this.spinner.hide();
     this.toastr.error(err.message, err.status);
@@ -176,6 +177,8 @@ updateFooter(body:any){
  driver:any[]=[];
  teacher:any[]=[];
  result:any[]=[];
+ round:any[]=[];
+ selectedRound:any={};
  getDriverAndTeacher(){
   this.http.get('https://localhost:44364/API/users').subscribe((user:any)=>{
     this.result=user;
@@ -189,6 +192,21 @@ updateFooter(body:any){
     this.toastr.error(err.message,err.status)
   })
  }
+getRound(){
+  this.http.get('https://localhost:44364/API/Round/get').subscribe((res:any)=>{
+    this.round=res;
+  },err=>{
+    this.toastr.error(err.message,err.status)
+  })
+}
+getRoundById(id:number)
+{
+  this.http.get('https://localhost:44364/API/Round/GetById/'+id).subscribe((res:any)=>{
+    this.selectedRound=res;
+  },err=>{
+    this.toastr.error(err.message,err.status)
+  })
+}
 //Update
 getDriverId(id:number){
   this.http.get('https://localhost:44364/API/users/'+id).subscribe((res:any)=>{
