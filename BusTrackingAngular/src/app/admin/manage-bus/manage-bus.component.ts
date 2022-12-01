@@ -23,7 +23,7 @@ this.spinner.hide();
 
   ngOnInit(): void {
     this.home.getAllbuses();
-    // this.home.getAll();
+    this.home.getRound();
     this.home.getDriverAndTeacher();
   }
   busNum:number=0;
@@ -49,6 +49,12 @@ this.spinner.hide();
     console.log(event.target.value);
     this.updateform.controls['teacher'].setValue(id);
   }
+  DetectChanges2(event:any)
+  {
+    const id=Number(event.target.value);
+    console.log(event.target.value);
+    this.updateform.controls['round'].setValue(id);
+  }
   @ViewChild('callUpdate') callUpdate!:TemplateRef<any>;
   p_data:any={};
   openUpdateDialog(obj:any){
@@ -65,6 +71,7 @@ this.updateform.controls['round'].setValue(this.p_data.round);
 this.updateform.controls['teacher'].setValue(this.p_data.tech);
 this.home.getDriverId(this.p_data.busD);
 this.home.getTeacherId(this.p_data.tech);
+this.home.getRoundById(this.p_data.round);
 this.dialog.open(this.callUpdate);
 
   }

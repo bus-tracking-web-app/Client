@@ -210,30 +210,33 @@ export class AdminService {
     }
     //Footer
 
-    footer: any[] = [];
-    getAllFooter(){
-      this.spinner.show();
-      this.http.get('https://localhost:44364/API/footer').subscribe((resp: any) => {
-        this.footer = resp;
-        this.spinner.hide();
-        this.toastr.success('Data Retrieved!');
-      }, err => {
-        this.spinner.hide();
-        this.toastr.error(err.message, err.status);
-      })
-    }
-    updateFooter(body: any){
-      this.http.put('https://localhost:44364/API/footer', body).subscribe((res) => {
-        this.toastr.success('Updated!');
-      }, err => {
-        this.toastr.error(err.message, err.status)
-      })
-    }
+footer:any[]=[];
+getAllFooter(){
+  this.spinner.show();
+  this.http.get('https://localhost:44364/API/footer').subscribe((resp:any)=>{
+    this.footer=resp;
+    this.spinner.hide();
+    this.toastr.success('Data Retrieved!');
+    console.log(this.footer);
+  },err=>{
+    this.spinner.hide();
+    this.toastr.error(err.message, err.status);
+  })
+}
+updateFooter(body:any){
+  this.http.put('https://localhost:44364/API/footer',body).subscribe((res)=>{
+    this.toastr.success('Updated!');
+  },err=>{
+    this.toastr.error(err.message,err.status)
+  })
+}
 
     //CREATE BUS
     driver: any[] = [];
     teacher: any[] = [];
     result: any[] = [];
+    round:any[]=[];
+    selectedRound:any={}
     getDriverAndTeacher(){
       this.http.get('https://localhost:44364/API/users').subscribe((user: any) => {
         this.result = user;
@@ -245,6 +248,21 @@ export class AdminService {
         })
       }, err => {
         this.toastr.error(err.message, err.status)
+      })
+    }
+    getRound(){
+      this.http.get('https://localhost:44364/API/Round/get').subscribe((res:any)=>{
+        this.round=res;
+      },err=>{
+        this.toastr.error(err.message,err.status)
+      })
+    }
+    getRoundById(id:number)
+    {
+      this.http.get('https://localhost:44364/API/Round/GetById/'+id).subscribe((res:any)=>{
+        this.selectedRound=res;
+      },err=>{
+        this.toastr.error(err.message,err.status)
       })
     }
     //Update

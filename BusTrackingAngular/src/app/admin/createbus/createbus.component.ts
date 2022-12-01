@@ -29,6 +29,12 @@ export class CreatebusComponent implements OnInit {
     this.createform.controls['teacher'].setValue(id);
     console.log(event.target.value);
   }
+  DetectChanges2(event:any)
+  {
+    const id=Number(event.target.value);
+    this.createform.controls['round'].setValue(id);
+    console.log(event.target.value);
+  }
   //CREATE BUS
 // driver:any[]=[];
 // teacher:any[]=[];
