@@ -21,8 +21,8 @@ export class MangeStudentComponent implements OnInit {
   constructor(private spinner: NgxSpinnerService,
     public home:AdminService, private dialog:MatDialog) { }
    
-    @ViewChild('callUdateStudentDailog') callUdateDailog!:TemplateRef<any>
-    @ViewChild('callDeleteStudentDailog') callDelete!:TemplateRef<any>
+    @ViewChild('callUdateStudentDailog') callUdateDailog!:TemplateRef<any>;
+    @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>;
    
    
     updateForm:FormGroup=new FormGroup({
@@ -33,8 +33,8 @@ export class MangeStudentComponent implements OnInit {
       yhome:new FormControl('',Validators.required),
      inbusstatus:new FormControl('',Validators.required),
      round: new FormControl('',Validators.required),
-     parentid: new FormControl('',Validators.required)
-    //  busid:new FormControl('',Validators.required)
+     parentid: new FormControl('',Validators.required),
+    busid:new FormControl('',Validators.required)
   })
 
   DetectChangesParent(event:any)
@@ -43,15 +43,24 @@ export class MangeStudentComponent implements OnInit {
     this.updateForm.controls['parentid'].setValue(id);
   }
 
-  // DetectChangesBus(event:any)
-  // {
-  //   const id=Number(event.target.value);
-  //   this.updateForm.controls['busid'].setValue(id);
-  // }
+  DetectChangesBus(event:any)
+  {
+    const id=Number(event.target.value);
+    this.updateForm.controls['busid'].setValue(id);
+  }
+
+  DetectChangesround(event:any)
+  {
+    const id=Number(event.target.value);
+    this.updateForm.controls['round'].setValue(id);
+  }
+
   ngOnInit(): void {
     this.home.GetAllStudent();
     this.home.getParent();
-    // this.home.getAllbuses();
+    this.home.getAllbuses();
+    this.home.getAllround();
+
   }
 
   opendialog(){
@@ -69,13 +78,17 @@ export class MangeStudentComponent implements OnInit {
       yhome:obj.yhome,
       inbusstatus:obj.inbusstatus,
       round:obj.round,
-      parentid:obj.parentid
-      // busid:obj.busid
+      parentid:obj.parentid,
+      busid:obj.busid
     }
     this.updateForm.controls['id'].setValue(this.p_data.id);
     // this.updateForm.controls['imgpath'].setValue(this.p_data.imgpath);
     this.updateForm.controls['parentid'].setValue(this.p_data.parentid);
     this.updateForm.controls['busid'].setValue(this.p_data.busid);
+    this.updateForm.controls['round'].setValue(this.p_data.round);
+    this.home.getUserid(this.p_data.parentid);
+    this.home.getBusid(this.p_data.busid);
+    this.home.getroundsid(this.p_data.round);
     this.dialog.open(this.callUdateDailog);
   }
 
@@ -96,24 +109,17 @@ export class MangeStudentComponent implements OnInit {
     this.home.updateStudent(this.updateForm.value)
   }
 
-  openDeleteDailog(id:number)
-  {
-    const dialogRef=  this.dialog.open(this.callDelete);
+  openDeleteDialog(id:number){
+    const dialogRef=this.dialog.open(this.callDelete);
     dialogRef.afterClosed().subscribe((result)=>{
-      if(result!=undefined)
-      {
+      if(result!=undefined){
         if(result=='yes')
-        {
-         
-          this.home.deleteStudent(id);
-        }
-          
-          else if(result=='no')
-          console.log('thank you ');
-          
+        this.home.deleteStudent(id);
+        else if(result=='no')
+        console.log('Thank you')
       }
     })
-  }
+      }
 
 
 }

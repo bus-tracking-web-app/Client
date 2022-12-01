@@ -91,8 +91,15 @@
     <br><br>
     <label for="" class="my-1">Bus Number</label>
      <select class="form-control" (change)="DetectChangesBus($event)" >
-        <option  selected disabled hidden  >Parent Name</option> 
-        <option value="{{item.id}}" *ngFor="let item of home.bus" >{{item.nu}}</option>
+        <option  selected disabled hidden  >Bus Number</option> 
+        <option value="{{item.id}}" *ngFor="let item of home.all" >{{item.busnumber}}</option>
+    </select>
+
+    <br><br>
+    <label for="" class="my-1">Round</label>
+     <select class="form-control" (change)="DetectChangesround($event)" >
+        <option  selected disabled hidden  >Round</option> 
+        <option value="{{item.id}}" *ngFor="let item of home.rounds" >{{item.roundstatus1}}</option>
     </select>
 
 

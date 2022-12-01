@@ -30,19 +30,8 @@ baseURL:string="https://localhost:44364/api/";
   Home:any[]=[];
   home_image: any;
   selectedUser:any={};
+  
    bus:any[]=[];
-
-  // getAllbuses(){
-  //   this.spinner.show();
-  //   this.http.get('https://localhost:44364/API/Bus').subscribe((resp:any)=>{
-  //     this.bus=resp;
-  //     this.spinner.hide();
-  //     this.toastr.success('Data Retrieved!');
-  //   },err=>{
-  //     this.spinner.hide();
-  //     this.toastr.error(err.message, err.status);
-  //   })
-  // }
 
   AllUsers()
   {
@@ -89,15 +78,8 @@ baseURL:string="https://localhost:44364/api/";
     });
   }
 
-  getBusid(id:number)
-  {
-    return this.http.get(this.baseURL+"users/"+id).subscribe((res:any)=>{
-      this.selectedUser=res;
-    },err=>{
-      this.toastr.error(err.message);
-    });
-  }
 
+ 
   updateUser(body:any)
   {
     body.imagepath = this.display_image;
@@ -128,7 +110,7 @@ getallrole()
   return this.http.get(this.baseURL+"role");
 }
 
-// ----------------Students Services-----------------
+
 // Manage Bus
 
 all:any[]=[];
@@ -476,6 +458,8 @@ deleteSchool(id :number)
   })
 }
 
+
+// ----------------Students Services-
 GetAllStudent(){
   this.spinner.show();
   this.http.get('https://localhost:44364/api/Student/Get').subscribe((resp:any)=>{
@@ -550,12 +534,11 @@ GetAllStudent(){
   pare:any[]=[];
   getParent()
   {
-   
-      this.http.get('https://localhost:44364/api/users').subscribe((res:any)=>{
+   this.http.get('https://localhost:44364/api/users').subscribe((res:any)=>{
       this.pare=res;
      this.pare.forEach((p:any)=>{
-  if(p.roleid==41)
-  this.parent.push(p);
+      if(p.roleid==41)
+       this.parent.push(p);
 })
      
     },err=>{
@@ -563,13 +546,10 @@ GetAllStudent(){
       this.toastr.error("there is no data")
     });
   }
-
-  // ---------------------- End Students Services --------------------
+// End Students Services 
 
   
-  // ------------------------- About us Services ---------------------
-
- 
+  //About us Services 
   uploadAboutusPHoto(file: FormData) {
     this.http.post('https://localhost:44364/api/Aboutus/uploadImageAboutUs/', file).subscribe((resp: any) => {
       this.aboutus_image = resp.imagepath;
@@ -605,16 +585,11 @@ GetAllStudent(){
       this.toastr.error("there is no data")
     });
   }
-
-   // ---------------------- End About us Services --------------------
-
-
-    // ---------------------- Home Services --------------------
+   // End About us Services 
 
 
-
-
-    GetHome()
+    // Home Services
+ GetHome()
     {
       this.spinner.show();
         this.http.get('https://localhost:44364/api/Home/Get').subscribe((res:any)=>{
@@ -640,6 +615,9 @@ GetAllStudent(){
   }
   updateHome(body:any)
   {
+    if (this.home_image != undefined) {
+      body.imagepath = this.home_image;
+    }
     body.imagepath = this.home_image;
     this.spinner.show();
     this.http.put('https://localhost:44364/api/Home',body).subscribe((resp)=>{
@@ -651,8 +629,81 @@ GetAllStudent(){
       this.toastr.error(err.message, err.status);
     })
   }
+ //  End Home Services
 
- // ---------------------- End Home Services --------------------
-  
+
+ rounds:any[]=[];
+ getAllround(){
+   this.http.get('https://localhost:44364/api/round/get').subscribe((resp:any)=>{
+     this.rounds=resp;
+      },err=>{
+     this.spinner.hide();
+     this.toastr.error(err.message, err.status);
+   })
+ }
+
+ selectedrounds:any={};
+ getroundsid(id:number)
+ {
+   return this.http.get("https://localhost:44364/api/Round/getById/"+id).subscribe((res:any)=>{
+     this.selectedrounds=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+
+
+ selectedbuss:any={};
+ getBusid(id:number)
+ {
+   return this.http.get("https://localhost:44364/api/bus/getById/"+id).subscribe((res:any)=>{
+     this.selectedbuss=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+
+ studentCount:any;
+ stdCount()
+ {
+   return this.http.get("https://localhost:44364/api/Student/studentcount").subscribe
+   ((res:any)=>{
+     this.studentCount=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+
+ driverCount:any;
+parentsCount:any;
+ techerCount:any;
+ DriverCounter()
+ {
+   return this.http.get("https://localhost:44364/api/users/dcount").subscribe
+   ((res:any)=>{
+     this.driverCount=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+ ParentCounter()
+ {
+   return this.http.get("https://localhost:44364/api/users/ParentCount").subscribe
+   ((res:any)=>{
+     this.parentsCount=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+ TeacherCounter()
+ {
+   return this.http.get("https://localhost:44364/api/users/tcount").subscribe
+   ((res:any)=>{
+     this.techerCount=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+
 }
 
