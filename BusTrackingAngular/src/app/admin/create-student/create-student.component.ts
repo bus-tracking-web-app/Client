@@ -27,8 +27,9 @@ export class CreateStudentComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.home.getParent();
-    // this.home.getAllbuses();
+    
+   this.home.getAll(); //for buses
+   this.home.getAllround();
   }
 
   saveData(){
@@ -57,6 +58,11 @@ export class CreateStudentComponent implements OnInit {
     this.createForm.controls['busid'].setValue(id);
   }
   
+  DetectChangesround(event:any)
+  {
+    const id=Number(event.target.value);
+    this.createForm.controls['round'].setValue(id);
+  }
   
 //   parent:any[]=[];
 //   pare:any[]=[];
