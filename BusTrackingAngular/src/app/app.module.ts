@@ -18,6 +18,8 @@ import { AuthModule } from './auth/auth.module';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 import{HttpClientModule}from  '@angular/common/http';
+
+
 import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @NgModule({

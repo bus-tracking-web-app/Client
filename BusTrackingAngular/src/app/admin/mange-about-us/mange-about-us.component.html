@@ -1,0 +1,91 @@
+
+<!-- partial:partials/_navbar.html -->
+  
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        <div class="theme-setting-wrapper">
+          <div id="settings-trigger"><i class="ti-settings"></i></div>
+          <div id="theme-settings" class="settings-panel">
+            <i class="settings-close ti-close"></i>
+         
+          </div>
+        </div>
+        <div id="right-sidebar" class="settings-panel">
+        
+         
+          <div class="tab-content" id="setting-content">
+            <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+            </div>   
+          </div>
+        </div>
+  
+  
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+  
+  <div class="content-wrapper">
+ 
+  
+  
+  <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+       
+            <th>Image Aboutus</th>
+            <th>Titel</th>
+            <th>Information</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let obj of home.about " >
+
+
+           <td> <img src="../../../assets/images/{{obj.imagepath}}" alt="AboutUs Picture" ></td>
+
+            <td> {{obj.title}} </td>
+            <td>{{obj.information}}</td>
+            
+            <td>
+              <button  (click)=" openUpdateaboutDailog(obj)" class="btn btn-primary mr-2" >Update</button>
+            </td>
+          </tr>
+         
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+
+
+    <ng-template #callUpdatAboutUsDailog>
+
+      <h1>helllo</h1>
+
+
+      <form class="forms-sample" [formGroup]="updateAboutusForm">
+        <div class="form-group">
+         <label for="exampleInputUsername1">Titel</label>
+         <input type="text" class="form-control" matInput formControlName="title" [(ngModel)]="p_data.title">
+        </div>
+        
+        <div class="form-group">
+          <label for="exampleInputUsername1">Information</label>
+          <input type="text" class="form-control" matInput formControlName="information" [(ngModel)]="p_data.information">
+         </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Home Image : </label>
+            <input type="file" #file formControlName="imagepath" (change)="uploadFile(file.files)"   [(ngModel)]="p_data.imagepath">
+           
+        </div>
+          
+          
+        <button (click)="updateAbout()" class="btn btn-primary mr-2">Submit</button>
+
+        <button class="btn btn-light">Cancel</button>
+    </form>
+      
+  
+</ng-template> 

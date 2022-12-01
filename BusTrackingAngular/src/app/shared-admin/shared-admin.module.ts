@@ -6,7 +6,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RouterModule } from '@angular/router';
+import { SelectComponent } from './select/select.component';
+import { RouterLink, RouterModule } from '@angular/router';
 
 
 
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     NavbarComponent,
     SidebarComponent,
+    SelectComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,8 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterLink,
+    RouterModule,
     RouterModule,
     MatDialogModule
 
@@ -32,6 +36,7 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
+    SelectComponent,
     RouterModule,
     MatDialogModule
   ]
