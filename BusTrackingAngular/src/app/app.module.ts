@@ -45,7 +45,8 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     MatInputModule,  
     NgxSpinnerModule,
     ToastrModule.forRoot(),
-    ToastNoAnimationModule.forRoot()
+    ToastNoAnimationModule.forRoot(),
+    
   ],
   exports:[
     NavbarComponent,
