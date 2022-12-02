@@ -42,21 +42,31 @@
     <h2 mat-dialog-title> Create New Bus</h2>
 <mat-dialog-content class="mat-typography">
     <form class="example-form"[formGroup]="createform">
-        <mat-form-field class="example-full-width" appearance="fill">
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>studentid</mat-label>
             <input type="number" matInput formControlName="studentid">
             <mat-error *ngIf="createform.controls['studentid'].hasError('required')">
                 student Number is required!
             </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
+        <label for="" class="my-1">Student</label>
+        <select class="form-control" (change)="DetectChanges($event)" >
+           <option  selected disabled hidden  >Choose a Student</option> 
+           <option value="{{item.id}}" *ngFor="let item of home.student" >{{item.fullname}}</option>
+       </select>
         <br>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Bus id</mat-label>
             <input type="number" matInput formControlName="busid">
             <mat-error *ngIf="createform.controls['busid'].hasError('required')">
                 Bus Driver is required!
             </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
+        <label for="" class="my-1">Bus </label>
+        <select class="form-control" (change)="DetectChanges1($event)" >
+           <option  selected disabled hidden  >Choose a Bus Number</option> 
+           <option value="{{item.id}}" *ngFor="let item of home.bus" >{{item.busnumber}}</option>
+       </select>
         <br>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>dateofattendance</mat-label>
@@ -66,13 +76,18 @@
             </mat-error>
         </mat-form-field>
         <br>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>attendancestatus</mat-label>
             <input type="number" matInput formControlName="attendancestatus">
             <mat-error *ngIf="createform.controls['attendancestatus'].hasError('required')">
                 attendancestatus is required!
             </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
+        <label for="" class="my-1">Status </label>
+        <select class="form-control" (change)="DetectChanges2($event)" >
+           <option  selected disabled hidden  >Choose a Status</option> 
+           <option value="{{item.id}}" *ngFor="let item of home.status" >{{item.status}}</option>
+       </select>
     </form>
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
@@ -95,19 +110,24 @@
                     student Number is required!
                 </mat-error>
             </mat-form-field> -->
-            <!-- <label for="" class="my-1" >Student</label>
-            <select class="form-control" (change)="DetectChanges($event)" > 
-             <option disabled selected hidden>{{home.selectedDriver.fullname}}</option> 
-             <option value="{{item.id}}" *ngFor="let item of home.driver" >{{item.fullname}}</option>
-           </select> -->
+            <label for="" class="my-1" >Student</label>
+            <select class="form-control" (change)="DetectUpdateChanges($event)" > 
+             <option disabled selected hidden>{{home.selectedStudent.fullname}}</option> 
+             <option value="{{item.id}}" *ngFor="let item of home.student" >{{item.fullname}}</option>
+           </select>
             <br>
-            <mat-form-field class="example-full-width" appearance="fill">
+            <!-- <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Bus id</mat-label>
                 <input type="number" matInput formControlName="busid">
                 <mat-error *ngIf="createform.controls['busid'].hasError('required')">
                     Bus Driver is required!
                 </mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
+            <label for="" class="my-1" >Bus Number</label>
+            <select class="form-control" (change)="DetectUpdateChanges1($event)" > 
+             <option disabled selected hidden>{{home.selectedBus.busnumber}}</option> 
+             <option value="{{item.id}}" *ngFor="let item of home.bus" >{{item.busnumber}}</option>
+           </select>
             <br>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>dateofattendance</mat-label>
@@ -117,13 +137,18 @@
                 </mat-error>
             </mat-form-field>
             <br>
-            <mat-form-field class="example-full-width" appearance="fill">
+            <!-- <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>attendancestatus</mat-label>
                 <input type="number" matInput formControlName="attendancestatus">
                 <mat-error *ngIf="createform.controls['attendancestatus'].hasError('required')">
                     attendancestatus is required!
                 </mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
+            <label for="" class="my-1" >Status</label>
+            <select class="form-control" (change)="DetectUpdateChanges2($event)" > 
+             <option disabled selected hidden>{{home.selectedStatus.status}}</option> 
+             <option value="{{item.id}}" *ngFor="let item of home.status">{{item.status}}</option>
+           </select>
         </form>
         <mat-dialog-actions align="end">
             <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
