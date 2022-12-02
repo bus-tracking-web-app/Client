@@ -89,7 +89,7 @@
                    <mat-label>x-axis end</mat-label>
                    <input type="text" matInput formControlName="xend"[(ngModel)]="previousData.xend">
                    <mat-error *ngIf="updateRouteForm.controls['xend'].hasError('required')">
-                       end_Date <strong>required</strong>
+                    x-axis end <strong>required</strong>
                    </mat-error>
                  </mat-form-field>  <br>
                  <mat-form-field class="example-full-width" appearance="fill">
@@ -99,13 +99,11 @@
                      y-axis end <strong>required</strong>
                    </mat-error>
                  </mat-form-field>  <br>
-                 <mat-form-field class="example-full-width" appearance="fill">
-                   <mat-label>bus id</mat-label>
-                   <input type="number" matInput formControlName="busid"[(ngModel)]="previousData.busid">
-                   <mat-error *ngIf="updateRouteForm.controls['busid'].hasError('required')">
-                     bus Number <strong>required</strong>
-                   </mat-error>
-                 </mat-form-field>
+                 <label for="" class="my-1" >bus number </label>
+                 <select class="form-control" (change)="DetectChanges($event)" > 
+                  <option disabled selected hidden>{{admin.selectedbus.busnumber}}</option> 
+                  <option value="{{item.id}}" *ngFor="let item of admin.bus" >{{item.busnumber}}</option>
+                </select> 
                  <br>
                </form >
            </mat-dialog-content>

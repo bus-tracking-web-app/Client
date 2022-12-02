@@ -10,7 +10,7 @@ import { AdminService } from '../Services/admin.service';
 export class CreateRouteComponent implements OnInit {
 
 
-  constructor(private admin:AdminService) { }
+  constructor(public admin:AdminService) { }
   createRouteForm:FormGroup=new FormGroup({
     xcurrent:new FormControl('',Validators.required),
     ycurrent:new FormControl('',Validators.required),
@@ -22,10 +22,20 @@ export class CreateRouteComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    this.admin.getAllbuses
   }
+  
   createRoute()
   {
+    debugger
     this.admin.createRoute(this.createRouteForm.value);
 
+  }
+  
+  DetectChanges(event:any)
+  {
+    const id=Number(event.target.value);
+    this.createRouteForm.controls['busid'].setValue(id);
+    console.log(event.target.value);
   }
 }

@@ -69,7 +69,7 @@ constructor(public service:AdminService,private dialog: MatDialog) { }
     let fileToUpload=<File>file[0]//the first image 
     const formdata= new FormData();
     formdata.append('file',fileToUpload,fileToUpload.name);
-    this.service.uploadAttachmentschool(formdata);
+    this.service.uploadAttachmentUser(formdata);
   }
   
   

@@ -19,6 +19,7 @@ export class AdminService {
   display_photo: any;
   school: any[] = [];
   selectedbusnumber: any = {};
+  selectedbus:any={};
 
   display_image: any;
   contact: any[] = [];
@@ -89,13 +90,7 @@ export class AdminService {
     });
   }
 
-  getBusid(id: number) {
-    return this.http.get(this.baseURL + "users/" + id).subscribe((res: any) => {
-      this.selectedUser = res;
-    }, err => {
-      this.toastr.error(err.message);
-    });
-  }
+
 
   updateUser(body: any) {
     if (this.display_image != undefined) {
@@ -277,6 +272,7 @@ export class AdminService {
 
     createRoute(body : any)
     {
+      debugger
       this.spinner.show();
       this.http.post('https://localhost:44364/api/Route/CreateRoute', body).subscribe((resp) => {
         this.spinner.hide();
@@ -421,6 +417,7 @@ export class AdminService {
     }
 
     uploadAttachmentschool(file: FormData) {
+      
       this.http.post("https://localhost:44364/api/school/uploadImage", file).subscribe((resp: any) => {
         this.display_photo = resp.logo;
       }, err => {
@@ -447,7 +444,10 @@ export class AdminService {
 
     updateSchool(body : any)
     {
-      body.logo = this.display_photo;
+      if (this.display_photo != undefined) {
+        body.logo = this.display_photo;
+      }
+  
 
       this.spinner.show();
       this.http.put('https://localhost:44364/api/school/UPDATEshcool', body).subscribe((resp) => {
@@ -711,5 +711,14 @@ export class AdminService {
       this.toastr.error("cant delete contact");
     })
   }
+  getBusById(id : number)
+  {
+    
+    this.http.get('https://localhost:44364/api/Bus/getById/' + id).subscribe((resp: any) => {
+      this.selectedbus = resp;
 
+    }, err => {
+      this.toastr.error(err.message, err.status)
+    })
+  }
 }
