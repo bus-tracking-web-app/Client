@@ -51,7 +51,7 @@ export class AdminService {
     this.http.get(this.baseURL + "users/userwithrole").subscribe((res: any) => {
       this.users = res;
       this.spinner.hide();
-      this.toastr.success("This is All Product");
+      this.toastr.success("This is All Users");
     }, err => {
       this.spinner.hide();
       this.toastr.error("there is no data")
@@ -101,6 +101,7 @@ export class AdminService {
     if (this.display_image != undefined) {
       body.imagepath = this.display_image;
     }
+
 
     this.spinner.show();
     this.http.put(this.baseURL + "users", body).subscribe((resp: any) => {

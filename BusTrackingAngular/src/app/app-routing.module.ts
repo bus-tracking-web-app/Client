@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
+import { AuthorizationGuard } from './authorization.guard';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeComponent } from './home/home.component';
 import { TeacherModule } from './teacher/teacher.module';
@@ -28,11 +29,13 @@ const routes: Routes = [
   },
   {
     path:'admin',
-    loadChildren:()=>AdminModule
+    loadChildren:()=>AdminModule,
+    canActivate:[AuthorizationGuard]
   },
   {
     path:'teacher',
-    loadChildren:()=>TeacherModule
+    loadChildren:()=>TeacherModule,
+    canActivate:[AuthorizationGuard]
  
   },
   {
