@@ -3,35 +3,31 @@
     <app-sidebar></app-sidebar>
     <div class="content-wrapper">
         <br>
-        <button class="btn btn-success" (click)="opendialog()">Add User</button>
-        <br>
+        <button class="btn btn-primary btn-sm" (click)="opendialog()">Add New User</button>
+        <br><br><br>
         <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
-                  <th>user ID</th>
+                  <th>profile picture</th>
                   <th>full name</th>
                   <th>email</th>
                   <th>username</th>
                   <th>phone</th>
-                  <th>image</th>
                   <th>role</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of service.users">
-                    <td>{{item.id}}</td>
+                  <td><img src="../../../assets/images/users/{{item.imagepath}}" style="width: 100px; height: 100px;" alt=""  srcset=""></td>
                   <td>{{item.fullname}}</td>
                   <td>{{item.email}}</td>
                   <td>{{item.username}}</td>
                   <td>{{item.phone}}</td>
-                  <td><img src="../../../assets/images/users/{{item.imagepath}}" style="width: 150px; height: 150px;" alt=""  srcset=""></td>
                   <td>{{item.rolename}}</td>
                   <td>
-                    
-                   <button class="btn btn-info" (click)="openUpdateDailog(item)">Edit</button>
-                  <button class="btn btn-danger" (click)="openDeleteDailog(item.id)">Delete </button>  
-
+                   <button class="btn btn-inverse-info btn-fw" (click)="openUpdateDailog(item)">Edit</button>
+                  <button class="btn btn-inverse-danger btn-fw" (click)="openDeleteDailog(item.id)">Delete </button>  
                 </td>
                 </tr>
               </tbody>

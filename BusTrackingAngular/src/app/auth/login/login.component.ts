@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth:AuthService) { }
 
     
     loginForm=new FormGroup(
@@ -22,17 +23,11 @@ export class LoginComponent implements OnInit {
   isChecked :boolean=false;
     
     save(){
-      if(this.isChecked==true){
-      localStorage.setItem('user',JSON.stringify(this.loginForm.value));
-      
-    }else
-    {
-      localStorage.clear();
+      // if(this.isChecked==true){
+      this.auth.login(this.loginForm.value);
+        
     }
-    }
-    check(){
-      this.isChecked=!this.isChecked;
-    }
+    
   ngOnInit(): void {
   }
  
