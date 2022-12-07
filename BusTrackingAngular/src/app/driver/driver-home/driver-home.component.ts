@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DreiverService } from 'src/app/Services/dreiver.service';
 
 @Component({
   selector: 'app-driver-home',
@@ -15,16 +16,29 @@ export class DriverHomeComponent implements OnInit {
     google.maps.LatLngLiteral | undefined
 
     setLocation:any={}
+    driverId: number =58;
 
-  constructor() { }
+  constructor(public dreiverServices:DreiverService) { }
 
   ngOnInit(): void {
-    this.initMap();
-    this.currentLoc = new google.maps.LatLng({ lat: 31.971746, lng:35.840065 })
+    
+    this.dreiverServices.getStudentByDriverId(this.driverId);
+    this.dreiverServices.GetBusRouteByDriverId(this.driverId);
 
+    setTimeout(() => {   
+      if(this.dreiverServices.busRoute.xcurrent=='null'||this.dreiverServices.busRoute.ycurrent=='null'){
+        this.currentLoc = new google.maps.LatLng({ lat: Number(this.dreiverServices.busRoute.xstart), lng:Number(this.dreiverServices.busRoute.ystart) });
+      }else{
+
+        this.currentLoc = new google.maps.LatLng({ lat: Number(this.dreiverServices.busRoute.xcurrent), lng:Number(this.dreiverServices.busRoute.ycurrent) });
+      }  
+      this.initMap();
+       }, 2000);
     setTimeout(() => {
       this.calculateAndDisplayRoute(this.directionsService, this.directionsRenderer);
     }, 2000);
+
+   
   }
 
   initMap(): void {
@@ -36,14 +50,17 @@ export class DriverHomeComponent implements OnInit {
         center: { lat: 31.971746, lng: 35.840065 },
       }
     ); 
+    for(let i =0;i<this.dreiverServices.busStudents.length;i++)
+    {
+      if(this.dreiverServices.busStudents[i].inbusstatus=='true')
+      {
         this.waypts.push({
-          location: new google.maps.LatLng({ lat: 31.90805194376617, lng: 35.98028410063239 }),
+          location: new google.maps.LatLng({ lat:Number(this.dreiverServices.busStudents[i].xhome), lng: Number(this.dreiverServices.busStudents[i].yhome) }),
           stopover: true,
         });
-        this.waypts.push({
-          location: new google.maps.LatLng({ lat: 31.8538270, lng: 35.92157591065 }),
-          stopover: true,
-        });
+      }
+    }        
+    
     this.directionsRenderer.setMap(map);
   }
 
@@ -56,7 +73,7 @@ export class DriverHomeComponent implements OnInit {
       directionsService
         .route({
           origin: this.currentLoc,
-          destination:new google.maps.LatLng({ lat: 31.97, lng:35.84 }),
+          destination: new google.maps.LatLng({ lat: Number(this.dreiverServices.busRoute.xend), lng:Number(this.dreiverServices.busRoute.yend) }),        
           waypoints: this.waypts,
           optimizeWaypoints: true,
           travelMode: google.maps.TravelMode.DRIVING,
@@ -81,6 +98,29 @@ export class DriverHomeComponent implements OnInit {
           }
         })
         .catch((e) => window.alert("Directions request failed due to " + e));
+  }
+  next()
+  {
+    if(this.waypoints_order.length<1)
+    {
+      this.dreiverServices.UpdateAllStudentStatus();
+      this.dreiverServices.SetCureenBusLocationAftreEnf(this.driverId);
+      //
+    }
+
+    this.currentLoc = this.waypts.splice(this.waypoints_order[0], 1)[0].location;
+    if (this.currentLoc instanceof google.maps.LatLng) {
+      this.dreiverServices.UpdateStudentBusStatus(this.currentLoc.lat().toString())
+      this.dreiverServices.SetCurentBusLocation(
+        {
+          DriverId:this.driverId,
+          Xcurrent:this.currentLoc.lat().toString(),
+          Ycurrent:this.currentLoc.lng().toString()
+        }
+      )
+    }
+    this.calculateAndDisplayRoute(this.directionsService, this.directionsRenderer)
+
   }
 
 }

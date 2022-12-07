@@ -12,6 +12,7 @@ export class HomeService {
   bus:any[]=[];
   Home:any[]=[];
   about:any[]=[];
+  testimonial:any[]=[];
   
   
 
@@ -76,6 +77,18 @@ export class HomeService {
       console.log(err);
     })
   }
+  getAllTestimonial(){
+    this.spinner.show();
+    this.http.get('https://localhost:44364/api/Testimonial/GETALLtestimonialDTO').subscribe((resp: any) => {
+      this.testimonial = resp;
+      this.spinner.hide();
+      this.toastr.success('Testimonial Retrieved!');
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status);
+    })
+  }
+
   
 
 }

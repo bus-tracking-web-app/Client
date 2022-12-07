@@ -12,7 +12,7 @@ export class AdminService {
   selectedRole: any = {};
   selectedDriver: any = {};
   selectedTeacher: any = {};
-  routes: any[] = [];
+  routes:any=[];
   testimonial: any[] = [];
   testimonialStatus: any[] = [];
   selectedTestimonialStatus: any = {};
@@ -20,6 +20,7 @@ export class AdminService {
   school: any[] = [];
   selectedbusnumber: any = {};
   selectedbus:any={};
+  dashboardroutes:any[]=[];
 
   display_image: any;
   contact: any[] = [];
@@ -267,6 +268,8 @@ updateFooter(body:any){
       this.spinner.show();
       this.http.get('https://localhost:44364/api/Route/getAllRouteDTO').subscribe((resp: any) => {
         this.routes = resp;
+        console.log(this.routes);
+        
         this.spinner.hide();
         this.toastr.success('Routes Retrieved!');
       }, err => {
@@ -277,7 +280,7 @@ updateFooter(body:any){
 
     createRoute(body : any)
     {
-      debugger
+      
       this.spinner.show();
       this.http.post('https://localhost:44364/api/Route/CreateRoute', body).subscribe((resp) => {
         this.spinner.hide();
@@ -356,7 +359,7 @@ updateFooter(body:any){
     }
     getTestimonialStatusById(id : number)
     {
-      debugger
+      
       this.http.get('https://localhost:44364/api/Testimonial/GETtestimonialStatusBYID/' + id).subscribe((resp: any) => {
         this.selectedTestimonialStatus = resp;
 
@@ -796,6 +799,19 @@ getBusById(id : number)
     
     this.http.get('https://localhost:44364/api/Bus/getById/' + id).subscribe((resp: any) => {
       this.selectedbus = resp;
+    }, err => {
+      this.toastr.error(err.message, err.status)
+    })
+  }
+
+  getallroutesdashboard()
+  {
+    debugger;
+    this.http.get('https://localhost:44364/api/Route/GetAllRoute/').subscribe((resp: any) => {
+      this.routes = resp;
+      console.log('res',resp);
+      console.log('this.dashboardroutes',this.routes);     
+      
     }, err => {
       this.toastr.error(err.message, err.status)
     })

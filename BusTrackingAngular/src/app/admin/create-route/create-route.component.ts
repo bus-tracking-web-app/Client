@@ -12,8 +12,8 @@ export class CreateRouteComponent implements OnInit {
 
   constructor(public admin:AdminService) { }
   createRouteForm:FormGroup=new FormGroup({
-    xcurrent:new FormControl('',Validators.required),
-    ycurrent:new FormControl('',Validators.required),
+    xcurrent:new FormControl(''),
+    ycurrent:new FormControl(''),
     xstart:new FormControl('',Validators.required),
     ystart:new FormControl('',Validators.required),
     xend:new FormControl('',Validators.required),

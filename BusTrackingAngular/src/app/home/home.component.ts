@@ -13,6 +13,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.home.GetHome();
     this.home.GetAboutUs();
+    this.home.getAllTestimonial();
   }
+
+
 
 }

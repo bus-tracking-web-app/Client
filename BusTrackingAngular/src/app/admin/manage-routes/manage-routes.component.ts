@@ -19,8 +19,8 @@ export class ManageRoutesComponent implements OnInit {
 
   updateRouteForm:FormGroup=new FormGroup({
     id:new FormControl(),
-    xcurrent:new FormControl('',Validators.required),
-    ycurrent:new FormControl('',Validators.required),
+    xcurrent:new FormControl(''),
+    ycurrent:new FormControl(''),
     xstart:new FormControl('',Validators.required),
     ystart:new FormControl('',Validators.required),
     xend:new FormControl('',Validators.required),
@@ -31,6 +31,9 @@ export class ManageRoutesComponent implements OnInit {
   ngOnInit(): void {
     this.admin.getAllRoutes();
     this.admin.getAllbuses();
+
+
+    
   }
   createDialog()
   {

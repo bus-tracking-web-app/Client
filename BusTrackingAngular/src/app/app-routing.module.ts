@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DriverModule } from './driver/driver.module';
 import { HomeComponent } from './home/home.component';
+import { ParentModule } from './parent/parent.module';
 import { TeacherModule } from './teacher/teacher.module';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path:'driver',
     loadChildren:()=>DriverModule
+  },
+  {
+    path:'Parent',
+    loadChildren:()=>ParentModule
   },
 
 ];
