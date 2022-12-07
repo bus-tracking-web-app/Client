@@ -8,9 +8,10 @@
 <app-navbar></app-navbar>
 <div class="container-fluid page-body-wrapper">
 <app-sidebar></app-sidebar>
-<div class="content-wrapper">
+<div class="content-wrapper" id="contentToConvert">
+  <input type="button" value="Downlode Report" (click)="convetToPDF()" class="btn btn-primary" style="float: right;">
     <div class="table-responsive">
-        <table class="table">
+        <table datatable  class="table" [dtOptions]="dtoptoins" >
           <thead>
             <tr>
               <th>Profile</th>
@@ -52,6 +53,18 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+
+
+      <!-- //chart -->
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>charts</h2>
+          <canvas id="myChart"></canvas>
+
+        </div>
+
       </div>
      
      

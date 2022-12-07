@@ -18,6 +18,7 @@ import { AuthModule } from './auth/auth.module';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 import{HttpClientModule}from  '@angular/common/http';
+import {DataTablesModule} from 'angular-datatables'
 
 
 import { TestimonialComponent } from './testimonial/testimonial.component';
@@ -45,7 +46,8 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     MatInputModule,  
     NgxSpinnerModule,
     ToastrModule.forRoot(),
-    ToastNoAnimationModule.forRoot()
+    ToastNoAnimationModule.forRoot(),
+    DataTablesModule
   ],
   exports:[
     NavbarComponent,

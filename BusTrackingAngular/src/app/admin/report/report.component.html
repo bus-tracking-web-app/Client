@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+<div class="container-fluid page-body-wrapper">
+<app-sidebar></app-sidebar>
+<div class="content-wrapper" >
+    <input type="button" value="Download Report" (click)="convetToPDF()" class="btn btn-primary" style="float: right;">
+    <!-- <div class="table-responsive">
+        <table datatable  class="table" [dtOptions]="dtoptoins" id="contentToConvert">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Bus Number</th>
+              <th>Date Of Attendance</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of home.attendance">           
+              <td>{{obj.sname}}</td>
+              <td>{{obj.busnumber}}</td>
+              <td>{{obj.dateofattendance}}</td>
+              <td>{{obj.astatus}}</td>
+              <td><label class="badge badge-danger">Pending</label></td>
+              <td>
+                <button type="button" class="btn btn-inverse-success btn-fw" (click)="openUpdateDialog(obj)">Update </button>
+                
+                <button type="button" class="btn btn-inverse-danger btn-fw" (click)="openDeleteDialog(obj.id)">Delete</button>
+              </td>
+            </tr>
+         
+       
+          </tbody>
+        </table>
+      </div> -->
+      <div class="table-responsive">
+        <table datatable  class="table" [dtOptions]="dtoptoins" [dtTrigger]="home.dtTrigger" id="contentToConvert">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Bus Number</th>
+              <th>Date Of Attendance</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of home.attendance">
+              <td>{{obj.sname}}</td>
+              <td>{{obj.busnumber}}</td>
+              <td>{{obj.dateofattendance}}</td>
+              <td>{{obj.astatus}}</td>
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>

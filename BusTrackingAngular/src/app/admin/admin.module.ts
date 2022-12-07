@@ -19,6 +19,8 @@ import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
 import { CreateRouteComponent } from './create-route/create-route.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageSchoolComponent } from './manage-school/manage-school.component';
+import {DataTablesModule} from 'angular-datatables';
+import { ReportComponent } from './report/report.component'
 
 
 @NgModule({
@@ -38,12 +40,14 @@ import { ManageSchoolComponent } from './manage-school/manage-school.component';
     ManageRoutesComponent,
     CreateRouteComponent,
     ManageTestimonialComponent,
-    ManageSchoolComponent
+    ManageSchoolComponent,
+    ReportComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedAdminModule
+    SharedAdminModule,
+    DataTablesModule
   ]
 })
 export class AdminModule { }
