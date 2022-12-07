@@ -30,12 +30,12 @@ const routes: Routes = [
   {
     path:'admin',
     loadChildren:()=>AdminModule,
-    canActivate:[AuthorizationGuard]
+    // canActivate:[AuthorizationGuard]
   },
   {
     path:'teacher',
     loadChildren:()=>TeacherModule,
-    canActivate:[AuthorizationGuard]
+    // canActivate:[AuthorizationGuard]
  
   },
   {

@@ -1,35 +1,26 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-
+import { async, isEmpty, map, window } from 'rxjs';
+import { AdminService } from 'src/app/admin/Services/admin.service';
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherService {
-
-  constructor(private http:HttpClient,private toastr:ToastrService,private spinner:NgxSpinnerService) { }
-
+  constructor(private http:HttpClient,private toastr:ToastrService,private spinner:NgxSpinnerService,private admin:AdminService) { }
   attendance:any[]=[];
+  Allattendance:any[]=[];
   getAllAttendance(){
     this.spinner.show();
     this.http.get('https://localhost:44364/API/Attendance').subscribe((resp:any)=>{
-      this.attendance=resp;
+      this.Allattendance=resp;
       this.spinner.hide();
       this.toastr.success('Data Retrieved!');
     },err=>{
       this.spinner.hide();
       this.toastr.error(err.message, err.status);
-    })
-  }
-  createAttendance(body:any){
-    this.spinner.show();
-    this.http.post('https://localhost:44364/API/Attendance',body).subscribe((resp:any)=>{
-      this.spinner.hide();
-      this.toastr.success('Created!');
-    },err=>{
-      this.spinner.hide();
-      this.toastr.error(err.message,err.status)
     })
   }
   //CREATE ATTENDANCE
@@ -100,4 +91,54 @@ getStatusId(id:number){
     })
     }
 
+   getAttendenceToday()
+    {
+      let date=new Date();
+      let dd = String(date.getDate()).padStart(2, '0');
+      let mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+      let yyyy = date.getFullYear();
+      let today = yyyy +'-'+mm+'-'+ dd ;
+
+       this.http.get("https://localhost:44364/API/Attendance/getByDate/"+today).subscribe(async (res:any)=>{
+        if (res.length==0) {await this.createAttendance();}
+        else {this.attendance=res};
+
+        
+       },err=>{
+        this.toastr.error(err.message,err.status);
+       });
+     }
+
+     
+  async createAttendance(){
+    this.spinner.show()
+    let CreateAttendence ={};
+    let date=new Date();
+    let dd = String(date.getDate()).padStart(2, '0');
+    let mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = date.getFullYear();
+    let today = yyyy +'-'+mm+'-'+ dd ;
+      
+    
+    this.http.get('https://localhost:44364/API/student/get').subscribe( async (res:any)=>{
+    
+    for (const stu of res) {
+      CreateAttendence=
+      {
+        studentid:stu.id,
+        busid:stu.busid,
+        dateofattendance:today,
+        attendancestatus:2
+      }
+      await this.http.post('https://localhost:44364/API/Attendance',CreateAttendence).toPromise();
+    }
+        this.spinner.hide();
+        location.reload();
+        
+
+    })
+    
+  }
+  
+    
 }
