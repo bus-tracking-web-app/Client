@@ -25,11 +25,9 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
 @NgModule({
   declarations: [
     AppComponent,
-
   HomeComponent,
     NavbarComponent,
     FooterComponent,
-
     AboutUsComponent,
     ContactUsComponent,
     TestimonialComponent,

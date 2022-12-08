@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DreiverService } from 'src/app/Services/dreiver.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-driver-home',
@@ -18,7 +19,7 @@ export class DriverHomeComponent implements OnInit {
     setLocation:any={}
     driverId: number =58;
 
-  constructor(public dreiverServices:DreiverService) { }
+  constructor(public dreiverServices:DreiverService,public toaster:ToastrService) { }
 
   ngOnInit(): void {
     
@@ -106,6 +107,11 @@ export class DriverHomeComponent implements OnInit {
       this.dreiverServices.UpdateAllStudentStatus();
       this.dreiverServices.SetCureenBusLocationAftreEnf(this.driverId);
       //
+      // this.router.navigate(['auth/login']);
+      localStorage.clear();
+      this.toaster.success("You Finished Your Routes Today , Thank You !");
+      return
+
     }
 
     this.currentLoc = this.waypts.splice(this.waypoints_order[0], 1)[0].location;

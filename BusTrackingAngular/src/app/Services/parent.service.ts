@@ -14,6 +14,8 @@ export class ParentService {
 {
   this.http.get( "https://localhost:44364/api/student/getParentStudents/"+id).subscribe((resp) => {
     this.parentChaild=resp;
+    console.log(resp);
+    
   }, err => {
   });
 }
@@ -25,6 +27,7 @@ getSchoolData()
   }, err => {
   });
 }
+
 
 
 }

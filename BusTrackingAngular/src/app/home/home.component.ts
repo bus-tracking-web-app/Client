@@ -8,14 +8,16 @@ import { HomeService } from '../Services/home.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( public home:HomeService) { }
+  constructor(public home: HomeService) { }
 
   ngOnInit(): void {
     this.home.GetHome();
     this.home.GetAboutUs();
-    this.home.getAllTestimonial();
+    this.home.getApprovedTestimonial();
   }
 
 
-
 }
+
+
+
