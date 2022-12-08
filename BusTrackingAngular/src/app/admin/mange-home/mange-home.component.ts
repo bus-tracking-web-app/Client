@@ -46,7 +46,6 @@ export class MangeHomeComponent implements OnInit {
       txt:obj.txt
     }
     this.updateHomeForm.controls['id'].setValue(this.p_data.id);
-    // this.updateForm.controls['imgpath'].setValue(this.p_data.imgpath);
     this.dialog.open(this.callUdateDailog);
   }
 

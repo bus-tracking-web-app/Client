@@ -21,6 +21,7 @@ import { ManageTestimonialComponent } from './manage-testimonial/manage-testimon
 import { ManageSchoolComponent } from './manage-school/manage-school.component';
 
 
+
 @NgModule({
   declarations: [
     DashboardComponent,

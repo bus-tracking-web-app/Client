@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { TeacherModule } from './teacher/teacher.module';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 
+
 const routes: Routes = [
   {
     path:'contactus',
@@ -30,12 +31,12 @@ const routes: Routes = [
   {
     path:'admin',
     loadChildren:()=>AdminModule,
-    canActivate:[AuthorizationGuard]
+    // canActivate:[AuthorizationGuard]
   },
   {
     path:'teacher',
     loadChildren:()=>TeacherModule,
-    canActivate:[AuthorizationGuard]
+    // canActivate:[AuthorizationGuard]
  
   },
   {

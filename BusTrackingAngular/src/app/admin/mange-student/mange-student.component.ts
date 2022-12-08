@@ -82,7 +82,7 @@ export class MangeStudentComponent implements OnInit {
       busid:obj.busid
     }
     this.updateForm.controls['id'].setValue(this.p_data.id);
-    // this.updateForm.controls['imgpath'].setValue(this.p_data.imgpath);
+    this.updateForm.controls['imgpath'].setValue(this.p_data.imgpath);
     this.updateForm.controls['parentid'].setValue(this.p_data.parentid);
     this.updateForm.controls['busid'].setValue(this.p_data.busid);
     this.updateForm.controls['round'].setValue(this.p_data.round);
@@ -110,13 +110,14 @@ export class MangeStudentComponent implements OnInit {
   }
 
   openDeleteDialog(id:number){
+    console.log(id)
     const dialogRef=this.dialog.open(this.callDelete);
     dialogRef.afterClosed().subscribe((result)=>{
       if(result!=undefined){
         if(result=='yes')
         this.home.deleteStudent(id);
         else if(result=='no')
-        console.log('Thank you')
+        console.log(id)
       }
     })
       }

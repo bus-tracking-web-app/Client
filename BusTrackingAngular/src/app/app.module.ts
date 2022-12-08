@@ -23,6 +23,7 @@ import{HttpClientModule, HTTP_INTERCEPTORS}from  '@angular/common/http';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { TokenIntercepter } from 'src/Intercepter/token.intercepter';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { TokenIntercepter } from 'src/Intercepter/token.intercepter';
 
     AboutUsComponent,
     ContactUsComponent,
-    TestimonialComponent,
+    TestimonialComponent
   ],
   imports: [
     BrowserModule,
