@@ -13,6 +13,7 @@ export class ReportComponent implements OnInit {
 
   constructor(public home:ReportService) { }
   dtoptoins:any={};
+  date:any =Date();
   
 
   ngOnInit(): void {
@@ -30,7 +31,7 @@ export class ReportComponent implements OnInit {
     this.home.getAllAttendance();
   }
 
-  title = 'html-to-pdf-angular-application';
+  title = 'Bus Tracking Report';
   public convetToPDF()
   {
   var data:any = document.getElementById('contentToConvert');
