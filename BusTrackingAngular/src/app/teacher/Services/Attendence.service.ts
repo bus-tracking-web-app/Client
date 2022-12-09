@@ -130,6 +130,7 @@ getStatusId(id:number){
         dateofattendance:today,
         attendancestatus:2
       }
+      
       await this.http.post('https://localhost:44364/API/Attendance',CreateAttendence).toPromise();
     }
         this.spinner.hide();
