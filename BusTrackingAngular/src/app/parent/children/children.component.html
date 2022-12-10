@@ -1,0 +1,10 @@
+ <div class="row">
+  <div class="card" style="width: auto; margin: 0px 20px;" *ngFor="let obj of parentServices.parentChaild">
+    <img src="../../../assets/images/Students/{{obj.imgpath}}" style="width: 300px ; height:300px" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{obj.fullname}}</h5>
+        <button mat-button (click)="ViewAttendance(obj.id)">View Attendance</button>
+    </div>
+  </div>
+  
+</div>

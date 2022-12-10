@@ -36,7 +36,7 @@ export class ManageTestimonialComponent implements OnInit {
   
   updateDialog(obj:any)
   {
-    debugger
+    
 
     this.previousData={
     id:obj.id,

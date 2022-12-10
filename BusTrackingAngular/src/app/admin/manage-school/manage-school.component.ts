@@ -65,12 +65,14 @@ export class ManageSchoolComponent implements OnInit {
     yschool:obj.yschool,
     }
     this.updateSchoolForm.controls['id'].setValue(this.previousData.id);
+    this.updateSchoolForm.controls['logo'].setValue(this.previousData.logo);
     this.dialog.open(this.callUpdateDialog);
   }
 
 
   updateSchool()
   {
+    
     this.AdminService.updateSchool(this.updateSchoolForm.value)
   }
   

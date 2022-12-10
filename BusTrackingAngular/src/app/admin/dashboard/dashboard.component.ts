@@ -20,15 +20,74 @@ export class DashboardComponent implements OnInit {
   busNumber:any[]=[];
   studentCount:any[]=[];
   dtoptoins:any={};
-  constructor(private Chartservice:ChartsService,public service:AdminService) { }
+  markers: any = [];
 
+
+
+  constructor(public service:AdminService,private Chartservice:ChartsService) { 
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      }
+    });
+  }
  
+  zoom = 12
+  center: google.maps.LatLngLiteral = {
+    lat: 31.99377324595812,
+    lng: 35.910535112247764,
+  };
+  options: google.maps.MapOptions = {
+    mapTypeId: 'roadmap',
+    zoomControl: true,
+    scrollwheel: true,
+    disableDoubleClickZoom: true,
+    maxZoom:30,
+    minZoom: 8,
+  }
+  addMarkers() {
 
+    for (let i = 0; i < this.service.routes.length; i++) {
+    
+          if(this.service.routes[i].xcurrent=='null'&& this.service.routes[i].ycurrent=='null'){
+            this.markers.push({
+              position: {
+                lat: Number(this.service.school[0].xschool),
+                lng: Number(this.service.school[0].yschool),
+              },
+              label: {
+                color: 'green',
+                text: (this.service.routes[i].busnumber+ ' ' + this.service.routes[i].fullname),
+              },
+              options: { animation: google.maps.Animation.DROP },
+            })
+          }else{
+            this.markers.push({
+              position: {
+                lat: Number(this.service.routes[i].xcurrent),
+                lng: Number(this.service.routes[i].ycurrent),
+              },
+              label: {
+                color: 'black',
+                text: (this.service.routes[i].busnumber+ ' ' + this.service.routes[i].fullname),
+              },
+              options: { animation: google.maps.Animation.DROP },
+              
+            })
+          }
+          
+
+    }
+  }
   ngOnInit(): void {
     this.service.stdCount();
     this.service.TeacherCounter();
     this.service.ParentCounter();
     this.service.DriverCounter();
+    this.service.getAllSchool(); 
+    this.service.getAllRoutes();
+    console.log('routes : '+ this.service.routes);
     this.dtoptoins={
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -53,6 +112,10 @@ export class DashboardComponent implements OnInit {
     this.getCharts(this.busNumber,this.studentCount);
     console.log(this.busNumber);
     
+
+    setTimeout(() => {
+      this.addMarkers();
+    }, 2000);
   }
   getCharts(bus:any,stdCount:any ){ 
     setTimeout(() => {
@@ -117,42 +180,15 @@ export class DashboardComponent implements OnInit {
 }, 2500);
   }
 
+  }
 
-  title = 'html-to-pdf-angular-application';
- convetToPDF()
-{
-var data:any = document.getElementById('contentToConvert');
-html2canvas(data).then(canvas => {
-// Few necessary setting options
-var imgWidth = 208;
-var pageHeight = 400;
-var imgHeight = canvas.height * imgWidth / canvas.width;
-var heightLeft = imgHeight;
-
-const contentDataURL = canvas.toDataURL('image/png')
-let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
-var position = 0;
-pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-pdf.save('Report.pdf'); // Generated PDF
-});
-}
-
-fileName= 'ExcelSheet.xlsx';
-exportToExcel(){
-  /* pass here the table id */
-  let element = document.getElementById('contentToConvert');
-  const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
-
-  /* generate workbook and add the worksheet */
-  const wb: XLSX.WorkBook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-  /* save to file */  
-  XLSX.writeFile(wb, this.fileName);
-
-}
+  
+    
+ 
 
 
 
 
-}
+
+
+

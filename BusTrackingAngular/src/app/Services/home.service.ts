@@ -12,6 +12,8 @@ export class HomeService {
   bus:any[]=[];
   Home:any[]=[];
   about:any[]=[];
+  approvedtestimonial:any[]=[];
+
   
   
 
@@ -76,6 +78,17 @@ export class HomeService {
       console.log(err);
     })
   }
-  
+  getApprovedTestimonial(){
+    this.spinner.show();
+    this.http.get('https://localhost:44364/api/testimonial/getApprovedTestimonial').subscribe((resp: any) => {   
+      this.approvedtestimonial=resp;
+      this.spinner.hide();
 
-}
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status);
+    })
+  }}
+
+
+

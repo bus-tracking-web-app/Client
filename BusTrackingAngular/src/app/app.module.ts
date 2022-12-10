@@ -27,11 +27,9 @@ import { TokenIntercepter } from 'src/Intercepter/token.intercepter';
 @NgModule({
   declarations: [
     AppComponent,
-
   HomeComponent,
     NavbarComponent,
     FooterComponent,
-
     AboutUsComponent,
     ContactUsComponent,
     TestimonialComponent,
