@@ -20,9 +20,9 @@ export class DashboardComponent implements OnInit {
   busNumber:any[]=[];
   studentCount:any[]=[];
   dtoptoins:any={};
-  constructor(private service:ChartsService) { }
+  constructor(private Chartservice:ChartsService,public service:AdminService) { }
 
-  constructor(public service:AdminService) { }
+ 
 
   ngOnInit(): void {
     this.service.stdCount();
@@ -40,10 +40,10 @@ export class DashboardComponent implements OnInit {
      
     };
     
-    this.service.getTeacherCount();
-    this.service.getDriverCount();
-    this.service.getStudentCount();
-    this.service.getChartInfo().subscribe((resp:any)=>{
+    this.Chartservice.getTeacherCount();
+    this.Chartservice.getDriverCount();
+    this.Chartservice.getStudentCount();
+    this.Chartservice.getChartInfo().subscribe((resp:any)=>{
       this.allData=resp;
       this.allData.forEach((us: any) => {
         this.busNumber.push(us.busnumber);
@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
         labels: ['TeacherCount','DriverCount','StudentCount'],
         datasets: [{
             label: '',
-            data: [this.service.teacherCount,this.service.driverCount,this.service.studentCount],
+            data: [this.Chartservice.teacherCount,this.Chartservice.driverCount,this.Chartservice.studentCount],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(34, 100, 120, 0.2)',

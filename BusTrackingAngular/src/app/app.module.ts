@@ -18,7 +18,6 @@ import { AuthModule } from './auth/auth.module';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 import{HttpClientModule, HTTP_INTERCEPTORS}from  '@angular/common/http';
-import{HttpClientModule}from  '@angular/common/http';
 import {DataTablesModule} from 'angular-datatables'
 
 
