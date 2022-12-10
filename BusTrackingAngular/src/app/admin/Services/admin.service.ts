@@ -34,24 +34,13 @@ export class AdminService {
   selectedUser: any = {};
   bus: any[] = [];
 
-  // getAllbuses(){
-  //   this.spinner.show();
-  //   this.http.get('https://localhost:44364/API/Bus').subscribe((resp:any)=>{
-  //     this.bus=resp;
-  //     this.spinner.hide();
-  //     this.toastr.success('Data Retrieved!');
-  //   },err=>{
-  //     this.spinner.hide();
-  //     this.toastr.error(err.message, err.status);
-  //   })
-  // }
-
-  AllUsers() {
+  AllUsers()
+  {
     this.spinner.show();
     this.http.get(this.baseURL + "users/userwithrole").subscribe((res: any) => {
       this.users = res;
       this.spinner.hide();
-      this.toastr.success("This is All Product");
+      this.toastr.success("This is All Users");
     }, err => {
       this.spinner.hide();
       this.toastr.error("there is no data")
@@ -73,6 +62,7 @@ export class AdminService {
     });
   }
   uploadAttachmentUser(file: FormData) {
+    debugger
     this.http.post(this.baseURL + "users/uploadImage", file).subscribe((resp: any) => {
       this.display_image = resp.imagepath;
     }, err => {
@@ -80,6 +70,8 @@ export class AdminService {
       console.log(err);
     })
   }
+
+
 
   getUserid(id: number) {
     return this.http.get(this.baseURL + "users/" + id).subscribe((res: any) => {
@@ -89,19 +81,15 @@ export class AdminService {
     });
   }
 
-  getBusid(id: number) {
-    return this.http.get(this.baseURL + "users/" + id).subscribe((res: any) => {
-      this.selectedUser = res;
-    }, err => {
-      this.toastr.error(err.message);
-    });
-  }
 
-  updateUser(body: any) {
-    if (this.display_image != undefined) {
-      body.imagepath = this.display_image;
-    }
 
+
+  updateUser(body:any)
+  {
+    // if (this.display_photo != undefined) {
+    //   body.imagepath = this.display_image;
+    // }
+    
     this.spinner.show();
     this.http.put(this.baseURL + "users", body).subscribe((resp: any) => {
       this.spinner.hide();
@@ -113,6 +101,7 @@ export class AdminService {
     });
 
   }
+
   deleteUser(id: number) {
     this.spinner.show();
     this.http.delete(this.baseURL + "users/" + id).subscribe((resp: any) => {
@@ -495,35 +484,37 @@ updateFooter(body:any){
       })
     }
 
-    GetAllStudent(){
-      this.spinner.show();
-      this.http.get('https://localhost:44364/api/Student/Get').subscribe((resp: any) => {
-        this.students = resp;
-        this.spinner.hide();
-        this.toastr.success('Data Retrieved!');
-      }, err => {
-        this.spinner.hide();
-        this.toastr.error(err.message, err.status);
-      })
-    }
 
-    createStudent(body: any)
-    {
-      body.imgpath = this.student_image;
-      this.spinner.show();
-      // debugger
-      this.http.post('https://localhost:44364/api/Student', body).subscribe((resp) => {
-        console.log(resp);
-
-        this.spinner.hide();
-        this.toastr.success('Created !!');
-        window.location.reload();
-      }, err => {
-        this.spinner.hide();
-        this.toastr.error(err.message, err.status);
-      }
-      )
+// ----------------Students Services-
+GetAllStudent(){
+  this.spinner.show();
+  this.http.get('https://localhost:44364/api/Student/Get').subscribe((resp:any)=>{
+  this.students=resp;
+  this.spinner.hide();
+  this.toastr.success('Data Retrieved!');
+   },err=>{
+  this.spinner.hide();
+  this.toastr.error(err.message, err.status);
+  })
+}
+  
+  createStudent(body: any)
+   {
+    body.imgpath = this.student_image;
+    this.spinner.show();
+    // debugger
+    this.http.post('https://localhost:44364/api/Student', body).subscribe((resp) => {
+      console.log(resp);
+    
+      this.spinner.hide();
+      this.toastr.success('Created !!');
+      window.location.reload();
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status);
     }
+    )
+  }
 
 
     uploadAttachmentStudent(file: FormData) {
@@ -565,36 +556,32 @@ updateFooter(body:any){
       })
     }
 
-    parent: any[] = [];
-    pare: any[] = [];
-    getParent()
-    {
+  parent:any[]=[];
+  pare:any[]=[];
+  getParent()
+  {
+   this.http.get('https://localhost:44364/api/users').subscribe((res:any)=>{
+      this.pare=res;
+     this.pare.forEach((p:any)=>{
+      if(p.roleid==41)
+       this.parent.push(p);
+})
+     
+    },err=>{
+  
+      this.toastr.error("there is no data")
+    });
+  }
+// End Students Services 
 
-      this.http.get('https://localhost:44364/api/users').subscribe((res: any) => {
-        this.pare = res;
-        this.pare.forEach((p: any) => {
-          if (p.roleid == 41)
-            this.parent.push(p);
-        })
-
-      }, err => {
-
-        this.toastr.error("there is no data")
-      });
-    }
-
-    // ---------------------- End Students Services --------------------
-
-
-    // ------------------------- About us Services ---------------------
-
-
-    uploadAboutusPHoto(file: FormData) {
-      this.http.post('https://localhost:44364/api/Aboutus/uploadImageAboutUs/', file).subscribe((resp: any) => {
-        this.aboutus_image = resp.imagepath;
-      }, err => {
-        this.toastr.error('Try again');
-        console.log(err);
+  
+  //About us Services 
+  uploadAboutusPHoto(file: FormData) {
+    this.http.post('https://localhost:44364/api/Aboutus/uploadImageAboutUs/', file).subscribe((resp: any) => {
+      this.aboutus_image = resp.imagepath;
+    }, err => {
+      this.toastr.error('Try again');
+      console.log(err);
 
       })
     }
@@ -612,28 +599,23 @@ updateFooter(body:any){
       })
     }
 
-    GetAboutUs()
-    {
-      this.spinner.show();
-      this.http.get('https://localhost:44364/api/Aboutus/Get').subscribe((res: any) => {
-        this.about = res;
-        this.spinner.hide();
-        this.toastr.success("done");
-      }, err => {
-        this.spinner.hide();
-        this.toastr.error("there is no data")
-      });
-    }
-
-    // ---------------------- End About us Services --------------------
-
-
-    // ---------------------- Home Services --------------------
+  GetAboutUs()
+  {
+    this.spinner.show();
+      this.http.get('https://localhost:44364/api/Aboutus/Get').subscribe((res:any)=>{
+      this.about=res;
+      this.spinner.hide();
+      this.toastr.success("done");
+    },err=>{
+      this.spinner.hide();
+      this.toastr.error("there is no data")
+    });
+  }
+   // End About us Services 
 
 
-
-
-    GetHome()
+    // Home Services
+ GetHome()
     {
       this.spinner.show();
       this.http.get('https://localhost:44364/api/Home/Get').subscribe((res: any) => {
@@ -655,27 +637,14 @@ updateFooter(body:any){
         this.toastr.error('Try again');
         console.log(err);
 
-      })
-    }
-    updateHome(body: any)
-    {
+    })
+  }
+  updateHome(body:any)
+  {
+    if (this.home_image != undefined) {
       body.imagepath = this.home_image;
-      this.spinner.show();
-      this.http.put('https://localhost:44364/api/Home', body).subscribe((resp) => {
-        this.spinner.hide();
-        this.toastr.success('Updated Successfully !!');
-        window.location.reload();
-      }, err => {
-        this.spinner.hide();
-        this.toastr.error(err.message, err.status);
-      })
     }
-
-    // ---------------------- End Home Services --------------------
-
-  
-
-  updateRole(body: any) {
+    body.imagepath = this.home_image;
     this.spinner.show();
     this.http.put(this.baseURL + "role", body).subscribe((resp) => {
       this.spinner.hide();
@@ -712,6 +681,21 @@ updateFooter(body:any){
     });
   }
 
+
+
+  updateRole(body: any) {
+    this.spinner.show();
+    this.http.put(this.baseURL + "role", body).subscribe((resp) => {
+      this.spinner.hide();
+      this.toastr.success('Updated Successfully !!');
+      window.location.reload();
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status);
+    });
+  };
+
+
   GetAllContact() {
     this.spinner.show();
     this.http.get(this.baseURL + "contact").subscribe((res: any) => {
@@ -729,5 +713,80 @@ updateFooter(body:any){
       this.toastr.error("cant delete contact");
     })
   }
+ //  End Home Services
+
+
+ rounds:any[]=[];
+ getAllround(){
+   this.http.get('https://localhost:44364/api/round/get').subscribe((resp:any)=>{
+     this.rounds=resp;
+      },err=>{
+     this.spinner.hide();
+     this.toastr.error(err.message, err.status);
+   })
+ }
+
+ selectedrounds:any={};
+ getroundsid(id:number)
+ {
+   return this.http.get("https://localhost:44364/api/Round/getById/"+id).subscribe((res:any)=>{
+     this.selectedrounds=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+
+
+ selectedbuss:any={};
+ getBusid(id:number)
+ {
+   return this.http.get("https://localhost:44364/api/bus/getById/"+id).subscribe((res:any)=>{
+     this.selectedbuss=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+
+ studentCount:any;
+ stdCount()
+ {
+   return this.http.get("https://localhost:44364/api/Student/studentcount").subscribe
+   ((res:any)=>{
+     this.studentCount=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+
+ driverCount:any;
+parentsCount:any;
+ techerCount:any;
+ DriverCounter()
+ {
+   return this.http.get("https://localhost:44364/api/users/dcount").subscribe
+   ((res:any)=>{
+     this.driverCount=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+ ParentCounter()
+ {
+   return this.http.get("https://localhost:44364/api/users/ParentCount").subscribe
+   ((res:any)=>{
+     this.parentsCount=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
+ TeacherCounter()
+ {
+   return this.http.get("https://localhost:44364/api/users/tcount").subscribe
+   ((res:any)=>{
+     this.techerCount=res;
+   },err=>{
+     this.toastr.error(err.message);
+   });
+ }
 
 }

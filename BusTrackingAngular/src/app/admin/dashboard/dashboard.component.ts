@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../Services/admin.service';
 import{Chart,registerables}from'node_modules/chart.js';
 import { ChartsService } from '../Services/charts.service';
 import html2canvas from 'html2canvas';
@@ -20,7 +21,14 @@ export class DashboardComponent implements OnInit {
   studentCount:any[]=[];
   dtoptoins:any={};
   constructor(private service:ChartsService) { }
+
+  constructor(public service:AdminService) { }
+
   ngOnInit(): void {
+    this.service.stdCount();
+    this.service.TeacherCounter();
+    this.service.ParentCounter();
+    this.service.DriverCounter();
     this.dtoptoins={
       pagingType: 'full_numbers',
       pageLength: 5,

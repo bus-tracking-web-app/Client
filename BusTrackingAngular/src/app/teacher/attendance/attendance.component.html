@@ -3,7 +3,6 @@
 
 <app-side></app-side>
 <div class="content-wrapper">
-    <button type="button" class="btn btn-primary btn-sm" (click)="openCreateDialog()">Create Attendance </button>
     <div class="table-responsive">
         <table class="table">
           <thead>
@@ -18,19 +17,28 @@
             <tr *ngFor="let obj of home.attendance">           
               <td>{{obj.sname}}</td>
               <td>{{obj.busnumber}}</td>
-              <td>{{obj.dateofattendance}}</td>
-              <td>{{obj.astatus}}</td>
+              <td>{{obj.dateofattendance | date }}</td>
+              <td *ngIf="obj.attendancestatus==1" class="badge badge-info">{{obj.astatus}}</td>
+              <td *ngIf="obj.attendancestatus==2" class="badge badge-danger">{{obj.astatus}}</td>
               <!-- <td><label class="badge badge-danger">Pending</label></td> -->
               <td>
-                <button type="button" class="btn btn-inverse-success btn-fw" (click)="openUpdateDialog(obj)">Update </button>
+                <button type="radio" class="btn btn-inverse-success" name="btnradio" id="btnradio1" (click)="precent(obj)">Present </button>
                 
-                <button type="button" class="btn btn-inverse-danger btn-fw" (click)="openDeleteDialog(obj.id)">Delete</button>
+                <button type="radio" class="btn btn-inverse-danger" name="btnradio" id="btnradio2" (click)="absent(obj)">Absent</button>
+               
               </td>
             </tr>
-         
-       
           </tbody>
         </table>
+        <div class="row mt-5">
+            <div class="col-3">
+                <h1>Save the attendance :</h1>
+            </div>
+        <div class="col-3">
+            <button type="button" (click)="saveAttendence()" class="btn btn-inverse-primary btn-fw">Submit the result</button>
+        </div>
+    </div>
+         
       </div>
 
 
@@ -38,129 +46,3 @@
 </div>
 </div>
 
-<ng-template #CallCreate>
-    <h2 mat-dialog-title> Create New Bus</h2>
-<mat-dialog-content class="mat-typography">
-    <form class="example-form"[formGroup]="createform">
-        <!-- <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>studentid</mat-label>
-            <input type="number" matInput formControlName="studentid">
-            <mat-error *ngIf="createform.controls['studentid'].hasError('required')">
-                student Number is required!
-            </mat-error>
-        </mat-form-field> -->
-        <label for="" class="my-1">Student</label>
-        <select class="form-control" (change)="DetectChanges($event)" >
-           <option  selected disabled hidden  >Choose a Student</option> 
-           <option value="{{item.id}}" *ngFor="let item of home.student" >{{item.fullname}}</option>
-       </select>
-        <br>
-        <!-- <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Bus id</mat-label>
-            <input type="number" matInput formControlName="busid">
-            <mat-error *ngIf="createform.controls['busid'].hasError('required')">
-                Bus Driver is required!
-            </mat-error>
-        </mat-form-field> -->
-        <label for="" class="my-1">Bus </label>
-        <select class="form-control" (change)="DetectChanges1($event)" >
-           <option  selected disabled hidden  >Choose a Bus Number</option> 
-           <option value="{{item.id}}" *ngFor="let item of home.bus" >{{item.busnumber}}</option>
-       </select>
-        <br>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>dateofattendance</mat-label>
-            <input type="date" matInput formControlName="dateofattendance">
-            <mat-error *ngIf="createform.controls['dateofattendance'].hasError('required')">
-                date is required!
-            </mat-error>
-        </mat-form-field>
-        <br>
-        <!-- <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>attendancestatus</mat-label>
-            <input type="number" matInput formControlName="attendancestatus">
-            <mat-error *ngIf="createform.controls['attendancestatus'].hasError('required')">
-                attendancestatus is required!
-            </mat-error>
-        </mat-form-field> -->
-        <label for="" class="my-1">Status </label>
-        <select class="form-control" (change)="DetectChanges2($event)" >
-           <option  selected disabled hidden  >Choose a Status</option> 
-           <option value="{{item.id}}" *ngFor="let item of home.status" >{{item.status}}</option>
-       </select>
-    </form>
-    <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
-        <button mat-button class="btn btn-inverse-success btn-fw" (click)="saveAttendance()"[mat-dialog-close]="true" >Save</button>
-    </mat-dialog-actions>
-</mat-dialog-content>
-
-
-</ng-template>
-
-
-<ng-template #CallUpdate>
-    <h2 mat-dialog-title> Update</h2>
-    <mat-dialog-content class="mat-typography">
-        <form class="example-form"[formGroup]="updateform">
-            <!-- <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>studentid</mat-label>
-                <input type="number" matInput formControlName="studentid">
-                <mat-error *ngIf="updateform.controls['studentid'].hasError('required')">
-                    student Number is required!
-                </mat-error>
-            </mat-form-field> -->
-            <label for="" class="my-1" >Student</label>
-            <select class="form-control" (change)="DetectUpdateChanges($event)" > 
-             <option disabled selected hidden>{{home.selectedStudent.fullname}}</option> 
-             <option value="{{item.id}}" *ngFor="let item of home.student" >{{item.fullname}}</option>
-           </select>
-            <br>
-            <!-- <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Bus id</mat-label>
-                <input type="number" matInput formControlName="busid">
-                <mat-error *ngIf="createform.controls['busid'].hasError('required')">
-                    Bus Driver is required!
-                </mat-error>
-            </mat-form-field> -->
-            <label for="" class="my-1" >Bus Number</label>
-            <select class="form-control" (change)="DetectUpdateChanges1($event)" > 
-             <option disabled selected hidden>{{home.selectedBus.busnumber}}</option> 
-             <option value="{{item.id}}" *ngFor="let item of home.bus" >{{item.busnumber}}</option>
-           </select>
-            <br>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>dateofattendance</mat-label>
-                <input type="date" matInput formControlName="dateofattendance">
-                <mat-error *ngIf="createform.controls['dateofattendance'].hasError('required')">
-                    date is required!
-                </mat-error>
-            </mat-form-field>
-            <br>
-            <!-- <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>attendancestatus</mat-label>
-                <input type="number" matInput formControlName="attendancestatus">
-                <mat-error *ngIf="createform.controls['attendancestatus'].hasError('required')">
-                    attendancestatus is required!
-                </mat-error>
-            </mat-form-field> -->
-            <label for="" class="my-1" >Status</label>
-            <select class="form-control" (change)="DetectUpdateChanges2($event)" > 
-             <option disabled selected hidden>{{home.selectedStatus.status}}</option> 
-             <option value="{{item.id}}" *ngFor="let item of home.status">{{item.status}}</option>
-           </select>
-        </form>
-        <mat-dialog-actions align="end">
-            <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
-            <button mat-button class="btn btn-inverse-success btn-fw" (click)="updateAttendance()"[mat-dialog-close]="true" >Save</button>
-        </mat-dialog-actions>
-    </mat-dialog-content>
-
-</ng-template>
-
-<ng-template #DeleteDialog>
-    <h2>Are you sure ?</h2>
-    <button mat-button class="btn btn-inverse-success btn-fw" mat-dialog-close="yes">Yes</button>
-    <button mat-button class="btn btn-inverse-danger btn-fw" mat-dialog-close="no">No</button>
-
-  </ng-template>
