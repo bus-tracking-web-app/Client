@@ -10,9 +10,9 @@
 <div class="container-fluid page-body-wrapper">
   <app-sidebar></app-sidebar>
   <div class="content-wrapper">
-    <div class="table-responsive">
-     
-
+ 
+    
+  
         <div class="col-md-6 grid-margin transparent">
           <div class="row">
             <div class="col-md-6 mb-4 stretch-card transparent">
@@ -31,8 +31,7 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
+
             <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
               <div class="card card-light-blue">
                 <div class="card-body">
@@ -48,26 +47,23 @@
                   <p class="fs-30 mb-2">{{service.driverCount}}</p>
                 </div>
               </div>
-            </div>
-            
+          </div>
+          </div>
+          <div class="col-md-5">
             <div class="my-google-map">
-              <google-map id="map" height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="options">
+              <google-map id="map" height="500px" width="50%" [zoom]="zoom" [center]="center" [options]="options">
                   <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title" [options]="marker.options">
                   </map-marker>
               </google-map>
-
-
-
-
-            <!-- //chart -->
-           
-
-
-
-
           </div>
+          </div>
+          
+
          
         </div>
+    
+    
+
       
       <div class="row ">
         <div class="col-lg-5">
@@ -82,9 +78,11 @@
         </div>
 
       </div>
-    </div>
+
     
 
 </div>
+
+
+
   </div>
-</div>
