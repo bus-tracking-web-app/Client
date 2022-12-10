@@ -11,6 +11,7 @@ import { ParentModule } from './parent/parent.module';
 import { TeacherModule } from './teacher/teacher.module';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 
+
 const routes: Routes = [
   {
     path:'contactus',

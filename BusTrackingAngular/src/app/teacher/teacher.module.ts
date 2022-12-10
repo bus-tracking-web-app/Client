@@ -9,6 +9,7 @@ import { ArrivalEmailComponent } from './arrival-email/arrival-email.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
+
 @NgModule({
   declarations: [
     AttendanceComponent,
