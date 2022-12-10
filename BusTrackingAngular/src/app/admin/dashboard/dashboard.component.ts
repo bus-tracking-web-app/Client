@@ -32,7 +32,9 @@ export class DashboardComponent implements OnInit {
      
     };
     
-    
+    this.service.getTeacherCount();
+    this.service.getDriverCount();
+    this.service.getStudentCount();
     this.service.getChartInfo().subscribe((resp:any)=>{
       this.allData=resp;
       this.allData.forEach((us: any) => {
@@ -51,7 +53,7 @@ export class DashboardComponent implements OnInit {
       data: {
           labels: bus,
           datasets: [{
-              label: 'Charts',
+              label: 'Number Of Student in Each Bus',
               data: stdCount,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
@@ -72,9 +74,39 @@ export class DashboardComponent implements OnInit {
           }
       }
   });
+  const pieChart = new Chart("pieChart", {
+    type: 'pie',
+    data: {
+        labels: ['TeacherCount','DriverCount','StudentCount'],
+        datasets: [{
+            label: '',
+            data: [this.service.teacherCount,this.service.driverCount,this.service.studentCount],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(34, 100, 120, 0.2)',
+                'rgba(100, 50, 130, 0.2)',
+                
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(34, 100, 120, 1)',
+                'rgba(100, 50, 130, 1)',   
+               
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
 
 
-}, 1500);
+}, 2500);
   }
 
 
