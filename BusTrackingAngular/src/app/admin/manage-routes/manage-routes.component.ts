@@ -19,8 +19,8 @@ export class ManageRoutesComponent implements OnInit {
 
   updateRouteForm:FormGroup=new FormGroup({
     id:new FormControl(),
-    xcurrent:new FormControl('',Validators.required),
-    ycurrent:new FormControl('',Validators.required),
+    xcurrent:new FormControl(''),
+    ycurrent:new FormControl(''),
     xstart:new FormControl('',Validators.required),
     ystart:new FormControl('',Validators.required),
     xend:new FormControl('',Validators.required),
@@ -30,16 +30,26 @@ export class ManageRoutesComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.getAllRoutes();
+    this.admin.getAllbuses();
+
+
+    
   }
   createDialog()
   {
     this.dialog.open(CreateRouteComponent)
+  }
+  DetectChanges(event:any)
+  {
+    const id=Number(event.target.value);
+    this.updateRouteForm.controls['busid'].setValue(id);
   }
 
 
   previousData:any={};
   updateDialog(obj:any)
   {
+    debugger
     this.previousData={
     id:obj.id,
     xcurrent:obj.xcurrent,
@@ -51,6 +61,8 @@ export class ManageRoutesComponent implements OnInit {
     busid:obj.busid
     }
     this.updateRouteForm.controls['id'].setValue(this.previousData.id);
+    this.updateRouteForm.controls['busid'].setValue(this.previousData.busid);
+    this.admin.getBusById(this.previousData.busid)
     this.dialog.open(this.callUpdateDialog);
   }
 

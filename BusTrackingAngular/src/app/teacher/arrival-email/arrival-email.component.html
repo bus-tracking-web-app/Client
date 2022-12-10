@@ -1,0 +1,35 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+
+    <app-side></app-side>
+    <div class="content-wrapper">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Bus Number</th>
+                        <th>Date Of Attendance</th>
+                        <th>Parent Name</th>
+                        <th>parent email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr *ngFor="let obj of parent.todayPrecent">
+                        <td>{{obj.studentname}}</td>
+                        <td>{{obj.busnumber}}</td>
+                        <td>{{obj.dateofattendance | date }}</td>
+                        <td>{{obj.parentname}}</td>
+                        <td>{{obj.parentemail}}</td>
+                        <td> <button type="button" class="btn btn-primary btn-sm" (click)="send(obj.parentemail)">Send email To his Parent</button></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+</div>

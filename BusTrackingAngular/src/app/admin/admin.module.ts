@@ -19,6 +19,9 @@ import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
 import { CreateRouteComponent } from './create-route/create-route.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageSchoolComponent } from './manage-school/manage-school.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import {DataTablesModule} from 'angular-datatables';
+import { ReportComponent } from './report/report.component'
 
 
 
@@ -39,12 +42,15 @@ import { ManageSchoolComponent } from './manage-school/manage-school.component';
     ManageRoutesComponent,
     CreateRouteComponent,
     ManageTestimonialComponent,
-    ManageSchoolComponent
+    ManageSchoolComponent,
+    ReportComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedAdminModule
+    SharedAdminModule,
+    GoogleMapsModule,
+    DataTablesModule
   ]
 })
 export class AdminModule { }

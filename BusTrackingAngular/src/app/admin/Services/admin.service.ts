@@ -12,13 +12,15 @@ export class AdminService {
   selectedRole: any = {};
   selectedDriver: any = {};
   selectedTeacher: any = {};
-  routes: any[] = [];
+  routes:any=[];
   testimonial: any[] = [];
   testimonialStatus: any[] = [];
   selectedTestimonialStatus: any = {};
   display_photo: any;
   school: any[] = [];
   selectedbusnumber: any = {};
+  selectedbus:any={};
+  dashboardroutes:any[]=[];
 
   display_image: any;
   contact: any[] = [];
@@ -62,6 +64,7 @@ export class AdminService {
     });
   }
   uploadAttachmentUser(file: FormData) {
+    debugger
     this.http.post(this.baseURL + "users/uploadImage", file).subscribe((resp: any) => {
       this.display_image = resp.imagepath;
     }, err => {
@@ -69,6 +72,8 @@ export class AdminService {
       console.log(err);
     })
   }
+
+
 
   getUserid(id: number) {
     return this.http.get(this.baseURL + "users/" + id).subscribe((res: any) => {
@@ -80,9 +85,13 @@ export class AdminService {
 
 
 
+
   updateUser(body:any)
   {
-    body.imagepath = this.display_image;
+    // if (this.display_photo != undefined) {
+    //   body.imagepath = this.display_image;
+    // }
+    
     this.spinner.show();
     this.http.put(this.baseURL + "users", body).subscribe((resp: any) => {
       this.spinner.hide();
@@ -94,6 +103,7 @@ export class AdminService {
     });
 
   }
+
   deleteUser(id: number) {
     this.spinner.show();
     this.http.delete(this.baseURL + "users/" + id).subscribe((resp: any) => {
@@ -266,6 +276,8 @@ updateFooter(body:any){
       this.spinner.show();
       this.http.get('https://localhost:44364/api/Route/getAllRouteDTO').subscribe((resp: any) => {
         this.routes = resp;
+        console.log(this.routes);
+        
         this.spinner.hide();
         this.toastr.success('Routes Retrieved!');
       }, err => {
@@ -276,6 +288,7 @@ updateFooter(body:any){
 
     createRoute(body : any)
     {
+      
       this.spinner.show();
       this.http.post('https://localhost:44364/api/Route/CreateRoute', body).subscribe((resp) => {
         this.spinner.hide();
@@ -354,7 +367,7 @@ updateFooter(body:any){
     }
     getTestimonialStatusById(id : number)
     {
-      debugger
+      
       this.http.get('https://localhost:44364/api/Testimonial/GETtestimonialStatusBYID/' + id).subscribe((resp: any) => {
         this.selectedTestimonialStatus = resp;
 
@@ -420,6 +433,7 @@ updateFooter(body:any){
     }
 
     uploadAttachmentschool(file: FormData) {
+      
       this.http.post("https://localhost:44364/api/school/uploadImage", file).subscribe((resp: any) => {
         this.display_photo = resp.logo;
       }, err => {
@@ -446,7 +460,10 @@ updateFooter(body:any){
 
     updateSchool(body : any)
     {
-      body.logo = this.display_photo;
+      if (this.display_photo != undefined) {
+        body.logo = this.display_photo;
+      }
+  
 
       this.spinner.show();
       this.http.put('https://localhost:44364/api/school/UPDATEshcool', body).subscribe((resp) => {
@@ -709,6 +726,9 @@ GetAllStudent(){
       this.toastr.error("cant delete contact");
     })
   }
+
+  
+
  //  End Home Services
 
 
@@ -785,4 +805,27 @@ parentsCount:any;
    });
  }
 
+
+getBusById(id : number)
+  {
+    
+    this.http.get('https://localhost:44364/api/Bus/getById/' + id).subscribe((resp: any) => {
+      this.selectedbus = resp;
+    }, err => {
+      this.toastr.error(err.message, err.status)
+    })
+  }
+
+  getallroutesdashboard()
+  {
+    debugger;
+    this.http.get('https://localhost:44364/api/Route/GetAllRoute/').subscribe((resp: any) => {
+      this.routes = resp;
+      console.log('res',resp);
+      console.log('this.dashboardroutes',this.routes);     
+      
+    }, err => {
+      this.toastr.error(err.message, err.status)
+    })
+  }
 }

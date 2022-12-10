@@ -33,6 +33,8 @@ export class CreateStudentComponent implements OnInit {
   }
 
   saveData(){
+
+    this.createForm.controls['inbusstatus'].setValue('true');
     this.home.createStudent(this.createForm.value)
   }
  
