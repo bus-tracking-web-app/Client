@@ -25,8 +25,9 @@ updateForm:FormGroup=new FormGroup
         password:new FormControl('',Validators.required),
         phone: new FormControl('',Validators.required),
         imagepath: new FormControl(),
-        roleid: new FormControl('',Validators.required),
+        roleid: new FormControl('',Validators.required)
 });
+
 constructor(public service:AdminService,private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -56,26 +57,15 @@ constructor(public service:AdminService,private dialog: MatDialog) { }
   };
     this.updateForm.controls['id'].setValue(this.p_data.id);
     this.updateForm.controls['roleid'].setValue(this.p_data.roleid);
+
     // this.updateForm.controls['imagepath'].setValue(this.p_data.imagepath);
     this.service.getroleid(this.p_data.roleid);
     this.dialog.open(this.callUpdate);
 }
-
-
-  
-  uploadFile(file:any){
-    if(file.length==0)
-    return;
-    let fileToUpload=<File>file[0]//the first image 
-    const formdata= new FormData();
-    formdata.append('file',fileToUpload,fileToUpload.name);
-    this.service.uploadAttachmentschool(formdata);
-  }
-  
   
 
   saveData(){
-    this.service.updateUser(this.updateForm.value);
+    // this.service.updateUser(this.updateForm.value);
     console.log(this.updateForm.value);
     
   }
@@ -95,5 +85,15 @@ constructor(public service:AdminService,private dialog: MatDialog) { }
       }
     });
   }
+
+  UploadFile(file:any){
+    if(file.length==0)
+    return;
+    let fileToUpload=<File>file[0]//the first image 
+    const formdata= new FormData();
+    formdata.append('file',fileToUpload,fileToUpload.name);
+    this.service.uploadAttachmentUser(formdata);
+  }
+  
 
 }

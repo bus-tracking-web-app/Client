@@ -62,6 +62,7 @@ export class AdminService {
     });
   }
   uploadAttachmentUser(file: FormData) {
+    debugger
     this.http.post(this.baseURL + "users/uploadImage", file).subscribe((resp: any) => {
       this.display_image = resp.imagepath;
     }, err => {
@@ -69,6 +70,8 @@ export class AdminService {
       console.log(err);
     })
   }
+
+
 
   getUserid(id: number) {
     return this.http.get(this.baseURL + "users/" + id).subscribe((res: any) => {
@@ -80,9 +83,13 @@ export class AdminService {
 
 
 
+
   updateUser(body:any)
   {
-    body.imagepath = this.display_image;
+    // if (this.display_photo != undefined) {
+    //   body.imagepath = this.display_image;
+    // }
+    
     this.spinner.show();
     this.http.put(this.baseURL + "users", body).subscribe((resp: any) => {
       this.spinner.hide();
@@ -94,6 +101,7 @@ export class AdminService {
     });
 
   }
+
   deleteUser(id: number) {
     this.spinner.show();
     this.http.delete(this.baseURL + "users/" + id).subscribe((resp: any) => {
