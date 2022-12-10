@@ -12,6 +12,7 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { MangeAboutUsComponent } from './mange-about-us/mange-about-us.component';
 import { MangeHomeComponent } from './mange-home/mange-home.component';
 import { MangeStudentComponent } from './mange-student/mange-student.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   {
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path:'school',
     component:ManageSchoolComponent
+  },
+  {
+    path:'report',
+    component:ReportComponent
   }
   
   
