@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="content-wrapper">
+        <input type="button" value="Download Report" (click)="convetToPDF()" class="btn btn-primary"
+            style="float: right;">
+        <div id="contentToConvert">
+
+            <h3 class="page-title text-uppercase" style="font-size: 1.5em; font-weight: 500; margin-left: 300px;">
+                {{title}}
+            </h3>
+            <h5 class="page-title text-uppercase" style="font-size: 1.5em; font-weight: 500; margin-left: 5px;">
+                Date: {{date| date}}
+            </h5>
+           
+            <div class="table-responsive" >
+               
+                <table datatable class="table" [dtOptions]="dtoptoins" [dtTrigger]="home.dtTrigger"  >
+                    
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Bus Number</th>
+                            <th>Date Of Attendance</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let obj of home.attendance">
+                            <td>{{obj.sname}}</td>
+                            <td>{{obj.busnumber}}</td>
+                            <td>{{obj.dateofattendance|date}}</td>
+                            <td>{{obj.astatus}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+
+
+</div>

@@ -17,10 +17,12 @@ import {MatInputModule} from '@angular/material/input';
 import { AuthModule } from './auth/auth.module';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
-import{HttpClientModule}from  '@angular/common/http';
+import{HttpClientModule, HTTP_INTERCEPTORS}from  '@angular/common/http';
+import {DataTablesModule} from 'angular-datatables'
 
 
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { TokenIntercepter } from 'src/Intercepter/token.intercepter';
 
 @NgModule({
   declarations: [
@@ -44,13 +46,17 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     NgxSpinnerModule,
     ToastrModule.forRoot(),
     ToastNoAnimationModule.forRoot(),
-    
+    DataTablesModule
   ],
   exports:[
     NavbarComponent,
     FooterComponent,
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenIntercepter,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

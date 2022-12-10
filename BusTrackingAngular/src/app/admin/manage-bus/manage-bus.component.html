@@ -6,8 +6,8 @@
       <form class="form-inline" style="margin-top: 3%;">
         <div class="form-group mx-sm-3 mb-2">
           <label for="inputText" >Bus Number : </label>
-          <input type="text" class="form-control1" id="inputText" placeholder="Bus Number"
-          [(ngModel)]="busNum" (change)="searchInput($event)">
+          <input type="text" class="form-control1" id="inputText" placeholder=""
+          [(ngModel)]="busNum" (keyup)="searchInput($event)">
 
         </div>
 
