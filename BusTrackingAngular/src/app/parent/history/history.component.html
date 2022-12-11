@@ -1,0 +1,31 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+
+<app-side></app-side>
+<div class="content-wrapper">
+    <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Date Of Attendance</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of parentServices.attendanceChaild">           
+              <td>{{obj.sname}}</td>
+              <td>{{obj.dateofattendance | date }}</td>
+              <td *ngIf="obj.attendancestatus==1" class="badge badge-info">{{obj.astatus}}</td>
+              <td *ngIf="obj.attendancestatus==2" class="badge badge-danger">{{obj.astatus}}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+         
+      </div>
+
+
+
+</div>
+</div>
