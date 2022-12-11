@@ -1,35 +1,36 @@
-    <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_settings-panel.html -->
-        <div class="theme-setting-wrapper">
-          <div id="settings-trigger"><i class="ti-settings"></i></div>
-          <div id="theme-settings" class="settings-panel">
-            <i class="settings-close ti-close"></i>
-         
-          </div>
-        </div>
-        <div id="right-sidebar" class="settings-panel">
-        
-         
-          <div class="tab-content" id="setting-content">
-            <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
-            </div>   
-          </div>
-        </div>
-  
-  
+<div class="container-fluid page-body-wrapper">
+  <!-- partial:partials/_settings-panel.html -->
+  <div class="theme-setting-wrapper">
+    <div id="settings-trigger"><i class="ti-settings"></i></div>
+    <div id="theme-settings" class="settings-panel">
+      <i class="settings-close ti-close"></i>
+
+    </div>
+  </div>
+  <div id="right-sidebar" class="settings-panel">
+
+
+    <div class="tab-content" id="setting-content">
+      <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
+        aria-labelledby="todo-section">
+      </div>
+    </div>
+  </div>
+
+
   <app-navbar></app-navbar>
   <app-sidebar></app-sidebar>
-  
+
   <div class="content-wrapper">
- 
-  
-  <button class="btn btn-primary mr-2" (click)="opendialog()" >Add new Steudent</button> <br><br>
-  <div class="table-responsive">
+
+
+    <button class="btn btn-primary mr-2" (click)="opendialog()">Add new Steudent</button> <br><br>
+    <div class="table-responsive">
       <table class="table">
         <thead>
           <tr>
-            
-            
+
+
             <th>Student Picture</th>
             <th>Student Name</th>
             <th>Status</th>
@@ -40,121 +41,121 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let obj of home.students " >
-             <td> <img src="../../../assets/images/Students/{{obj.imgpath}}" alt="Student Picture" style="width:90px;height:90px;" ></td>
+          <tr *ngFor="let obj of home.students ">
+            <td> <img src="../../../assets/images/Students/{{obj.imgpath}}" alt="Student Picture"
+                style="width:90px;height:90px;"></td>
             <td>{{obj.fullname}}</td>
             <td>{{obj.inbusstatus}}</td>
             <td>{{obj.roundstatus}}</td>
             <td>{{obj.busnumber}}</td>
             <td>{{obj.parent}}</td>
 
-                    <td>
-                      <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-inverse-info btn-fw" (click)="openUpdateDailog(obj)">Update</button>
-                        <button type="button" class="btn btn-inverse-danger btn-fw" (click)="openDeleteDialog(obj.id)">Delete</button>
-                      </div>
-                    </td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-inverse-info btn-fw"
+                  (click)="openUpdateDailog(obj)">Update</button>
+                <button type="button" class="btn btn-inverse-danger btn-fw"
+                  (click)="openDeleteDialog(obj.id)">Delete</button>
+              </div>
+            </td>
           </tr>
-         
+
         </tbody>
       </table>
     </div>
-  
+
   </div>
 
   <ng-template #callUdateStudentDailog>
     <mat-dialog-content class="mat-typography">
-    <form class="example-form" [formGroup]="updateForm">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>full name</mat-label>
-        <input type="text" 
-        matInput
-         formControlName="fullname" 
-        [(ngModel)]="p_data.fullname"
-        >
-        <mat-error *ngIf="updateForm.controls['fullname'].hasError('required')">
-          fullname is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <br>
+      <form class="example-form" [formGroup]="updateForm">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>full name</mat-label>
+          <input type="text" matInput formControlName="fullname" [(ngModel)]="p_data.fullname">
+          <mat-error *ngIf="updateForm.controls['fullname'].hasError('required')">
+            fullname is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <br>
 
 
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Status</mat-label>
-        <input type="text" matInput formControlName="inbusstatus"
-        [(ngModel)]="p_data.inbusstatus"
-          >
-        <mat-error *ngIf="updateForm.controls['inbusstatus'].hasError('required')">
-          Status is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-    <br>
-     
-
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>X-Location</mat-label>
-      <input type="text" matInput formControlName="xhome"
-      [(ngModel)]="p_data.xhome"
-      >
-      <mat-error *ngIf="updateForm.controls['xhome'].hasError('required')">
-        xhome is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br>
-
-       
-    <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Y-Location</mat-label>
-    <input type="text" matInput formControlName="yhome"
-    [(ngModel)]="p_data.yhome"
-    >
-    <mat-error *ngIf="updateForm.controls['yhome'].hasError('required')">
-      yhome is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-  <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Status</mat-label>
+          <input type="text" matInput formControlName="inbusstatus" [(ngModel)]="p_data.inbusstatus">
+          <mat-error *ngIf="updateForm.controls['inbusstatus'].hasError('required')">
+            Status is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <br>
 
 
-     
-<label for="" class="my-1" >Parent</label>
-     <select class="form-control" (change)="DetectChangesParent($event)" > 
-      <option disabled selected hidden>{{home.selectedUser.fullname}}</option> 
-      <option value="{{item.id}}" *ngFor="let item of home.parent" >{{item.fullname}}</option>
-     
-    </select>
-    
- 
-    <label for="" class="my-1" >Round</label>
-    <select class="form-control" (change)="DetectChangesround($event)" > 
-     <option disabled selected hidden>{{home.selectedrounds.roundstatus1}}</option> 
-     <option value="{{item.id}}" *ngFor="let item of home.rounds" >{{item.roundstatus1}}</option>
-   </select>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>X-Location</mat-label>
+          <input type="text" matInput formControlName="xhome" [(ngModel)]="p_data.xhome">
+          <mat-error *ngIf="updateForm.controls['xhome'].hasError('required')">
+            xhome is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <br>
 
 
-   <label for="" class="my-1" >Bus</label>
-   <select class="form-control" (change)="DetectChangesBus($event)" > 
-    <option disabled selected hidden>{{home.selectedbuss.busnumber}}</option> 
-    <option value="{{item.id}}" *ngFor="let item of home.bus" >{{item.busnumber}}</option>
-  </select>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Y-Location</mat-label>
+          <input type="text" matInput formControlName="yhome" [(ngModel)]="p_data.yhome">
+          <mat-error *ngIf="updateForm.controls['yhome'].hasError('required')">
+            yhome is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <br>
 
-  <br>
-      <div class="form-group">
+
+
+        <label for="" class="my-1">Parent</label>
+        <select class="form-control" (change)="DetectChangesParent($event)">
+          <option disabled selected hidden>{{home.selectedUser.fullname}}</option>
+          <option value="{{item.id}}" *ngFor="let item of home.parent">{{item.fullname}}</option>
+
+        </select>
+
+
+        <label for="" class="my-1">Round</label>
+        <select class="form-control" (change)="DetectChangesround($event)">
+          <option disabled selected hidden>{{home.selectedrounds.roundstatus1}}</option>
+          <option value="{{item.id}}" *ngFor="let item of home.rounds">{{item.roundstatus1}}</option>
+        </select>
+
+
+        <label for="" class="my-1">Bus</label>
+        <select class="form-control" (change)="DetectChangesBus($event)">
+          <option disabled selected hidden>{{home.selectedbuss.busnumber}}</option>
+          <option value="{{item.id}}" *ngFor="let item of home.bus">{{item.busnumber}}</option>
+        </select>
+
+        <br>
+        <div class="form-group">
           <label for="exampleInputEmail1">Studint Picture</label>
-          <input type="file" #file formControlName="image" (change)="uploadFile(file.files)"   [(ngModel)]="p_data.imgpath">
-    </div>    
+          <input type="file" #file formControlName="image" (change)="uploadFile(file.files)"
+            [(ngModel)]="p_data.imgpath">
+        </div>
 
 
-  </form>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateStudent()" class="btn btn-success"  >Save</button>
-  </mat-dialog-actions>
+      </form>
 
-
-
-  <ng-template #callDeleteDailog>
-    <h2>Are you sure ?</h2>
-    <button mat-button  mat-dialog-close="yes">Yes</button>
-    <button mat-button  mat-dialog-close="no">No</button>
-
+      <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateStudent()"
+          class="btn btn-success">Save</button>
+      </mat-dialog-actions>
+      </mat-dialog-content>
   </ng-template>
+
+
+      <ng-template #callDeleteDailog>
+        <h2>Are You Sure You Want To delete this Student ?</h2>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button class="btn btn-inverse-success btn-fw" mat-dialog-close="Yes" >Yes</button>
+          <button class="btn btn-inverse-danger btn-fw" mat-dialog-close="No" >No</button>
+        </div>
+       
+
+      </ng-template>
