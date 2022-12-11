@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EditprofileService } from 'src/app/teacher/Services/editprofile.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,public edit:EditprofileService) { }
 
-  ngOnInit(): void {
+    userLocalStorage:any=localStorage.getItem('user'); 
+    userInfo:any=JSON.parse(this.userLocalStorage);
+    
+   
+   
+
+     ngOnInit(): void {
+       this.edit.getUserid(this.userInfo.nameid);
+     }
+  
+  Logout()
+  {
+    localStorage.clear();
+    this.router.navigate(["auth/login"])
+
   }
 
 }
