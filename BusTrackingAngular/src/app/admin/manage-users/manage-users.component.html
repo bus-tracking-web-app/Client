@@ -19,7 +19,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of service.users">
-            <td>{{item.imagepath}}"></td>
+            <td> <img src="../../../assets/images/users/{{item.imagepath}}" alt="User Picture" style="width:90px;height:90px;" ></td>
             <td>{{item.fullname}}</td>
             <td>{{item.email}}</td>
             <td>{{item.username}}</td>
