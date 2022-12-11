@@ -21,7 +21,7 @@ import { ManageTestimonialComponent } from './manage-testimonial/manage-testimon
 import { ManageSchoolComponent } from './manage-school/manage-school.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import {DataTablesModule} from 'angular-datatables';
-import { ReportComponent } from './report/report.component'
+import { ReportComponent } from './report/report.component';
 
 
 
@@ -43,7 +43,7 @@ import { ReportComponent } from './report/report.component'
     CreateRouteComponent,
     ManageTestimonialComponent,
     ManageSchoolComponent,
-    ReportComponent
+    ReportComponent,
   ],
   imports: [
     CommonModule,

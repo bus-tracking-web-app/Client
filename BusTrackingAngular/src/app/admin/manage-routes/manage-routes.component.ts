@@ -71,8 +71,10 @@ export class ManageRoutesComponent implements OnInit {
 this.admin.updateRoute(this.updateRouteForm.value)
   }
   
+
   deleteDialog(id :number)
   {
+    debugger
     const dialogref=this.dialog.open(this.callDeleteDialog);
     dialogref.afterClosed().subscribe(result=>
       {

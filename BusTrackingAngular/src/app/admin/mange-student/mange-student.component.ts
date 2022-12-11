@@ -114,9 +114,9 @@ export class MangeStudentComponent implements OnInit {
     const dialogRef=this.dialog.open(this.callDelete);
     dialogRef.afterClosed().subscribe((result)=>{
       if(result!=undefined){
-        if(result=='yes')
+        if(result=='Yes')
         this.home.deleteStudent(id);
-        else if(result=='no')
+        else if(result=='No')
         console.log(id)
       }
     })
