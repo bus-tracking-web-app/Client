@@ -33,8 +33,6 @@
             <th>Student Picture</th>
             <th>Student Name</th>
             <th>Status</th>
-            <th>X-Location</th>
-            <th>Y-Location</th>
             <th>Round</th>
             <th>Bus Number</th>
             <th>Parent</th>
@@ -43,20 +41,18 @@
         </thead>
         <tbody>
           <tr *ngFor="let obj of home.students " >
-
              <td> <img src="../../../assets/images/Students/{{obj.imgpath}}" alt="Student Picture" style="width:90px;height:90px;" ></td>
             <td>{{obj.fullname}}</td>
             <td>{{obj.inbusstatus}}</td>
-            <td>{{obj.xhome}}</td>
-            <td>{{obj.yhome}}</td>
             <td>{{obj.roundstatus}}</td>
             <td>{{obj.busnumber}}</td>
             <td>{{obj.parent}}</td>
 
                     <td>
-                      <button type="button" class="btn btn-inverse-success btn-fw" (click)="openUpdateDailog(obj)">Update </button>
-                      <button type="button" class="btn btn-inverse-danger btn-fw" (click)="openDeleteDialog(obj.id)">Delete</button>
-                   
+                      <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-inverse-info btn-fw" (click)="openUpdateDailog(obj)">Update</button>
+                        <button type="button" class="btn btn-inverse-danger btn-fw" (click)="openDeleteDialog(obj.id)">Delete</button>
+                      </div>
                     </td>
           </tr>
          

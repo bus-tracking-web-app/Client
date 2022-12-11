@@ -24,6 +24,7 @@ import {DataTablesModule} from 'angular-datatables';
 import { ReportComponent } from './report/report.component'
 
 
+
 @NgModule({
   declarations: [
     DashboardComponent,

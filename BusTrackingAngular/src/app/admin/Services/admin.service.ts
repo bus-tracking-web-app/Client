@@ -539,8 +539,10 @@ GetAllStudent(){
 
     updateStudent(body: any)
     {
-      body.imgpath = this.student_image;
-      this.spinner.show();
+      if (this.student_image != undefined) {
+        body.imgpath = this.student_image;
+      }
+     this.spinner.show();
       this.http.put('https://localhost:44364/api/Student', body).subscribe((resp) => {
         this.spinner.hide();
         this.toastr.success('Updated Successfully !!');
@@ -596,7 +598,10 @@ GetAllStudent(){
     }
     updateaboutus(body: any)
     {
-      body.imagepath = this.aboutus_image;
+      if (this.aboutus_image != undefined) {
+         body.imagepath = this.aboutus_image;
+      }
+     
       this.spinner.show();
       this.http.put('https://localhost:44364/api/Aboutus', body).subscribe((resp) => {
         this.spinner.hide();
@@ -640,7 +645,7 @@ GetAllStudent(){
 
 
     upload_Home_Photo(file: FormData) {
-      this.http.post('https://localhost:44364/api/Home/uploadImageHome/', file).subscribe((resp: any) => {
+      this.http.post('https://localhost:44364/api/Home/uploadImageHome', file).subscribe((resp: any) => {
         this.home_image = resp.imagepath;
       }, err => {
         this.toastr.error('Try again');
@@ -653,9 +658,8 @@ GetAllStudent(){
     if (this.home_image != undefined) {
       body.imagepath = this.home_image;
     }
-    body.imagepath = this.home_image;
     this.spinner.show();
-    this.http.put(this.baseURL + "role", body).subscribe((resp) => {
+    this.http.put("https://localhost:44364/api/Home", body).subscribe((resp) => {
       this.spinner.hide();
       this.toastr.success('Updated Successfully !!');
       window.location.reload();

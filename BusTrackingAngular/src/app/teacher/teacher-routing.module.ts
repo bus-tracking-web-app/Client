@@ -5,6 +5,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { HistoryComponent } from './history/history.component';
 
+
 const routes: Routes = [
   {
     path:'attendance',
