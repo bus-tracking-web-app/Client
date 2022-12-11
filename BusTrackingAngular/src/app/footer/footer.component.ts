@@ -8,10 +8,10 @@ import { AdminService } from '../admin/Services/admin.service';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public home:AdminService) { }
+  constructor(public footer:AdminService) { }
 
   ngOnInit(): void {
-    this.home.getAllFooter();
+    this.footer.getAllFooter();
     
   }
 
