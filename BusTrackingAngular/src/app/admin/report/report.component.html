@@ -2,11 +2,30 @@
 <div class="container-fluid page-body-wrapper">
     <app-sidebar></app-sidebar>
     <div class="content-wrapper">
-        <input type="button" value="Download Report" (click)="convetToPDF()" class="btn btn-primary"
-            style="float: right;">
+        
+            <div class="btn-group" role="group" aria-label="Basic example" style="float: right;">
+                <button type="button" class="btn btn-inverse-info btn-fw" (click)="convetToPDF()">DOWNLOAD PDF</button>
+                <button type="button" class="btn btn-inverse-success btn-fw" (click)="ExportToExcel()">DOWNLOAD EXCEL</button>
+              </div>
+            <form class="example-form"[formGroup]="searchform">
+            
+                <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Student Name</mat-label>
+                <input type="text" matInput formControlName="Sname">
+            </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Date</mat-label>
+                    <input type="date" matInput formControlName="Sdate">
+                 
+                </mat-form-field>
+                <br>
+                
+            </form>
+            <button class="btn btn-primary btn-sm" value="Search" (click)="search()">Search</button>
         <div id="contentToConvert">
 
-            <h3 class="page-title text-uppercase" style="font-size: 1.5em; font-weight: 500; margin-left: 300px;">
+            <h3 class="page-title text-uppercase" style="font-size: 1.5em; font-weight: 500; margin-left: 500px;">
                 {{title}}
             </h3>
             <h5 class="page-title text-uppercase" style="font-size: 1.5em; font-weight: 500; margin-left: 5px;">
@@ -15,7 +34,7 @@
            
             <div class="table-responsive" >
                
-                <table datatable class="table" [dtOptions]="dtoptoins" [dtTrigger]="home.dtTrigger"  >
+                <table  class="table"   >
                     
                     <thead>
                         <tr>
@@ -36,6 +55,11 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-lg-5">
+                <h2>Present VS Absent</h2>
+                <canvas id="myChart"></canvas>
+      
+              </div>
             
         </div>
 

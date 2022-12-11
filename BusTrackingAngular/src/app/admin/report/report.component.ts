@@ -3,6 +3,9 @@ import { ReportService } from '../Services/report.service';
 import html2canvas from 'html2canvas';
 import jspdf from 'jspdf';
 import { Subject } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as XLSX from 'xlsx';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-report',
@@ -15,9 +18,13 @@ export class ReportComponent implements OnInit {
   dtoptoins:any={};
   date:any =Date();
   
-
+  searchform:FormGroup=new FormGroup({
+    Sname:new FormControl(),
+    Sdate:new FormControl(),
+  })
   ngOnInit(): void {
     
+
     this.dtoptoins={
       pagingType: 'full_numbers',
       pageLength: 10,
@@ -48,6 +55,97 @@ export class ReportComponent implements OnInit {
   pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
   pdf.save('Report.pdf'); // Generated PDF
   });
+  setTimeout(() => {
+    window.location.reload();
+  }, 4000);
+ 
   }
+
+  search(){
+    debugger;
+    this.home.absent=[];
+    this.home.present=[];
+    if(this.searchform.controls['Sdate'].value!=null && this.searchform.controls['Sname'].value!=null)
+    {
+      this.home.searchAttendance(this.searchform.value);
+    
+    }
+    else if(this.searchform.controls['Sdate'].value==null && this.searchform.controls['Sname'].value!=null)
+    {
+      this.home.searchAttendance(this.searchform.value);
+     
+    }else if(this.searchform.controls['Sdate'].value!=null && this.searchform.controls['Sname'].value==null)
+    {
+      this.home.searchAttendance(this.searchform.value);
+      
+    }
+    else
+    this.home.getAllAttendance();
+   
+    this.getCharts();
+  
+    
+    
+  }
+  fileName= 'ExcelSheet.xlsx';
+ExportToExcel(){
+  /* pass here the table id */
+  let element = document.getElementById('contentToConvert');
+  const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+  /* generate workbook and add the worksheet */
+  const wb: XLSX.WorkBook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+  /* save to file */  
+  XLSX.writeFile(wb, this.fileName);
+
+}
+
+getCharts(){
+ 
+  setTimeout(() => {
+   
+let pieChart = new Chart("myChart", {
+  type: 'pie',
+  data: {
+      labels: ['Present','Absent'],
+      datasets: [{
+          label: '',
+          data: [this.home.present.length,this.home.absent.length],
+          backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(34, 100, 120, 0.2)',
+             
+              
+          ],
+          borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(34, 100, 120, 1)',
+               
+             
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
+});
+
+}, 3000);
+
+
+
+
+}
+
+
+
+
 
 }
