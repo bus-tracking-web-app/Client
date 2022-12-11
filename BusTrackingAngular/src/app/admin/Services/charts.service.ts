@@ -10,6 +10,7 @@ export class ChartsService {
  teacherCount:any={};
  driverCount:any={};
  studentCount:any={};
+ parentCount:any={};
 
   getChartInfo(){
 return this.http.get('https://localhost:44364/API/bus/busAndStudentCount')
@@ -30,6 +31,11 @@ return this.http.get('https://localhost:44364/API/bus/busAndStudentCount')
     this.http.get('https://localhost:44364/API/student/studentcount').subscribe((resp:any)=>{
       this.studentCount=resp;
     })
+  }
+  getParentCount(){
+this.http.get("https://localhost:44364/api/users/ParentCount").subscribe((resp:any)=>{
+  this.parentCount=resp;
+})
   }
 
 }

@@ -25,6 +25,24 @@ export class ReportService {
       this.toastr.error(err.message, err.status);
     })
   }
+  present:any[]=[];
+  absent:any[]=[];
+  searchAttendance(body: any){
+    debugger;
+    this.http.post('https://localhost:44364/API/Attendance/Search', body).subscribe((resp: any) => {
+      this.attendance=resp;
+      this.attendance.forEach((us:any)=>{
+        if(us.astatus=="present")
+        this.present.push(us);
+        else if(us.astatus=="absent")
+        this.absent.push(us);
+      })
+      console.log(this.present.length);
+      console.log(this.absent.length);
+    }, err => {
+      this.toastr.error(err.message, err.status)
+    })
+  }
 
 
 }
