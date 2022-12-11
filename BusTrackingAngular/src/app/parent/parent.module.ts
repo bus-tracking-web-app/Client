@@ -6,19 +6,24 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { ChildrenComponent } from './children/children.component';
 import { SharedParentModule } from '../shared-parent/shared-parent.module';
 import { HistoryComponent } from './history/history.component';
+import { TeacherModule } from '../teacher/teacher.module';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { SharedTeacherModule } from '../shared-teacher/shared-teacher.module';
 
 
 @NgModule({
   declarations: [
     ParentHomeComponent,
     ChildrenComponent,
-    HistoryComponent
+    HistoryComponent,
+    EditProfileComponent
   ],
   imports: [
     CommonModule,
     ParentRoutingModule,
     GoogleMapsModule,
-    SharedParentModule
+    SharedParentModule,
+    SharedTeacherModule
   ]
 })
 export class ParentModule { }

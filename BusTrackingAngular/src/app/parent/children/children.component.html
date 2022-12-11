@@ -1,10 +1,22 @@
- <div class="row">
-  <div class="card" style="width: auto; margin: 0px 20px;" *ngFor="let obj of parentServices.parentChaild">
-    <img src="../../../assets/images/Students/{{obj.imgpath}}" style="width: 300px ; height:300px" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{obj.fullname}}</h5>
-        <button mat-button (click)="ViewAttendance(obj.id)">View Attendance</button>
+
+
+
+
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+
+<app-sid-parent></app-sid-parent>
+<div class="content-wrapper">
+  <div class="row">
+    <div class="card" style="width: auto; margin: 0px 20px;" *ngFor="let obj of parentServices.parentChaild">
+      <img src="../../../assets/images/Students/{{obj.imgpath}}" style="width: 300px ; height:300px" class="card-img-top" alt="...">
+      <div class="card-body">
+          <h5 class="card-title">{{obj.fullname}}</h5>
+          <button class="btn btn-success" mat-button routerLink="/Parent/history/{{obj.id}}" >View Attendance</button>
+      </div>
     </div>
+    
   </div>
   
+</div>
 </div>
