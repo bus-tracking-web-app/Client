@@ -1,15 +1,16 @@
 <app-navbar></app-navbar>
 
 <div class="top_container">
-<section class="hero_section " *ngFor="let obj of home.Home ">
-    <div class="hero-container container"  >
+  <section class="hero_section " >
+    <div class="hero-container container">
       <div class="hero_detail-box">
-        <h1 style="font-size:50px;">
-          {{obj.titel}}
+        <h1 style="font-size:30px;">
+          {{this.home.Home[0].titel}}
         </h1>
+       
         <br>
-        <p style="font-size:35px;">
-          {{obj.txt}}
+        <p style="font-size:25px;">
+          {{this.home.Home[0].txt}}
         </p> <br> <br>
         <div class="hero_btn-continer">
           <a href="" class="call_to-btn btn_white-border">
@@ -17,10 +18,10 @@
           </a>
         </div>
       </div>
-      <div class="hero_img-container"  >
+      <div class="hero_img-container">
         <div>
           <!-- <img src="./assets/images/hero.png" alt="" class="img-fluid"> -->
-          <img src="../../../assets/images/Home/{{obj.imagepath}}" alt="Home Picture" >
+          <img src="../../../assets/images/Home/{{this.home.Home[0].imagepath}}" alt="Home Picture">
         </div>
       </div>
     </div>
@@ -30,268 +31,172 @@
 
 <div class="common_style">
 
-    <!-- about section -->
-    <section class="about_section" *ngFor="let obj of home.about " >
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="about_img-container">
-              <img img src="../../../assets/images/about/{{obj.imagepath}}" alt="AboutUs Picture" >
-            </div>
+  <!-- about section -->
+  <section class="about_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="about_img-container">
+            <img img src="../../../assets/images/about/{{this.home.about[0].imagepath}}" alt="AboutUs Picture">
           </div>
-          <div class="col-md-6">
-            <div class="about_detail-box">
-              <h3 style="font-size:50px;">
-                {{obj.title}}
-              </h3> <br><br>
-              <p style="font-size:25px;">
-                {{obj.information}}
-              </p>
-              <div class="">
-                <a href="" class="call_to-btn btn_white-border">
-                  Read More
-                </a>
-              </div>
+        </div>
+        <div class="col-md-6">
+          <div class="about_detail-box">
+            <h3 style="font-size:50px;">
+              {{this.home.about[0].title}}
+            </h3> <br><br>
+            <p style="font-size:25px; font-family: 'Times New Roman', Times, serif; text-align: justify;">
+              {{this.home.about[0].information}}
+            </p>
+            <br>
+            <div class="">
+              <a href="" class="call_to-btn btn_white-border">
+                Read More
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  
-  
-    <!-- end about section -->
-  
-      <!-- admission section -->
-      <section class="admission_section">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="admission_detail-box">
-                  <h3>
-                    Admission open
-                  </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  </p>
-                  <div class="">
-                    <a href="" class="call_to-btn btn_white-border">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="admission_img-container">
-                  <img src="./assets/images/admission.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-    
-    
-    
-        <!-- end admission section -->
-    
-        <!-- why section -->
-        <section class="why_section">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="why_img-container">
-                  <img src="./assets/images/why.png" alt="">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="why_detail-box">
-                  <h3>
-                    Why learn on Fanadesh
-                  </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  </p>
-                  <div class="">
-                    <a href="" class="call_to-btn btn_white-border">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-    
-    
-        <!-- end why section -->
-    
-        <!-- determine section -->
-        <section class="determine_section">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="determine_detail-box">
-                  <h3>
-                    Datermine the right for you
-                  </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  </p>
-                  <div class="">
-                    <a href="" class="call_to-btn btn_white-border">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="determine_img-container">
-                  <img src="./assets/images/determine.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-    
-    
-        <!-- end determine section -->
-    
-      </div>
-    
-    
-      <!-- client section -->
-      <section class="client_section layout_padding">
-        <h2 class="">
-          Testimonial
-        </h2>
-        <div class="container">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active" >
-                      <div class="row">
-                          <div class="col-md-3">
-                            <div class="client_img-box">
-                              <img img src="../../../assets/images/testimonial/{{this.home.approvedtestimonial[0].imagepath}}" style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial " >
-                            </div>
-                          </div>
-                          <div class="col-md-9">
-                            <div class="client_detail-box">
-                              <h5>
-                                {{this.home.approvedtestimonial[0].name}}
-                              </h5>
-                              <p>
-                                {{this.home.approvedtestimonial[0].feedback}}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                  </div>
-                 <div class="carousel-item">
-                      <div class="row">
-                          <div class="col-md-3">
-                            <div class="client_img-box">
-                              <img img src="../../../assets/images/testimonial/{{this.home.approvedtestimonial[1].imagepath}}" style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial " >
-                            </div>
-                          </div>
-                          <div class="col-md-9">
-                            <div class="client_detail-box">
-                              <h5>
-                                {{this.home.approvedtestimonial[1].name}}
-                              </h5>
-                              <p>
-                                {{this.home.approvedtestimonial[1].feedback}}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                  </div>
-                   <div class="carousel-item">
-                      <div class="row">
-                          <div class="col-md-3">
-                            <div class="client_img-box">
-                              <img img src="../../../assets/images/testimonial/{{this.home.approvedtestimonial[2].imagepath}}" style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial " >
-                            </div>
-                          </div>
-                          <div class="col-md-9">
-                            <div class="client_detail-box">
-                              <h5>
-                                {{this.home.approvedtestimonial[2].name}}
-                              </h5>
-                              <p>
-                                {{this.home.approvedtestimonial[2].feedback}}
+    </div>
+  </section>
 
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                  </div> 
-                </div>
-              </div>
-         
+
+  <!-- end about section -->
+
+  <!-- admission section -->
+ 
+
+
+  <!-- end admission section -->
+
+
+
+
+  <!-- end why section -->
+
+  <!-- determine section -->
+  <section class="determine_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="determine_detail-box">
+            <h3>
+              Datermine the right for you
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+            </p>
+            <div class="">
+              <a href="" class="call_to-btn btn_white-border">
+                Read More
+              </a>
+            </div>
+          </div>
         </div>
-      </section>
-    
-    
-      <!-- end client section -->
-    
-    
-        <!-- contact section -->
-    
-        <section class="contact_section ">
-    
-            <div class="container">
-             
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="d-flex justify-content-center d-md-block">
-                    <h2>
-                      Contact Us
-                    </h2>
-                  </div>
-                  <form action="">
-                    <div class="contact_form-container">
-                      <div>
-                        <div>
-                          <input type="text" placeholder="Name">
-                        </div>
-                        <div>
-                          <input type="email" placeholder="Email">
-                        </div>
-                        <div>
-                          <input type="text" placeholder="Phone Number">
-                        </div>
-                        <div class="mt-5">
-                          <input type="text" placeholder="Message">
-                        </div>
-                        <div class="mt-5">
-                          <button type="submit">
-                            send
-                          </button>
-                        </div>
-                      </div>
-        
-                    </div>
-        
-                  </form>
-                </div>
-                <div class="col-md-6">
-                  <div class="contact_img-box">
-                    <img src="./assets/images/students.jpg" alt="">
-                  </div>
-                </div>
+        <div class="col-md-6">
+          <div class="determine_img-container">
+            <img src="./assets/images/determine.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- end determine section -->
+
+</div>
+
+
+<!-- client section -->
+<section class="client_section layout_padding">
+  <h2 class="">
+    Testimonial
+  </h2>
+  <div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="client_img-box">
+                <img img src="../../../assets/images/testimonial/{{this.home.approvedtestimonial[0].imagepath}}"
+                  style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial ">
               </div>
             </div>
-          </section>
-          <!-- end contact section -->
-       
-<app-footer><app-footer>
+            <div class="col-md-9">
+              <div class="client_detail-box">
+                <h5>
+                  {{this.home.approvedtestimonial[0].name}}
+                </h5>
+                <p>
+                  {{this.home.approvedtestimonial[0].feedback}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="client_img-box">
+                <img img src="../../../assets/images/testimonial/{{this.home.approvedtestimonial[1].imagepath}}"
+                  style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial ">
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="client_detail-box">
+                <h5>
+                  {{this.home.approvedtestimonial[1].name}}
+                </h5>
+                <p>
+                  {{this.home.approvedtestimonial[1].feedback}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="client_img-box">
+                <img img src="../../../assets/images/testimonial/{{this.home.approvedtestimonial[2].imagepath}}"
+                  style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial ">
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="client_detail-box">
+                <h5>
+                  {{this.home.approvedtestimonial[2].name}}
+                </h5>
+                <p>
+                  {{this.home.approvedtestimonial[2].feedback}}
+
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- end client section -->
+
+
+<!-- contact section -->
+
+
+<!-- end contact section -->
+
+<app-footer></app-footer>

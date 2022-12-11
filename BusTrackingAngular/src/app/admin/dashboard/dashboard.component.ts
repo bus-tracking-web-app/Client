@@ -102,6 +102,7 @@ export class DashboardComponent implements OnInit {
     this.Chartservice.getTeacherCount();
     this.Chartservice.getDriverCount();
     this.Chartservice.getStudentCount();
+    this.Chartservice.getParentCount();
     this.Chartservice.getChartInfo().subscribe((resp:any)=>{
       this.allData=resp;
       this.allData.forEach((us: any) => {
@@ -148,10 +149,10 @@ export class DashboardComponent implements OnInit {
   const pieChart = new Chart("pieChart", {
     type: 'pie',
     data: {
-        labels: ['TeacherCount','DriverCount','StudentCount'],
+        labels: ['TeacherCount','DriverCount','ParentCount'],
         datasets: [{
             label: '',
-            data: [this.Chartservice.teacherCount,this.Chartservice.driverCount,this.Chartservice.studentCount],
+            data: [this.Chartservice.teacherCount,this.Chartservice.driverCount,this.Chartservice.parentCount],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(34, 100, 120, 0.2)',
@@ -177,7 +178,7 @@ export class DashboardComponent implements OnInit {
 });
 
 
-}, 2500);
+}, 3000);
   }
 
   }
