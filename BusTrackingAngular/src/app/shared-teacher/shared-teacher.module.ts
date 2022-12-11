@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SidDriverComponent } from './sid-driver/sid-driver.component';
+import { SidParentComponent } from './sid-parent/sid-parent.component';
 
 
 
@@ -15,7 +16,8 @@ import { SidDriverComponent } from './sid-driver/sid-driver.component';
   declarations: [
     NavComponent,
     SideComponent,
-    SidDriverComponent
+    SidDriverComponent,
+    SidParentComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { SidDriverComponent } from './sid-driver/sid-driver.component';
     FormsModule,
     RouterModule,
     MatDialogModule,
-    SidDriverComponent
+    SidDriverComponent,
+    SidParentComponent,
   ]
 })
 export class SharedTeacherModule { }
