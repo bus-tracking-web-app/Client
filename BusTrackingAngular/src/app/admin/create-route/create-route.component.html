@@ -1,7 +1,7 @@
 <h2>Add Route</h2> 
 <mat-dialog-content class="mat-typography">
    <form class="example-form" [formGroup]="createRouteForm" >
-    <mat-form-field class="example-full-width" appearance="fill">
+    <!-- <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>x-axis current</mat-label>
       <input type="text" matInput formControlName="xcurrent">
       <mat-error *ngIf="createRouteForm.controls['xcurrent'].hasError('required')">
@@ -16,7 +16,7 @@
         <mat-error *ngIf="createRouteForm.controls['ycurrent'].hasError('required')">
           y-axis current <strong>required</strong>
         </mat-error>
-      </mat-form-field>
+      </mat-form-field> -->
 <br>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>x-axis start</mat-label>
@@ -38,7 +38,7 @@
         <mat-label>x-axis end</mat-label>
         <input type="text" matInput formControlName="xend">
         <mat-error *ngIf="createRouteForm.controls['xend'].hasError('required')">
-            end_Date <strong>required</strong>
+          x-axis end <strong>required</strong>
         </mat-error>
       </mat-form-field>  <br>
       <mat-form-field class="example-full-width" appearance="fill">
@@ -48,13 +48,11 @@
           y-axis end <strong>required</strong>
         </mat-error>
       </mat-form-field>  <br>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>bus id</mat-label>
-        <input type="number" matInput formControlName="busid">
-        <mat-error *ngIf="createRouteForm.controls['busid'].hasError('required')">
-          bus Number <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
+      <select class="form-control" (change)="DetectChanges($event)" >
+         <option  selected disabled hidden  >Choose Bus Number</option> 
+         <option value="{{item.id}}" *ngFor="let item of admin.bus" >{{item.busnumber}}</option>
+     </select>
+ 
       <br>
     </form >
 </mat-dialog-content>

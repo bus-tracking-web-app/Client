@@ -1,0 +1,90 @@
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+    <app-sid-driver></app-sid-driver>
+    <div class="container-xl px-4 mt-4">
+        <!-- Account page navigation-->
+    
+        <hr class="mt-0 mb-4">
+        <div class="row">
+            <div class="col-xl-4">
+                <!-- Profile picture card-->
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+                        <!-- Profile picture image-->
+                        <img class="img-account-profile rounded-circle mb-2"
+                            src="../../../assets/images/users/{{this.edit.User.imagepath}}" alt="Your profile picture" style="width:120px;height:120px;">
+                        <!-- Profile picture help block-->
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <!-- Profile picture upload button-->
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Default file input example</label>
+                            <input class="form-control" type="file" id="formFile" [(ngModel)]="this.edit.User.imagepath"  #file formControlName="imagepath" (change)="uploadFile(file.files)">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <!-- Account details card-->
+                <div class="card mb-4">
+                    <div class="card-header">Account Details</div>
+                    <div class="card-body">
+                        <form [formGroup]="updateForm" >
+                            <!-- Form Group (username)-->
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername">Full Name</label>
+                                <input class="form-control" type="text"
+                                matInput
+                                formControlName="fullname" 
+                               [(ngModel)]="this.edit.User.fullname"    
+                                >
+                            </div>
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (first name)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">Email</label>
+                                    <input class="form-control" type="text"
+                                    matInput formControlName="email"
+                                    [(ngModel)]="this.edit.User.email"
+                                    >
+                                </div>
+                                <!-- Form Group (last name)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLastName">Useranme</label>
+                                    <input class="form-control"  type="text"
+                                    matInput formControlName="username"
+                                    [(ngModel)]="this.edit.User.username"    
+                                    >
+                                </div>
+                            </div>
+                            <!-- Form Row        -->
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (organization name)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">password</label>
+                                    <input class="form-control" type="text"
+                                    matInput formControlName="password"
+                                    [(ngModel)]="this.edit.User.password"
+                                    >
+                                </div>
+                                <!-- Form Group (location)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLocation">Phone</label>
+                                    <input class="form-control" type="text"
+                                    matInput formControlName="phone"
+                                    [(ngModel)]="this.edit.User.phone"
+                                    >
+                                </div>
+                            </div>
+                            <div class="mt-5"></div>
+                            <!-- Save changes button-->
+                            <button class="btn btn-primary" type="button" (click)="saveData()">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

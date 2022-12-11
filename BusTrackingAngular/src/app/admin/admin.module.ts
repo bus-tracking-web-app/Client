@@ -19,8 +19,10 @@ import { ManageRoutesComponent } from './manage-routes/manage-routes.component';
 import { CreateRouteComponent } from './create-route/create-route.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageSchoolComponent } from './manage-school/manage-school.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 import {DataTablesModule} from 'angular-datatables';
-import { ReportComponent } from './report/report.component'
+import { ReportComponent } from './report/report.component';
+
 
 
 @NgModule({
@@ -41,12 +43,13 @@ import { ReportComponent } from './report/report.component'
     CreateRouteComponent,
     ManageTestimonialComponent,
     ManageSchoolComponent,
-    ReportComponent
+    ReportComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedAdminModule,
+    GoogleMapsModule,
     DataTablesModule
   ]
 })

@@ -36,10 +36,7 @@
 
             <mat-dialog-content class="mat-typography">
               <form class="example-form" [formGroup]="updateSchoolForm" >
-               <mat-form-field class="example-full-width" appearance="fill">
-                 <mat-label>School Logo</mat-label>
-                 <input type="text" matInput formControlName="logo"[(ngModel)]="previousData.logo">
-               </mat-form-field>
+                <input type="file" [(ngModel)]="previousData.logo"  #file formControlName="logo" (change)="uploadFile(file.files)">
                <br>
             
                  <mat-form-field class="example-full-width" appearance="fill">

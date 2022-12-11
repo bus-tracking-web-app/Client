@@ -38,13 +38,7 @@
           <ng-template #callUpdateDialog>
 
               <form class="example-form" [formGroup]="updateTestimonialForm" >
-               <!-- <mat-form-field class="example-full-width" appearance="fill">
-                 <mat-label>Testimonial Status</mat-label>
-                 <input type="number" matInput formControlName="statusid"[(ngModel)]="previousData.STATUSID">
-                 <mat-error *ngIf="updateTestimonialForm.controls['statusid'].hasError('required')">
-                  bus Number <strong>required</strong>
-                </mat-error>
-               </mat-form-field> -->
+          
                    <label for="" class="my-1" >Testimonial Status</label>
                <select class="form-control" (change)="DetectChanges($event)" > 
                 <option disabled selected hidden>{{AdminService.selectedTestimonialStatus.status}}</option> 

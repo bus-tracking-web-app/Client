@@ -24,17 +24,17 @@ import {DataTablesModule} from 'angular-datatables'
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { TokenIntercepter } from 'src/Intercepter/token.intercepter';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-
   HomeComponent,
     NavbarComponent,
     FooterComponent,
-
     AboutUsComponent,
     ContactUsComponent,
     TestimonialComponent,
+    
   ],
   imports: [
     BrowserModule,

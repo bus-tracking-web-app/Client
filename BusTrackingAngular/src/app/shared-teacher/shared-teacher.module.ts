@@ -7,13 +7,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SidDriverComponent } from './sid-driver/sid-driver.component';
+import { SidParentComponent } from './sid-parent/sid-parent.component';
 
 
 
 @NgModule({
   declarations: [
     NavComponent,
-    SideComponent
+    SideComponent,
+    SidDriverComponent,
+    SidParentComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    MatDialogModule
+    MatDialogModule,
+    SidDriverComponent,
+    SidParentComponent,
   ]
 })
 export class SharedTeacherModule { }

@@ -4,12 +4,13 @@
 <section class="hero_section " *ngFor="let obj of home.Home ">
     <div class="hero-container container"  >
       <div class="hero_detail-box">
-        <h1 [ngStyle]="">
+        <h1 style="font-size:50px;">
           {{obj.titel}}
         </h1>
-        <p>
+        <br>
+        <p style="font-size:35px;">
           {{obj.txt}}
-        </p>
+        </p> <br> <br>
         <div class="hero_btn-continer">
           <a href="" class="call_to-btn btn_white-border">
             Read More
@@ -40,10 +41,10 @@
           </div>
           <div class="col-md-6">
             <div class="about_detail-box">
-              <h3>
+              <h3 style="font-size:50px;">
                 {{obj.title}}
-              </h3>
-              <p>
+              </h3> <br><br>
+              <p style="font-size:25px;">
                 {{obj.information}}
               </p>
               <div class="">
@@ -176,69 +177,64 @@
                   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
+                  <div class="carousel-item active" >
                       <div class="row">
                           <div class="col-md-3">
                             <div class="client_img-box">
-                              <img src="./assets/images/client.png" alt="">
+                              <img img src="../../../assets/images/testimonial/{{this.home.approvedtestimonial[0].imagepath}}" style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial " >
                             </div>
                           </div>
                           <div class="col-md-9">
                             <div class="client_detail-box">
                               <h5>
-                                Alex Du
+                                {{this.home.approvedtestimonial[0].name}}
                               </h5>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                {{this.home.approvedtestimonial[0].feedback}}
                               </p>
                             </div>
                           </div>
                         </div>
                   </div>
-                  <div class="carousel-item">
+                 <div class="carousel-item">
                       <div class="row">
                           <div class="col-md-3">
                             <div class="client_img-box">
-                              <img src="./assets/images/client.png" alt="">
+                              <img img src="../../../assets/images/testimonial/{{this.home.approvedtestimonial[1].imagepath}}" style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial " >
                             </div>
                           </div>
                           <div class="col-md-9">
                             <div class="client_detail-box">
                               <h5>
-                                Alex Du
+                                {{this.home.approvedtestimonial[1].name}}
                               </h5>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                {{this.home.approvedtestimonial[1].feedback}}
                               </p>
                             </div>
                           </div>
                         </div>
                   </div>
-                  <div class="carousel-item">
+                   <div class="carousel-item">
                       <div class="row">
                           <div class="col-md-3">
                             <div class="client_img-box">
-                              <img src="./assets/images/client.png" alt="">
+                              <img img src="../../../assets/images/testimonial/{{this.home.approvedtestimonial[2].imagepath}}" style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial " >
                             </div>
                           </div>
                           <div class="col-md-9">
                             <div class="client_detail-box">
                               <h5>
-                                Alex Du
+                                {{this.home.approvedtestimonial[2].name}}
                               </h5>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                {{this.home.approvedtestimonial[2].feedback}}
+
                               </p>
                             </div>
                           </div>
                         </div>
-                  </div>
+                  </div> 
                 </div>
               </div>
          
