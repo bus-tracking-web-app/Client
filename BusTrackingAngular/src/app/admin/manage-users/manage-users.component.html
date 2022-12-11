@@ -81,9 +81,7 @@
       </mat-error>
     </mat-form-field>
     <br>
-    <label for="formFile" class="form-label">Default file input example</label>
-    <input class="form-control" type="file" id="formFile" [(ngModel)]="p_data.imagepath" #file formControlName="imagepath" (change)="UploadFile(file.files)">                        
-    <br><br><br>
+                      
     <label for="" class="my-1">Role</label>
     <select class="form-control" (change)="DetectChanges($event)">
       <option disabled selected hidden>{{service.selectedRole.rolename}}</option>

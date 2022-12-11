@@ -7,7 +7,7 @@ import { ParentHomeComponent } from './parent-home/parent-home.component';
 
 const routes: Routes = [
   {
-    path:"Parent",
+    path:"parent",
     component:ParentHomeComponent
   },
   {

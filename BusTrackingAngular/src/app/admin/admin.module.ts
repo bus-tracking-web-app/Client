@@ -22,6 +22,7 @@ import { ManageSchoolComponent } from './manage-school/manage-school.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import {DataTablesModule} from 'angular-datatables';
 import { ReportComponent } from './report/report.component';
+import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profile.component';
 
 
 
@@ -44,6 +45,7 @@ import { ReportComponent } from './report/report.component';
     ManageTestimonialComponent,
     ManageSchoolComponent,
     ReportComponent,
+    EditAdminProfileComponent,
   ],
   imports: [
     CommonModule,

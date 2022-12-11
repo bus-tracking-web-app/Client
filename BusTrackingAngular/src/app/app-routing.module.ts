@@ -33,12 +33,12 @@ const routes: Routes = [
   {
     path:'admin',
     loadChildren:()=>AdminModule,
-    // canActivate:[AuthorizationGuard]
+     canActivate:[AuthorizationGuard]
   },
   {
     path:'teacher',
     loadChildren:()=>TeacherModule,
-    // canActivate:[AuthorizationGuard]
+     canActivate:[AuthorizationGuard]
  
   },
   {
@@ -47,11 +47,13 @@ const routes: Routes = [
   },
   {
     path:'driver',
-    loadChildren:()=>DriverModule
+    loadChildren:()=>DriverModule,
+    canActivate:[AuthorizationGuard]
   },
   {
-    path:'Parent',
-    loadChildren:()=>ParentModule
+    path:'parent',
+    loadChildren:()=>ParentModule,
+    canActivate:[AuthorizationGuard]
   }
 
 ];

@@ -1,109 +1,113 @@
 <app-navbar></app-navbar>
 <div class="container-fluid page-body-wrapper">
-    <app-sidebar></app-sidebar>
-    <div class="content-wrapper">
-        <div class="table-responsive">
-          <button class="btn btn-inverse-success btn-fw" (click)="createDialog()">Create New</button>
+  <app-sidebar></app-sidebar>
+  <div class="content-wrapper">
+    <div class="table-responsive">
+      <button class="btn btn-inverse-success btn-fw" (click)="createDialog()">Create New</button>
 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>logo</th>
-                  <th>xschool</th>
-                  <th>yschool</th>
-                  <th>Operation</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let obj of AdminService.school">
-                    <td><img src="../../../assets/images/school/{{obj.logo}}" alt="" style="width: 200px; height:200px;"></td>
-                    <th>{{obj.xschool}}</th>
-                  <td>{{obj.yschool}}</td>
-                   <td>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-inverse-info btn-fw" (click)="updateDialog(obj)">Update</button>
-                      <button type="button" class="btn btn-inverse-danger btn-fw" (click)="deleteDialog(obj.id)">Delete</button>
-                    </div>
-                  </td>
-                </tr>
-             
-
-              </tbody>
-            </table>
-          </div>
-
-          <ng-template #callUpdateDialog>
-
-            <mat-dialog-content class="mat-typography">
-              <form class="example-form" [formGroup]="updateSchoolForm" >
-                <input type="file" [(ngModel)]="previousData.logo"  #file formControlName="logo" (change)="uploadFile(file.files)">
-               <br>
-            
-                 <mat-form-field class="example-full-width" appearance="fill">
-                   <mat-label>x-axis School</mat-label>
-                   <input type="text" matInput formControlName="xschool"[(ngModel)]="previousData.xschool">
-                 </mat-form-field>
-           <br>
-                 <mat-form-field class="example-full-width" appearance="fill">
-                   <mat-label>y-axis School</mat-label>
-                   <input type="text" matInput formControlName="yschool"[(ngModel)]="previousData.yschool">
-                 </mat-form-field>
-                
-                 <br>
-               </form >
-           </mat-dialog-content>
-           <mat-dialog-actions align="end">
-            <div class="btn-group" role="group" aria-label="Basic example">
-
-             <button class="btn btn-inverse-danger btn-fw" mat-button mat-dialog-close>Cancel</button>
-             <button class="btn btn-inverse-success btn-fw" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateSchool()" >Update</button>
-           </div>
-            </mat-dialog-actions>
-          </ng-template>
-
-          <ng-template #callDeleteDialog>
-            <h2>Are You Sure You Want To delete this School info ?</h2>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button class="btn btn-inverse-success btn-fw" mat-dialog-close="Yes" >Yes</button>
-              <button class="btn btn-inverse-danger btn-fw" mat-dialog-close="No" >No</button>
-            </div>
-           
-
-          </ng-template>
-
-          <ng-template #callCreateDialog>
-            <mat-dialog-content class="mat-typography">
-                <form class="example-form" [formGroup]="createSchoolForm" >
-
-              
-                   <mat-form-field class="example-full-width" appearance="fill">
-                     <mat-label>x-axis School</mat-label>
-                     <input type="text" matInput formControlName="xschool">
-                   </mat-form-field>
-             <br>
-                   <mat-form-field class="example-full-width" appearance="fill">
-                     <mat-label>y-axis School</mat-label>
-                     <input type="text" matInput formControlName="yschool">
-                   </mat-form-field>
-                   <br>
-                   <label><strong>logo : </strong></label>
-                   <br>
-
-                   <input type="file" #file formControlName="logo" (change)="uploadFile(file.files)">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>logo</th>
+            <th>xschool</th>
+            <th>yschool</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let obj of AdminService.school">
+            <td><img src="../../../assets/images/school/{{obj.logo}}" alt="school image" style="width:90px;height:90px;"></td>
+            <th>{{obj.xschool}}</th>
+            <td>{{obj.yschool}}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-inverse-info btn-fw" (click)="updateDialog(obj)">Update</button>
+                <button type="button" class="btn btn-inverse-danger btn-fw"
+                  (click)="deleteDialog(obj.id)">Delete</button>
+              </div>
+            </td>
+          </tr>
 
 
-                 </form >
-             </mat-dialog-content>
-             <mat-dialog-actions align="end">
-               <button class="btn btn-inverse-danger btn-fw" mat-button mat-dialog-close>Cancel</button>
-               <button class="btn btn-inverse-success btn-fw" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="createSchool()" >Create</button>
-             </mat-dialog-actions>
-
-            
-
-        </ng-template>
-
-    
-        
-        </div>
+        </tbody>
+      </table>
     </div>
+
+    <ng-template #callUpdateDialog>
+
+      <mat-dialog-content class="mat-typography">
+        <form class="example-form" [formGroup]="updateSchoolForm">
+          <input type="file" [(ngModel)]="previousData.logo" #file formControlName="logo"
+            (change)="uploadFile(file.files)">
+          <br>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>x-axis School</mat-label>
+            <input type="text" matInput formControlName="xschool" [(ngModel)]="previousData.xschool">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>y-axis School</mat-label>
+            <input type="text" matInput formControlName="yschool" [(ngModel)]="previousData.yschool">
+          </mat-form-field>
+
+          <br>
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <div class="btn-group" role="group" aria-label="Basic example">
+
+          <button class="btn btn-inverse-danger btn-fw" mat-button mat-dialog-close>Cancel</button>
+          <button class="btn btn-inverse-success btn-fw" mat-button [mat-dialog-close]="true" cdkFocusInitial
+            (click)="updateSchool()">Update</button>
+        </div>
+      </mat-dialog-actions>
+    </ng-template>
+
+    <ng-template #callDeleteDialog>
+      <h2>Are You Sure You Want To delete this School info ?</h2>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn btn-inverse-success btn-fw" mat-dialog-close="Yes">Yes</button>
+        <button class="btn btn-inverse-danger btn-fw" mat-dialog-close="No">No</button>
+      </div>
+
+
+    </ng-template>
+
+    <ng-template #callCreateDialog>
+      <mat-dialog-content class="mat-typography">
+        <form class="example-form" [formGroup]="createSchoolForm">
+
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>x-axis School</mat-label>
+            <input type="text" matInput formControlName="xschool">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>y-axis School</mat-label>
+            <input type="text" matInput formControlName="yschool">
+          </mat-form-field>
+          <br>
+          <label><strong>logo : </strong></label>
+          <br>
+
+          <input type="file" #file formControlName="logo" (change)="uploadFile(file.files)">
+
+
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button class="btn btn-inverse-danger btn-fw" mat-button mat-dialog-close>Cancel</button>
+        <button class="btn btn-inverse-success btn-fw" mat-button [mat-dialog-close]="true" cdkFocusInitial
+          (click)="createSchool()">Create</button>
+      </mat-dialog-actions>
+
+
+
+    </ng-template>
+
+
+
+  </div>
+</div>

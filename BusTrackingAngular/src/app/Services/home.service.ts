@@ -23,7 +23,6 @@ export class HomeService {
     this.http.get('https://localhost:44364/API/Bus').subscribe((resp:any)=>{
       this.bus=resp;
       this.spinner.hide();
-      this.toastr.success('Data Retrieved!');
     },err=>{
       this.spinner.hide();
       this.toastr.error(err.message, err.status);
@@ -36,7 +35,6 @@ export class HomeService {
       this.http.get('https://localhost:44364/api/Home/Get').subscribe((res:any)=>{
       this.Home=res;
       this.spinner.hide();
-      this.toastr.success("Page retrieved successfully");
     },err=>{
       this.spinner.hide();
       this.toastr.error("there is no data")
@@ -49,7 +47,6 @@ export class HomeService {
       this.http.get('https://localhost:44364/api/Aboutus/Get').subscribe((res:any)=>{
       this.about=res;
       this.spinner.hide();
-      this.toastr.success("Page retrieved successfully");
     },err=>{
       this.spinner.hide();
       this.toastr.error("there is no data")
