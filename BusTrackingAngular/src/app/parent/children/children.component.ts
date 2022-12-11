@@ -10,16 +10,15 @@ import { ParentService } from 'src/app/Services/parent.service';
 export class ChildrenComponent implements OnInit {
 
   constructor(public parentServices : ParentService) { }
+  userLocalStorage:any=localStorage.getItem('user'); 
+  userInfo:any=JSON.parse(this.userLocalStorage);
 
   ngOnInit(): void {
-    this.parentServices.getParentStudents(75)
+    this.parentServices.getParentStudents(this.userInfo.nameid)
     }
-
-
-    // userLocalStorage:any=localStorage.getItem('user'); 
-    // userInfo:any=JSON.parse(this.userLocalStorage);
     ViewAttendance(id:number)
     {
+      this.parentServices.GetattendanceByStudentId(id);
 
     }
 }

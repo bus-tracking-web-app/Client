@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DreiverService } from 'src/app/Services/dreiver.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-driver-home',
@@ -8,6 +9,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./driver-home.component.css']
 })
 export class DriverHomeComponent implements OnInit {
+  userLocalStorage:any=localStorage.getItem('user'); 
+  userInfo:any=JSON.parse(this.userLocalStorage);
+ 
 
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
@@ -17,9 +21,9 @@ export class DriverHomeComponent implements OnInit {
     google.maps.LatLngLiteral | undefined
 
     setLocation:any={}
-    driverId: number =58;
+    driverId: number =this.userInfo.nameid;
 
-  constructor(public dreiverServices:DreiverService,public toaster:ToastrService) { }
+  constructor(public dreiverServices:DreiverService,public toaster:ToastrService,public router:Router) { }
 
   ngOnInit(): void {
     
@@ -106,8 +110,7 @@ export class DriverHomeComponent implements OnInit {
     {
       this.dreiverServices.UpdateAllStudentStatus();
       this.dreiverServices.SetCureenBusLocationAftreEnf(this.driverId);
-      //
-      // this.router.navigate(['auth/login']);
+      this.router.navigate(['auth/login']);
       localStorage.clear();
       this.toaster.success("You Finished Your Routes Today , Thank You !");
       return

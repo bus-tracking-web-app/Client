@@ -1,7 +1,17 @@
 
-<div class="my-google-map">
-    <google-map id="map" height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="options">
-        <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title" [options]="marker.options">
-        </map-marker>
-    </google-map>
+
+
+<app-nav></app-nav>
+<div class="container-fluid page-body-wrapper">
+
+<app-sid-parent></app-sid-parent>
+<div class="content-wrapper">
+    <div class="my-google-map">
+        <google-map id="map" height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="options">
+            <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title" [options]="marker.options">
+            </map-marker>
+        </google-map>
+    </div>
+
+</div>
 </div>

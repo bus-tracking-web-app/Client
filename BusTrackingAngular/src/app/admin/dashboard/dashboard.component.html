@@ -10,79 +10,75 @@
 <div class="container-fluid page-body-wrapper">
   <app-sidebar></app-sidebar>
   <div class="content-wrapper">
- 
-    
-  
-        <div class="col-md-6 grid-margin transparent">
-          <div class="row">
-            <div class="col-md-6 mb-4 stretch-card transparent">
-              <div class="card card-tale">
-                <div class="card-body">
-                  <p class="mb-4">Total Students</p>
-                  <p class="fs-30 mb-2">{{service.studentCount}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-4 stretch-card transparent">
-              <div class="card card-dark-blue">
-                <div class="card-body">
-                  <p class="mb-4">Total Techers</p>
-                  <p class="fs-30 mb-2">{{service.techerCount}}</p>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-              <div class="card card-light-blue">
-                <div class="card-body">
-                  <p class="mb-4">Total Parents</p>
-                  <p class="fs-30 mb-2">{{service.parentsCount}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 stretch-card transparent">
-              <div class="card card-light-danger">
-                <div class="card-body">
-                  <p class="mb-4">Total Drivers</p>
-                  <p class="fs-30 mb-2">{{service.driverCount}}</p>
-                </div>
-              </div>
-          </div>
-          </div>
-          <div class="col-md-5">
-            <div class="my-google-map">
-              <google-map id="map" height="500px" width="50%" [zoom]="zoom" [center]="center" [options]="options">
-                  <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title" [options]="marker.options">
-                  </map-marker>
-              </google-map>
-          </div>
-          </div>
-          
-
-         
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="my-google-map" style="float: right;">
+          <google-map id="map" [zoom]="zoom" [center]="center" [options]="options">
+            <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+              [title]="marker.title" [options]="marker.options">
+            </map-marker>
+          </google-map>
         </div>
-    
-    
-
-        
-      <div class="row ">
-        <div class="col-lg-5">
-          <h2>charts</h2>
-          <canvas id="myChart"></canvas>
-
-        </div>
-        <div class="col-lg-5" style=" height:400px;">
-          <h2> pie charts</h2>
-          <canvas id="pieChart"></canvas>
-
-        </div>
-
       </div>
-
-    
-
-</div>
-
+      <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-tale">
+              <div class="card-body">
+                <p class="mb-4">Total Students</p>
+                <p class="fs-30 mb-2">{{service.studentCount}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-dark-blue">
+              <div class="card-body">
+                <p class="mb-4">Total Techers</p>
+                <p class="fs-30 mb-2">{{service.techerCount}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+            <div class="card card-light-blue">
+              <div class="card-body">
+                <p class="mb-4">Total Parents</p>
+                <p class="fs-30 mb-2">{{service.parentsCount}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 stretch-card transparent">
+            <div class="card card-light-danger">
+              <div class="card-body">
+                <p class="mb-4">Total Drivers</p>
+                <p class="fs-30 mb-2">{{service.driverCount}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card" >
+          <div class="card-body">
+            <h2>charts</h2>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card" >
+          <div class="card-body">
+              <h2> pie charts</h2>
+              <canvas id="pieChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
   </div>

@@ -33,7 +33,8 @@ import { TokenIntercepter } from 'src/Intercepter/token.intercepter';
     FooterComponent,
     AboutUsComponent,
     ContactUsComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    
   ],
   imports: [
     BrowserModule,
