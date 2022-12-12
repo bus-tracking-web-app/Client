@@ -35,12 +35,12 @@ export class TestimonialComponent implements OnInit {
 
   send()
   {
-    console.log(this.testimonialForm.value);
 
     this.testimonialForm.controls['statusid'].setValue(1);
     this.HomeServices.createTestimonial(this.testimonialForm.value);
     
   }
+  
 
 
 }

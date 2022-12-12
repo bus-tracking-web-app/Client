@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminProfileService } from 'src/app/admin/Services/admin-profile.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,16 +9,24 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,public edit:AdminProfileService) { }
 
-  ngOnInit(): void {
-  }
+  userLocalStorage:any=localStorage.getItem('user'); 
+  userInfo:any=JSON.parse(this.userLocalStorage);
+  
+ 
+ 
 
-  Logout()
-  {
-    localStorage.clear();
-    this.router.navigate(["auth/login"])
+   ngOnInit(): void {
+     this.edit.getUserid(this.userInfo.nameid);
+   }
 
-  }
+Logout()
+{
+  localStorage.clear();
+  this.router.navigate(["auth/login"])
+
+}
+
 
 }

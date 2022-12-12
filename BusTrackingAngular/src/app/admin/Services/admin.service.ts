@@ -42,7 +42,6 @@ export class AdminService {
     this.http.get(this.baseURL + "users/userwithrole").subscribe((res: any) => {
       this.users = res;
       this.spinner.hide();
-      this.toastr.success("This is All Users");
     }, err => {
       this.spinner.hide();
       this.toastr.error("there is no data")
@@ -88,9 +87,9 @@ export class AdminService {
 
   updateUser(body:any)
   {
-    // if (this.display_photo != undefined) {
-    //   body.imagepath = this.display_image;
-    // }
+     if (this.display_photo != undefined) {
+       body.imagepath = this.display_image;
+    }
     
     this.spinner.show();
     this.http.put(this.baseURL + "users", body).subscribe((resp: any) => {
@@ -121,7 +120,6 @@ export class AdminService {
     this.http.get(this.baseURL + "role").subscribe((res: any) => {
       this.role = res;
       this.spinner.hide();
-      this.toastr.success("This is All Role");
     }, err => {
       this.spinner.hide();
       this.toastr.error("there is no data");
@@ -145,7 +143,6 @@ export class AdminService {
       this.http.get('https://localhost:44364/API/Bus').subscribe((resp: any) => {
         this.bus = resp;
         this.spinner.hide();
-        this.toastr.success('Data Retrieved!');
         console.log(resp);
       }, err => {
         this.spinner.hide();
@@ -156,7 +153,6 @@ export class AdminService {
       this.http.get('https://localhost:44364/API/Bus/get').subscribe((resp: any) => {
         this.all = resp;
         this.spinner.hide();
-        this.toastr.success('Data Retrieved!');
       }, err => {
         this.spinner.hide();
         this.toastr.error(err.message, err.status);
@@ -193,7 +189,6 @@ export class AdminService {
       this.http.get('https://localhost:44364/API/Bus/searchByBusNumber/' + bnum).subscribe((resp: any) => {
         this.bus = resp;
         this.spinner.hide();
-        this.toastr.success('Search Successfully!');
       }, err => {
         this.spinner.hide();
         this.toastr.error(err.message, err.status)
@@ -207,7 +202,6 @@ getAllFooter(){
   this.http.get('https://localhost:44364/API/footer').subscribe((resp:any)=>{
     this.footer=resp;
     this.spinner.hide();
-    this.toastr.success('Data Retrieved!');
     console.log(this.footer);
   },err=>{
     this.spinner.hide();
@@ -280,6 +274,7 @@ updateFooter(body:any){
         
         this.spinner.hide();
         this.toastr.success('Routes Retrieved!');
+        
       }, err => {
         this.spinner.hide();
         this.toastr.error(err.message, err.status);
@@ -350,7 +345,6 @@ updateFooter(body:any){
       this.http.get('https://localhost:44364/api/Testimonial/GETALLtestimonialDTO').subscribe((resp: any) => {
         this.testimonial = resp;
         this.spinner.hide();
-        this.toastr.success('Testimonial Retrieved!');
       }, err => {
         this.spinner.hide();
         this.toastr.error(err.message, err.status);
@@ -425,7 +419,6 @@ updateFooter(body:any){
       this.http.get('https://localhost:44364/api/school/getAllSchool').subscribe((resp: any) => {
         this.school = resp;
         this.spinner.hide();
-        this.toastr.success('School Retrieved!');
       }, err => {
         this.spinner.hide();
         this.toastr.error(err.message, err.status);
@@ -456,6 +449,7 @@ updateFooter(body:any){
         this.toastr.error(err.message, err.status);
       })
     }
+    
 
 
     updateSchool(body : any)
@@ -500,7 +494,6 @@ GetAllStudent(){
   this.http.get('https://localhost:44364/api/Student/Get').subscribe((resp:any)=>{
   this.students=resp;
   this.spinner.hide();
-  this.toastr.success('Data Retrieved!');
    },err=>{
   this.spinner.hide();
   this.toastr.error(err.message, err.status);
@@ -619,7 +612,7 @@ GetAllStudent(){
       this.http.get('https://localhost:44364/api/Aboutus/Get').subscribe((res:any)=>{
       this.about=res;
       this.spinner.hide();
-      this.toastr.success("done");
+      
     },err=>{
       this.spinner.hide();
       this.toastr.error("there is no data")
@@ -635,7 +628,6 @@ GetAllStudent(){
       this.http.get('https://localhost:44364/api/Home/Get').subscribe((res: any) => {
         this.Home = res;
         this.spinner.hide();
-        this.toastr.success("done");
       }, err => {
         this.spinner.hide();
         this.toastr.error("there is no data")

@@ -51,7 +51,6 @@ export class TeacherService {
 
   updateAttendance(body:any){
     this.http.put('https://localhost:44364/API/Attendance',body).subscribe((res)=>{
-      this.toastr.success('Updated!');
     },err=>{
       this.toastr.error(err.message,err.status)
     })

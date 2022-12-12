@@ -1,0 +1,70 @@
+<app-nav></app-nav>
+
+<div class="container-fluid page-body-wrapper">
+
+    <app-sid-parent></app-sid-parent>
+
+    <div class="content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+
+                </div>
+
+                <div class="alert alert-success" role="alert" *ngIf="this.user.testimonial">
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>You Already
+                        gave us a rate , thank you
+                        for trusting in us!
+                    </p>
+                    <hr>
+                    <p class="mb-0">Whenever you need to be Contact with us use the number in that shown under our website to keep things nice and tidy.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="row justify-content-center" *ngIf="!(this.user.testimonial)">
+                        <div class="col-md-6">
+
+                            <h1 class="heading mb-4">Let's talk about everything!</h1>
+
+                            <p><img src="./assets/testimonial/images/undraw-contact.svg" alt="Image" class="img-fluid">
+                            </p>
+
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <form class="mb-5" method="post" id="contactForm" [formGroup]="testimonialForm">
+
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <textarea class="form-control" matInput formControlName="feedback" id="message"
+                                            cols="30" rows="7" placeholder="Write your message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="row">
+                                        <div class="col-12 form-group">
+                                            <br><br>
+                                            <input type="submit" [disabled]="!testimonialForm.valid" (click)="send()"
+                                                value="Send Message" class="btn btn-primary rounded-0 py-2 px-4">
+                                            <span class="submitting"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <div id="form-message-warning mt-4"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

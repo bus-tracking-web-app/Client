@@ -45,11 +45,12 @@
                   <mat-error *ngIf="contactForm.controls['phoneNumber'].hasError('minLength')">
                     Phone Number minimum Length is <strong>10</strong>
                   </mat-error>
+                  
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Leave a Message</mat-label>
-                  <textarea matInput formControlName="message" placeholder="Ex. It makes me feel..."></textarea>
-                  <mat-error *ngIf="contactForm.controls['message'].hasError('required')">
+                  <textarea matInput formControlName="massage" placeholder="Ex. It makes me feel..."></textarea>
+                  <mat-error *ngIf="contactForm.controls['massage'].hasError('required')">
                     Message Required
                   </mat-error>
                 </mat-form-field>

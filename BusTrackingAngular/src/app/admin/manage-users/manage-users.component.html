@@ -55,6 +55,10 @@
       <mat-error *ngIf="updateForm.controls['email'].hasError('required')">
         email is <strong>required</strong>
       </mat-error>
+      <mat-error *ngIf="updateForm.controls['email'].hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+      
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width" appearance="fill">
@@ -79,11 +83,12 @@
       <mat-error *ngIf="updateForm.controls['phone'].hasError('required')">
         phone is<strong>required</strong>
       </mat-error>
+      <mat-error *ngIf="updateForm.controls['phone'].hasError('minLength')">
+        Phone Number minimum Length is <strong>10</strong>
+      </mat-error>
     </mat-form-field>
     <br>
-    <label for="formFile" class="form-label">Default file input example</label>
-    <input class="form-control" type="file" id="formFile" [(ngModel)]="p_data.imagepath" #file formControlName="imagepath" (change)="UploadFile(file.files)">                        
-    <br><br><br>
+                      
     <label for="" class="my-1">Role</label>
     <select class="form-control" (change)="DetectChanges($event)">
       <option disabled selected hidden>{{service.selectedRole.rolename}}</option>

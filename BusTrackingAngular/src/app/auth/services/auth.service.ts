@@ -32,10 +32,10 @@ export class AuthService {
        let data:any=jwt_decode(responce.token);
        console.log(data);
        localStorage.setItem("user",JSON.stringify({...data}));
-       if (data.role=="1") this.router.navigate(["admin/users"]);
-       else if(data.role=="21") this.router.navigate([""]);
-       else if (data.role=="44") this.router.navigate([""]);
-       else if (data.role=="22") this.router.navigate([""]); 
+       if (data.role=="1") this.router.navigate(["admin/dashboard"]);
+       else if(data.role=="21") this.router.navigate(["teacher/attendance"]);
+       else if (data.role=="41") this.router.navigate(["parent/parent"]);
+       else if (data.role=="22") this.router.navigate(["driver/driver"]); 
     },err=>{
       this.toastr.error("please enter a valid username and password");
     });

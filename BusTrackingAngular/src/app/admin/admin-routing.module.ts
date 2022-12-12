@@ -13,6 +13,7 @@ import { MangeAboutUsComponent } from './mange-about-us/mange-about-us.component
 import { MangeHomeComponent } from './mange-home/mange-home.component';
 import { MangeStudentComponent } from './mange-student/mange-student.component';
 import { ReportComponent } from './report/report.component';
+import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profile.component';
 
 const routes: Routes = [
   {
@@ -67,9 +68,12 @@ const routes: Routes = [
   {
     path:'report',
     component:ReportComponent
+  },
+  {
+    path:'editprofile',
+    component:EditAdminProfileComponent
   }
-  
-  
+
 ];
 
 @NgModule({

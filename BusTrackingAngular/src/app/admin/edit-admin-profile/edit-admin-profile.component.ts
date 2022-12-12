@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EditprofileService } from '../Services/editprofile.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AdminProfileService } from '../Services/admin-profile.service';
 
 @Component({
-  selector: 'app-edit-profile',
-  templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.css']
+  selector: 'app-edit-admin-profile',
+  templateUrl: './edit-admin-profile.component.html',
+  styleUrls: ['./edit-admin-profile.component.css']
 })
-export class EditProfileComponent implements OnInit {
+export class EditAdminProfileComponent implements OnInit {
 
   updateForm:FormGroup=new FormGroup
   ({
@@ -21,10 +21,11 @@ export class EditProfileComponent implements OnInit {
           roleid: new FormControl('',Validators.required),
   });
   
+  
  userLocalStorage:any=localStorage.getItem('user'); 
  userInfo:any=JSON.parse(this.userLocalStorage);
  
-constructor(public edit:EditprofileService) { }
+constructor(public edit:AdminProfileService) { }
 
 
 
@@ -51,8 +52,6 @@ constructor(public edit:EditprofileService) { }
 
       this.edit.updateUser(this.updateForm.value);
     }
-    
-
   
 
 }

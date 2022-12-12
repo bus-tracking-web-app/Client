@@ -9,6 +9,7 @@ import { HistoryComponent } from './history/history.component';
 import { TeacherModule } from '../teacher/teacher.module';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SharedTeacherModule } from '../shared-teacher/shared-teacher.module';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SharedTeacherModule } from '../shared-teacher/shared-teacher.module';
     ParentHomeComponent,
     ChildrenComponent,
     HistoryComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    TestimonialComponent
   ],
   imports: [
     CommonModule,

@@ -7,8 +7,8 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>Full Name</th>
                   <th>Image </th>
+                  <th>Full Name</th>
                   <th>Feedback</th>
                   <th>status</th>
                   <th>Operation</th>
@@ -17,8 +17,8 @@
               </thead>
               <tbody>
                 <tr *ngFor="let obj of AdminService.testimonial">
+                  <td><img src="../../../assets/images/users/{{obj.imagepath}}" alt="" style="width:90px;height:90px;"></td>
                   <td>{{obj.name}}</td>
-                  <td><img src="../../../assets/images/testimonial/{{obj.imagepath}}" alt="" style="width: 200px; height:200px;"></td>
                   <td>{{obj.feedback}}</td>
                   <td>{{obj.status}}</td>
 
