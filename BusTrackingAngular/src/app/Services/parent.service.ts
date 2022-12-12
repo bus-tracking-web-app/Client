@@ -13,6 +13,7 @@ export class ParentService {
   baseURL: string = "https://localhost:44364/api/";
   display_image: any;
   User:any;
+  testimonial:any[]=[];
 
 
 
@@ -81,7 +82,17 @@ updateUser(body:any)
     })
   }
 
-
+  getAllTestimonial(){
+    this.spinner.show();
+    this.http.get('https://localhost:44364/api/Testimonial/GETALLtestimonialDTO').subscribe((resp: any) => {
+      this.testimonial = resp;
+      this.spinner.hide();
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status);
+    })
+  }
+  
 
 
 }

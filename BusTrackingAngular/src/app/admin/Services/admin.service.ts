@@ -449,6 +449,7 @@ updateFooter(body:any){
         this.toastr.error(err.message, err.status);
       })
     }
+    
 
 
     updateSchool(body : any)

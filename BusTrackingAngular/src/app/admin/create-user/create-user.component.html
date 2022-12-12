@@ -15,7 +15,11 @@
         <input type="text" matInput formControlName="email">
         <mat-error *ngIf="createform.controls['email'].hasError('required')">
             email is <strong>required</strong>
-        </mat-error>
+        </mat-error>  
+        <mat-error *ngIf="createform.controls['email'].hasError('email')">
+        Please enter a valid email address
+       </mat-error>
+      
       </mat-form-field>
     <br>
       <mat-form-field class="example-full-width" appearance="fill">
@@ -40,6 +44,10 @@
         <mat-error *ngIf="createform.controls['phone'].hasError('required')">
             phone is<strong>required</strong>
         </mat-error>
+        
+        <mat-error *ngIf="createform.controls['phone'].hasError('minLength')">
+          Phone Number minimum Length is <strong>10</strong>
+        </mat-error>  
       </mat-form-field>
       <br>
     <input type="file" #file formControlName="imagepath" (change)="uploadFile(file.files)">

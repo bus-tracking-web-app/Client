@@ -4,6 +4,7 @@ import { ChildrenComponent } from './children/children.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { HistoryComponent } from './history/history.component';
 import { ParentHomeComponent } from './parent-home/parent-home.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,12 @@ const routes: Routes = [
   {
     path:"editprofile",
     component:EditProfileComponent
-
-  }
+  },
+  {
+    path:"testimonial",
+    component:TestimonialComponent
+  },
+  
 
 ];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { HomeService } from '../Services/home.service';
 
 
 @Component({
@@ -8,14 +9,14 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent implements OnInit {
-  constructor() { }
+  constructor(private home:HomeService) { }
 
   contactForm=new FormGroup(
     {
       fullName : new FormControl('',[Validators.required]),
       email : new FormControl('',[Validators.email,Validators.required]),
       phoneNumber : new FormControl('',[Validators.minLength(10)]),
-      message:new FormControl('',[Validators.required])
+      massage:new FormControl('',[Validators.required])
 
     }
   )
@@ -26,6 +27,7 @@ export class ContactUsComponent implements OnInit {
   {
     console.log(this.contactForm.value);
     
+    this.home.createContact(this.contactForm.value);
   }
   
 

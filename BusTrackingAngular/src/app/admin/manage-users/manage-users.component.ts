@@ -20,10 +20,10 @@ updateForm:FormGroup=new FormGroup
 ({
         id:new FormControl(),
         fullname: new FormControl('',Validators.required),
-        email: new FormControl('',Validators.required),
+        email: new FormControl('',[Validators.required,Validators.email]),
         username: new FormControl('',Validators.required),
         password:new FormControl('',Validators.required),
-        phone: new FormControl('',Validators.required),
+        phone: new FormControl('',[Validators.required,Validators.minLength(10)]),
         imagepath: new FormControl(),
         roleid: new FormControl('',Validators.required)
 });
