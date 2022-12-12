@@ -18,18 +18,7 @@ export class TestimonialComponent implements OnInit {
   rated:boolean=false;
   ngOnInit(): void {
     this.user.getUserid(this.userInfo.nameid);
-    this.user.getAllTestimonial();
-    
-    setTimeout(() => {
-      const testi=(this.user.testimonial).find(x=>x.name==this.userInfo.unique_name);
-      console.log(testi)
-      if(Object.keys(testi).length === 0)
-      {
-        this.rated=true;
-      }
-    }, 3000);
-      
-    
+    this.user.getUserTestimonial(this.userInfo.unique_name);
   }
   testimonialForm=new FormGroup(
     {

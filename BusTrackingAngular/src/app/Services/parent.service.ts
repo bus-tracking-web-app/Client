@@ -82,9 +82,9 @@ updateUser(body:any)
     })
   }
 
-  getAllTestimonial(){
+  getUserTestimonial(username:string){
     this.spinner.show();
-    this.http.get('https://localhost:44364/api/Testimonial/GETALLtestimonialDTO').subscribe((resp: any) => {
+    this.http.get('https://localhost:44364/api/Testimonial/getTestimonialByUserName/'+username).subscribe((resp: any) => {
       this.testimonial = resp;
       this.spinner.hide();
     }, err => {

@@ -7,12 +7,25 @@
     <div class="content">
         <div class="container">
             <div class="row justify-content-center">
+                <div class="col-md-5">
+
+                </div>
+
+                <div class="alert alert-success" role="alert" *ngIf="this.user.testimonial">
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>You Already
+                        gave us a rate , thank you
+                        for trusting in us!
+                    </p>
+                    <hr>
+                    <p class="mb-0">Whenever you need to be Contact with us use the number in that shown under our website to keep things nice and tidy.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <div>
-                        <h1 style="text-align: center;background-color: bisque;" >You Already gave us a rate , thank you
-                            for trusting in us!</h1>
-                    </div>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center" *ngIf="!(this.user.testimonial)">
                         <div class="col-md-6">
 
                             <h1 class="heading mb-4">Let's talk about everything!</h1>
