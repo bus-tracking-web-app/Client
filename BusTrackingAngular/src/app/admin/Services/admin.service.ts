@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,6 @@ export class AdminService {
   contact: any[] = [];
   baseURL: string = "https://localhost:44364/api/";
   constructor(private http: HttpClient, private toastr: ToastrService, private spinner: NgxSpinnerService) { }
-
   students: any[] = [];
   student_image: any;
   aboutus_image: any;
@@ -163,6 +163,7 @@ export class AdminService {
       this.http.post('https://localhost:44364/API/Bus', body).subscribe((resp: any) => {
         this.spinner.hide();
         this.toastr.success('Created!');
+        window.location.reload();
       }, err => {
         this.spinner.hide();
         this.toastr.error(err.message, err.status)
@@ -171,6 +172,7 @@ export class AdminService {
     updateBus(body: any){
       this.http.put('https://localhost:44364/API/Bus', body).subscribe((res) => {
         this.toastr.success('Updated!');
+        window.location.reload();
       }, err => {
         this.toastr.error(err.message, err.status)
       })
@@ -180,6 +182,7 @@ export class AdminService {
     deleteBus(id: number){
       this.http.delete('https://localhost:44364/API/Bus/delete/' + id).subscribe((resp) => {
         this.toastr.success('Deleted!');
+        window.location.reload();
       }, err => {
         this.toastr.error(err.message, err.status)
       })
@@ -202,7 +205,6 @@ getAllFooter(){
   this.http.get('https://localhost:44364/API/footer').subscribe((resp:any)=>{
     this.footer=resp;
     this.spinner.hide();
-    console.log(this.footer);
   },err=>{
     this.spinner.hide();
     this.toastr.error(err.message, err.status);
@@ -211,6 +213,7 @@ getAllFooter(){
 updateFooter(body:any){
   this.http.put('https://localhost:44364/API/footer',body).subscribe((res)=>{
     this.toastr.success('Updated!');
+    location.reload();
   },err=>{
     this.toastr.error(err.message,err.status)
   })

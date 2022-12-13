@@ -26,14 +26,13 @@
 
     <button class="btn btn-primary mr-2" (click)="opendialog()">Add new Steudent</button> <br><br>
     <div class="table-responsive">
-      <table class="table">
+      <table class="table" >
         <thead>
           <tr>
 
 
             <th>Student Picture</th>
             <th>Student Name</th>
-            <th>Status</th>
             <th>Round</th>
             <th>Bus Number</th>
             <th>Parent</th>
@@ -45,7 +44,6 @@
             <td> <img src="../../../assets/images/Students/{{obj.imgpath}}" alt="Student Picture"
                 style="width:90px;height:90px;"></td>
             <td>{{obj.fullname}}</td>
-            <td>{{obj.inbusstatus}}</td>
             <td>{{obj.roundstatus}}</td>
             <td>{{obj.busnumber}}</td>
             <td>{{obj.parent}}</td>
@@ -74,16 +72,6 @@
           <input type="text" matInput formControlName="fullname" [(ngModel)]="p_data.fullname">
           <mat-error *ngIf="updateForm.controls['fullname'].hasError('required')">
             fullname is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-        <br>
-
-
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Status</mat-label>
-          <input type="text" matInput formControlName="inbusstatus" [(ngModel)]="p_data.inbusstatus">
-          <mat-error *ngIf="updateForm.controls['inbusstatus'].hasError('required')">
-            Status is <strong>required</strong>
           </mat-error>
         </mat-form-field>
         <br>

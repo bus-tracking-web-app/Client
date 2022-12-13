@@ -1,34 +1,4 @@
-<!-- <form class="forms-sample" [formGroup]="createForm">
-    <div class="form-group">
-     <label for="exampleInputUsername1">Full Name</label>
-     <input type="text" class="form-control" matInput formControlName="fullname" placeholder="Full Name">
-     
-    </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Studint Picture</label>
-                  <input type="file" #file formControlName="image" (change)="uploadFile(file.files)">
-                </div>
-                <!-- <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputConfirmPassword1">Confirm Password</label>
-                  <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
-                </div>
-                <div class="form-check form-check-flat form-check-primary">
-                  <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input">
-                    Remember me
-                  </label>
-                </div> -->
 
-                <!-- <input type="file" #file formControlName="image" (change)="uploadFile(file.files)"> -->
-
-                <!-- <button (click)="saveData()" class="btn btn-primary mr-2">Submit</button>
-                <button class="btn btn-light">Cancel</button>
-</form> --> -->
-  
 
 <mat-dialog-content class="mat-typography">
   <form class="example-form" [formGroup]="createForm">
@@ -42,14 +12,6 @@
     </mat-form-field>
     <br>
      
-    <!-- <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Status</mat-label>
-      <input type="text" matInput formControlName="inbusstatus">
-      <mat-error *ngIf="createForm.controls['inbusstatus'].hasError('required')">
-        Status is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br> -->
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label> X-Location </mat-label>
@@ -69,16 +31,6 @@
     </mat-form-field>
     <br>
 
-<!-- <mat-form-field class="example-full-width" appearance="fill">
-<mat-label>Bus Number</mat-label>
-<input type="text" matInput formControlName="busid"
-[(ngModel)]="p_data.busid"
->
-<mat-error *ngIf="updateForm.controls['busid'].hasError('required')">
-  bus number <strong>required</strong>
-</mat-error>
-</mat-form-field>
-<br> -->
 
   <br><br>
     <label for="" class="my-1">Parent</label>

@@ -1,19 +1,19 @@
 <app-navbar></app-navbar>
 
 <div class="top_container">
-  <section class="hero_section " >
+  <section class="hero_section ">
     <div class="hero-container container">
       <div class="hero_detail-box">
         <h1 style="font-size:30px;">
           {{this.home.Home[0].titel}}
         </h1>
-       
+
         <br>
         <p style="font-size:25px;">
           {{this.home.Home[0].txt}}
         </p> <br> <br>
         <div class="hero_btn-continer">
-          <button  class="call_to-btn btn_white-border" routerLink="/aboutus" >
+          <button class="call_to-btn btn_white-border" routerLink="/aboutus">
             Read More
           </button>
         </div>
@@ -49,7 +49,7 @@
               {{this.home.about[0].information}}
             </p>
             <br>
-            
+
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
   <!-- end about section -->
 
   <!-- admission section -->
- 
+
 
 
   <!-- end admission section -->
@@ -84,7 +84,7 @@
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
               ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
             </p>
-            
+
           </div>
         </div>
         <div class="col-md-6">
@@ -101,87 +101,7 @@
 
 </div>
 
-
-<!-- client section -->
-<section class="client_section layout_padding">
-  <h2 class="">
-    Testimonial
-  </h2>
-  <div class="container">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="row">
-            <div class="col-md-3">
-              <div class="client_img-box">
-                <img img src="../../../assets/images/users/{{this.home.approvedtestimonial[0].imagepath}}"
-                  style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial ">
-              </div>
-            </div>
-            <div class="col-md-9">
-              <div class="client_detail-box">
-                <h5>
-                  {{this.home.approvedtestimonial[0].name}}
-                </h5>
-                <p>
-                  {{this.home.approvedtestimonial[0].feedback}}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="row">
-            <div class="col-md-3">
-              <div class="client_img-box">
-                <img img src="../../../assets/images/users/{{this.home.approvedtestimonial[1].imagepath}}"
-                  style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial ">
-              </div>
-            </div>
-            <div class="col-md-9">
-              <div class="client_detail-box">
-                <h5>
-                  {{this.home.approvedtestimonial[1].name}}
-                </h5>
-                <p>
-                  {{this.home.approvedtestimonial[1].feedback}}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="row">
-            <div class="col-md-3">
-              <div class="client_img-box">
-                <img img src="../../../assets/images/users/{{this.home.approvedtestimonial[2].imagepath}}"
-                  style="width: 200px; height: 200px; border-radius:50%" alt=" testimonial ">
-              </div>
-            </div>
-            <div class="col-md-9">
-              <div class="client_detail-box">
-                <h5>
-                  {{this.home.approvedtestimonial[2].name}}
-                </h5>
-                <p>
-                  {{this.home.approvedtestimonial[2].feedback}}
-
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
+<app-ctesti></app-ctesti>
 
 <!-- end client section -->
 
@@ -191,4 +111,84 @@
 
 <!-- end contact section -->
 
-<app-footer></app-footer>
+<section class="info_section layout_padding-top">
+  <div class="info_logo-box">
+    <h2 style="color: white;">
+      Bus Tracking System
+    </h2>
+  </div>
+  <div class="container layout_padding2">
+    <div class="row">
+      <div class="col-md-3">
+        <h2 style="color: white;">
+          ABOUT US
+        </h2>
+        <p style="color: goldenrod;">
+          <!-- dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quisdotempor incididunt r  -->
+          {{this.home.footer[0].abouttxt}}
+        </p>
+      </div>
+      <div class="col-md-3">
+        <h2 style="color: white;">
+          Address
+        </h2>
+        <p style="color: goldenrod;">{{this.home.footer[0].address}}</p>
+      </div>
+      <div class="col-md-3">
+        <h2 style="color: white;">
+          Phone Number
+        </h2>
+        <p style="color: goldenrod;">
+          {{this.home.footer[0].phonenumber}}
+        </p>
+      </div>
+      <div class="col-md-3">
+
+        <div class="subscribe_container">
+          <h2 style="color: white;">
+            Email
+          </h2>
+          <p style="color: goldenrod;">{{this.home.footer[0].email}}</p>
+          <!-- <div class="form_container">
+                <form action="">
+                  <input type="email" placeholder="Enter your email">
+                  <button type="submit">
+                    Subscribe
+                  </button>
+                </form>
+              </div> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="social_container">
+
+      <div class="social-box">
+        <a href="">
+          <img src="./assets/images/fb.png" alt="">
+        </a>
+
+        <a href="">
+          <img src="./assets/images/twitter.png" alt="">
+        </a>
+        <a href="">
+          <img src="./assets/images/linkedin.png" alt="">
+        </a>
+        <a href="">
+          <img src="./assets/images/instagram.png" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="container-fluid footer_section">
+  <p>
+    Copyright &copy; 2019 All Rights Reserved By
+    <a href="https://html.design/">Free Html Templates</a>
+  </p>
+</section>
+<!-- footer section -->

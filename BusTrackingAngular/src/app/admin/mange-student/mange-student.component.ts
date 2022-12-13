@@ -16,7 +16,6 @@ import { CreateStudentComponent } from '../create-student/create-student.compone
 export class MangeStudentComponent implements OnInit {
 
   p_data :any={};
-
   
   constructor(private spinner: NgxSpinnerService,
     public home:AdminService, private dialog:MatDialog) { }
@@ -31,7 +30,7 @@ export class MangeStudentComponent implements OnInit {
       imgpath:new FormControl(),
       xhome:new FormControl('',Validators.required),
       yhome:new FormControl('',Validators.required),
-     inbusstatus:new FormControl('',Validators.required),
+     inbusstatus:new FormControl(''),
      round: new FormControl('',Validators.required),
      parentid: new FormControl('',Validators.required),
     busid:new FormControl('',Validators.required)
@@ -60,7 +59,7 @@ export class MangeStudentComponent implements OnInit {
     this.home.getParent();
     this.home.getAllbuses();
     this.home.getAllround();
-
+    
   }
 
   opendialog(){
@@ -86,6 +85,7 @@ export class MangeStudentComponent implements OnInit {
     this.updateForm.controls['parentid'].setValue(this.p_data.parentid);
     this.updateForm.controls['busid'].setValue(this.p_data.busid);
     this.updateForm.controls['round'].setValue(this.p_data.round);
+    this.updateForm.controls['inbusstatus'].setValue(this.p_data.inbusstatus);
     this.home.getUserid(this.p_data.parentid);
     this.home.getBusid(this.p_data.busid);
     this.home.getroundsid(this.p_data.round);

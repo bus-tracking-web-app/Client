@@ -120,6 +120,7 @@ a:focus {
 }
 
 .top_container::after {
+  opacity: 0;
   content: "";
   position: absolute;
   width: 75px;
@@ -128,6 +129,7 @@ a:focus {
   left: 6%;
   background-color: #fdd31d;
 }
+
 
 
 .sub_page .top_container::after {

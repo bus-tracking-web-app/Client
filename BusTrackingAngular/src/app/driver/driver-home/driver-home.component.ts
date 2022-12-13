@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 export class DriverHomeComponent implements OnInit {
   userLocalStorage:any=localStorage.getItem('user'); 
   userInfo:any=JSON.parse(this.userLocalStorage);
- 
+  driverId = Number(this.userInfo.nameid);
+
 
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
@@ -21,7 +22,6 @@ export class DriverHomeComponent implements OnInit {
     google.maps.LatLngLiteral | undefined
 
     setLocation:any={}
-    driverId: number =this.userInfo.nameid;
 
   constructor(public dreiverServices:DreiverService,public toaster:ToastrService,public router:Router) { }
 
