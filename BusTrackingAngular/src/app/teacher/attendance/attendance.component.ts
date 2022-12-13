@@ -15,9 +15,11 @@ export class AttendanceComponent implements OnInit {
 
 
   constructor(public home: TeacherService,private tosatr:ToastrService) { }
+userLocalStorage:any=localStorage.getItem('user'); 
+userInfo:any=JSON.parse(this.userLocalStorage);
+id=Number(this.userInfo.nameid) 
   ngOnInit(): void {
-    this.home.getAttendenceToday();
-    
+    this.home.getAttendenceToday(this.id);
   }
 
   precent(obj:any)

@@ -120,6 +120,7 @@ a:focus {
 }
 
 .top_container::after {
+  opacity: 0;
   content: "";
   position: absolute;
   width: 75px;

@@ -18,7 +18,7 @@ export class CreateStudentComponent implements OnInit {
     imgpath:new FormControl(''),
     xhome:new FormControl('',Validators.required),
     yhome:new FormControl('',Validators.required),
-   inbusstatus:new FormControl('',Validators.required),
+   inbusstatus:new FormControl(''),
    round: new FormControl('',Validators.required),
    parentid: new FormControl('',Validators.required),
   busid:new FormControl('',Validators.required)

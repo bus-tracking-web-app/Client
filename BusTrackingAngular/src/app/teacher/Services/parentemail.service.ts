@@ -10,7 +10,7 @@ export class ParentemailService {
 todayPrecent:any[]=[];
 constructor(private http:HttpClient,private toastr:ToastrService,private spinner:NgxSpinnerService) { }
 
-getAllStudentWithParentEmail()
+getAllStudentWithParentEmail(id:number)
 {
   this.spinner.show();
   let date=new Date();
@@ -19,7 +19,7 @@ getAllStudentWithParentEmail()
   let yyyy = date.getFullYear();
   let today = yyyy +'-'+mm+'-'+ dd ;
   console.log(today)
-  this.http.get('https://localhost:44364/API/Attendance/StudentInfo/'+today).subscribe((res:any)=>{
+  this.http.get('https://localhost:44364/API/Attendance/StudentInfo/'+today+"/"+id).subscribe((res:any)=>{
     this.todayPrecent=res;
     this.spinner.hide();
   },err=>{

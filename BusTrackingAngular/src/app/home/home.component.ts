@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin/Services/admin.service';
 import { HomeService } from '../Services/home.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
     this.home.GetHome();
     this.home.GetAboutUs();
     this.home.getApprovedTestimonial();
+    this.home.getAllFooter();
   }
 
 

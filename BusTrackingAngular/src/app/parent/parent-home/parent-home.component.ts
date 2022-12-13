@@ -7,7 +7,9 @@ import { ParentService } from 'src/app/Services/parent.service';
   styleUrls: ['./parent-home.component.css']
 })
 export class ParentHomeComponent implements OnInit {
-
+  userLocalStorage:any=localStorage.getItem('user'); 
+  userInfo:any=JSON.parse(this.userLocalStorage);
+  id=Number(this.userInfo.nameid);
   markers: any = [];
   zoom = 12
   center: google.maps.LatLngLiteral = {
@@ -32,7 +34,7 @@ export class ParentHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.parentservices.getParentStudents(106);
+    this.parentservices.getParentStudents(this.id);
     this.parentservices.getSchoolData();
    
     setTimeout(() => {

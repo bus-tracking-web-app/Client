@@ -13,9 +13,7 @@ export class HomeService {
   Home: any[] = [];
   about: any[] = [];
   approvedtestimonial: any[] = [];
-
-
-
+  footer:any[]=[];
 
   display_photo: any;
   getAllbuses() {
@@ -96,6 +94,19 @@ export class HomeService {
         this.toastr.error(err.message, err.status);
       })
     }
+    getAllFooter(){
+      debugger;
+      this.spinner.show();
+      this.http.get('https://localhost:44364/API/footer').subscribe((resp:any)=>{
+        this.footer=resp;
+        console.log(this.footer);
+        this.spinner.hide();
+      },err=>{
+        this.spinner.hide();
+        this.toastr.error(err.message, err.status);
+      })
+    }
+    
     
 
 

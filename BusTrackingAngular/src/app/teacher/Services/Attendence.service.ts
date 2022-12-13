@@ -90,7 +90,7 @@ getStatusId(id:number){
     })
     }
 
-   getAttendenceToday()
+   getAttendenceToday(id:number)
     {
       let date=new Date();
       let dd = String(date.getDate()).padStart(2, '0');
@@ -98,7 +98,7 @@ getStatusId(id:number){
       let yyyy = date.getFullYear();
       let today = yyyy +'-'+mm+'-'+ dd ;
 
-       this.http.get("https://localhost:44364/API/Attendance/getByDate/"+today).subscribe(async (res:any)=>{
+       this.http.get("https://localhost:44364/API/Attendance/getByDate/"+today+"/"+id).subscribe(async (res:any)=>{
         if (res.length==0) {await this.createAttendance();}
         else {this.attendance=res};
 

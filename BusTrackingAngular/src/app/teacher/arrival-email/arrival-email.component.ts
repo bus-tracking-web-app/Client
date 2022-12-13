@@ -9,9 +9,12 @@ import { ParentemailService } from '../Services/parentemail.service';
 export class ArrivalEmailComponent implements OnInit {
 
   constructor(public parent:ParentemailService) { }
-
+  userLocalStorage:any=localStorage.getItem('user'); 
+  userInfo:any=JSON.parse(this.userLocalStorage);
+  id=Number(this.userInfo.nameid) 
+  
   ngOnInit(): void {
-  this.parent.getAllStudentWithParentEmail();
+  this.parent.getAllStudentWithParentEmail(this.id);
   }
 
   send(obj:any)
