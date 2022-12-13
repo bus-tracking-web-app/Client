@@ -131,6 +131,7 @@ a:focus {
 }
 
 
+
 .sub_page .top_container::after {
   display: none;
 }
